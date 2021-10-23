@@ -1,0 +1,28 @@
+// Setup
+@import './setup/variables';
+@import './setup/functions';
+@import './setup/mixins';
+@import './setup/typography';
+
+// Basics
+@import './basics/helpers';
+@import './basics/layout';
+@import './basics/base';
+
+// Compon./ents
+@import '././cmps/app-header';
+@import './cmps/app-footer';
+@import './cmps/list-composer';
+@import './cmps/board-menu';
+@import './cmps/board-header';
+@import './cmps/board-container';
+@import './cmps/board-content';
+@import './cmps/board-list';
+@import './cmps/list-cards';
+
+
+@import 'app';
+// @import './home';
+
+
+

@@ -1,0 +1,11 @@
+.board-container{
+    &.show{
+        margin-right: $menuWidth;
+        
+    }
+    &.hide{
+
+    }
+    transition: margin-right .4s;
+    
+}

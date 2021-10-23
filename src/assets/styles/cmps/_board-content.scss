@@ -1,0 +1,15 @@
+.board-content{
+    &::-webkit-scrollbar {
+        height: 12px;
+    }
+    &::-webkit-scrollbar-thumb {
+        border-radius: 5px;
+        background-color: hsla(0,0%,100%,.35);
+    }
+    &::-webkit-scrollbar-track {
+        border-radius: 5px;
+        // margin: 0 5px;
+        margin: 8px;
+        background-color: rgba(0,0,0,.15);
+    }
+}

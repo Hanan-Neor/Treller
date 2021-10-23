@@ -1,0 +1,41 @@
+.board-menu{
+    position: absolute;
+    // position: relative;
+    right: 0;
+    top:0;
+    width:340px;
+    width:$menuWidth;
+     background-color: #f4f5f7;
+    height: 100%;
+     &.show{
+
+        //  position: relative;
+    // height: 100%;
+
+     }
+     &.hide{
+        //  max-width: 0px;
+         transform: translateX(100%);
+        //  position: absolute;
+     }
+     transition: all .4s;
+
+
+    & .menu-header{
+        padding: 14px;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        &>button{
+            position: absolute;
+            right: 0px;
+            justify-self: flex-end;
+        }
+        &>h3{
+            margin: 0;
+        }
+    }
+
+}

@@ -1,0 +1,65 @@
+@mixin layout-columns($Width: 960px) {
+    grid-template-columns:
+        minmax(2rem, 1fr)
+        minmax(auto, $Width)
+        minmax(2rem, 1fr);
+}
+
+.main-layout {
+    display: grid;
+    // min-height: 100vh;
+    grid-template-columns: 2rem 1fr 2rem;
+    // grid-template-rows: auto 1fr auto;
+    grid-auto-flow: dense;
+
+    > * {
+        grid-column: 2;
+    }
+
+    > .full {
+        grid-column: 1 / -1;
+    }
+
+    @include for-narrow-layout {
+        @include layout-columns($break-narrow);
+    }
+
+    @include for-normal-layout {
+        @include layout-columns($break-normal);
+    }
+
+    @include for-wide-layout {
+        @include layout-columns($break-wide);
+    }
+}
+
+@include for-mobile-layout {
+}
+@include for-narrow-layout {
+}
+@include for-normal-layout {
+}
+@include for-wide-layout {
+}
+
+.main-layout {
+    @include for-mobile-layout {
+        // background-color: orange;
+    }
+
+    @include for-narrow-layout {
+        // background-color: yellow;
+    }
+
+    @include for-normal-layout {
+        // background-color: green;
+    }
+
+    @include for-wide-layout {
+        // background-color: blue;
+    }
+}
+
+.main-height {
+    flex-grow: 1;
+}

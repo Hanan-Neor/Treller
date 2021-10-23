@@ -1,0 +1,11 @@
+.app-header {
+    justify-content: space-between;
+    align-items: center;
+    // background-color: lightgrey;
+    background-color: #0067A3;
+    padding: 4px;
+    &>div{
+        gap:4px;
+        align-items: center;
+    }
+}

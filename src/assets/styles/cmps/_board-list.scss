@@ -1,0 +1,54 @@
+.board-list{
+    
+    
+    
+    
+    
+    & .board-list-content{
+        display: flex;
+        flex-direction: column;
+        max-height: 100%;
+        padding: 0 4px 8px 8px;
+        border-radius: 3px;
+
+
+    }
+    & .board-list-content .list-header{
+        // margin-bottom: 8px;
+        padding: 8px;
+    }
+
+    & .board-list-content .card-preview{
+        padding: 8px;
+        border-radius:3px;
+
+    }
+    & .board-list-content .card-composer{
+        padding: 8px 8px 0;
+        cursor: pointer;
+    }
+    & .board-list-content .list-cards{
+
+
+        display: flex;
+        flex-direction: column;
+        gap:8px;
+        padding-right: 4px;
+
+
+        &::-webkit-scrollbar {
+            // height: 12px;
+            width: 8px;
+        }
+        &::-webkit-scrollbar-thumb {
+            border-radius: 5px;
+            background-color: hsla(0,0%,100%,.35);
+        }
+        &::-webkit-scrollbar-track {
+            border-radius: 5px;
+            // margin: 0 5px;
+            // margin: 8px;
+            background-color: rgba(0,0,0,.15);
+        }
+    }
+}
