@@ -1,10 +1,124 @@
 <template>
-  <section  class="list-composer">
-    <div style="min-width: 270px"><button class="trello-button">+ Add another list</button></div>
+  <section
+    id="list-composer"
+    class="board-list list-composer"
+    :class="menuDisplay2"
+  >
+    <div
+      class="comps"
+      style="height: 2.5rem"
+      :class="menuDisplay"
+      @click="toggleListComposer"
+    >
+      <!-- <div :class="{hide:showInput}"   @click="toggleListComposer"> -->
+      <list-composer-button></list-composer-button>
+    </div>
+    <!-- <list-composer-button  v-if="!showInput"  @click="toggleListComposer" ></list-composer-button> -->
+    <!-- <list-composer-input v-else :hideListComposerInput="toggleListComposer"></list-composer-input> -->
+
+    <list-composer-input
+      style="height: 2.5rem"
+      class="comps"
+      :showInput="showInput"
+      :clearTitle="clearTitle"
+      :class="menuDisplay2"
+      @onEnter="addList"
+      @hideListComposerInput="toggleListComposer"
+      @setListTitle="setListTitle"
+    ></list-composer-input>
+    <!-- <list-composer-input :class="{show:showInput}" @hideListComposerInput="toggleListComposer"></list-composer-input> -->
+    <!-- <div> -->
+    <div class="buttons" :class="menuDisplay2">
+      <button class="compose-add-button" @click="addList">Add list</button>
+      <button class="compose-cancel-button" @click="toggleListComposer">
+        ⨉
+      </button>
+    </div>
+    <!-- </div> -->
+    <!-- <div class="buttons" :class="menuDisplay2">
+      <button :class="menuDisplay2">Add list</button>
+      <button :class="menuDisplay2">X</button>
+      hhhhhhhhhh
+    </div> -->
   </section>
 </template>
 
 <script>
-export default {};
+import ListComposerButton from "./list-composer-button.vue";
+import ListComposerInput from "./list-composer-input.vue";
+
+export default {
+  data() {
+    return {
+      listTitle: null,
+      showInput: false,
+      clearTitle: false,
+    };
+  },
+  methods: {
+    setListTitle(titleToSave) {
+      this.listTitle = titleToSave;
+      // (alert(this.listTitle))
+    },
+
+    toggleListComposer() {
+      this.showInput = !this.showInput;
+      if (this.showInput) {
+        this.focus();
+      }
+    },
+    focus() {
+      setTimeout(() => {
+        document.getElementById("list-input").focus();
+      }, 100);
+    },
+    addList() {
+      document.getElementById("list-input").focus();
+      if (!this.listTitle) return;
+      let newList = boardService.getEmptyList();
+      newList.title = this.listTitle;
+      this.$store.dispatch({ type: "addList", newList });
+      setTimeout(() => {
+        this.$store.dispatch({ type: "saveBoard" });
+      }, 400);
+      this.clearTitle = !this.clearTitle;
+      // document.getElementById("list-input").scrollIntoView();
+      // window.scrollTo(0, 2000);
+
+      location.href = "#";
+      location.href = "#list-input";
+
+      // var scrollDiv = document.getElementById("list-input").offsetLeft;
+      // window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
+    },
+  },
+  computed: {
+    menuDisplay() {
+      return {
+        show: !this.showInput,
+        hide: this.showInput,
+      };
+    },
+    menuDisplay2() {
+      return {
+        show2: this.showInput,
+        hide2: !this.showInput,
+      };
+    },
+    menuDisplay2() {
+      return {
+        show2: this.showInput,
+        hide2: !this.showInput,
+      };
+    },
+  },
+
+  components: {
+    ListComposerButton,
+    ListComposerInput,
+  },
+};
 </script>
 
+<style>
+</style>

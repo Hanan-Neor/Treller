@@ -1,21 +1,54 @@
 <template>
-  <section class="board-list" style="min-width: 270px">
+  <section class="board-list" style="">
     <div class="board-list-content" style="background-color: #ebecf0">
       <list-header :title="list.title"></list-header>
-      <list-cards :cards="list.cards"></list-cards>
-      <card-composer></card-composer>
+      <!-- <list-cards :cards="list.cards" :cardComposerState="cardComposerState" @hideCardComposerInput="cardComposerState = false"></list-cards> -->
+      <list-cards
+        :listId="list.id"
+        :cards="list.cards"
+        :cardComposerState="cardComposerState"
+        @hideCardComposerInput="hideCardComposerInput"
+      ></list-cards>
+      <div @click="toggleCardComposer">
+        <card-composer-button
+          :cardComposerState="cardComposerState"
+        ></card-composer-button>
+      </div>
+      <!-- <div  @click="toggleCardComposer">hhhhhh</div> -->
     </div>
   </section>
 </template>
 
 <script>
-import CardComposer from "./card-composer.vue";
+import CardComposerButton from "./card-composer-button.vue";
 import ListCards from "./list-cards.vue";
 import listHeader from "./list-header.vue";
 export default {
   props: ["list"],
 
-  components: { listHeader, ListCards, CardComposer },
+  data() {
+    return {
+      cardComposerState: false,
+    };
+  },
+  methods: {
+    hideCardComposerInput() {
+      // this.cardComposerState = false;
+      this.cardComposerState = !this.cardComposerState;
+
+      // alert('hi board-list')
+    },
+    // toggleCardComposer(){
+    //   this.$store.dispatch({type:'toggleCardComposer'})
+    // }
+    toggleCardComposer() {
+      // alert('hi')
+      // console.log(this.cardComposerState);
+      this.cardComposerState = !this.cardComposerState;
+    },
+  },
+
+  components: { listHeader, ListCards, CardComposerButton },
 };
 </script>
 

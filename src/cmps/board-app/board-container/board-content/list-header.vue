@@ -1,6 +1,5 @@
 <template>
   <section class="list-header">
-      header
       {{title}}
   </section>
 </template>

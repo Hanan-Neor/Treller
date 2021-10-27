@@ -1,6 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
-import {boardStore} from './modules/border.store'
+import {boardStore} from './modules/board.store'
 
 Vue.use(Vuex)
 

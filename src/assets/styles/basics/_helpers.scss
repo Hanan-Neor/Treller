@@ -49,6 +49,9 @@
     &.justify-center {
       justify-content: center;
     }
+    &.justify-between {
+      justify-content: space-between;
+    }
     &.align-center {
       align-items: center;
     }
@@ -85,6 +88,27 @@
   }
 
 }
+
+// .compose-add-button{
+//   font-size: 1rem;
+//   padding: 0px 12px;
+//   color: #fff;
+//   background-color: #0079bf;
+//   &:hover{
+//       background-color: #026aa7;
+//   }
+
+
+// }
+// .compose-cncel-button{
+//   font-size: 1.5rem;
+//   // font-weight: 600;
+//   // color: unset;
+//   color: #42526e;
+//   background-color:inherit;
+//   // width: $height;
+
+// }
 
 .board-menu-divider{
   margin: 0;
