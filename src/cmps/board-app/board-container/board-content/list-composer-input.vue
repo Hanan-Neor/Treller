@@ -31,7 +31,7 @@
 <script>
 import { boardService } from "../../../../services/board.service";
 export default {
-  props: ["listComposerState", "listId", "showInput","clearTitle"],
+  props: ["listComposerState", "listId", "showInput", "clearTitle"],
   data() {
     return {
       // element:false
@@ -41,16 +41,15 @@ export default {
   },
   watch: {
     clearTitle: function(newVal, oldVal) {
-      this.listTitle = null
+      this.listTitle = null;
       // if (!showInput) return;
       // document.getElementById("list-input").focus();
     },
   },
 
   methods: {
-
-    onEnter(){
-      this.$emit('onEnter')
+    onEnter() {
+      this.$emit("onEnter");
     },
     close(e) {
       if (
@@ -64,9 +63,9 @@ export default {
         this.$emit("hideListComposerInput");
       }
     },
-    setListTitle(){
+    setListTitle() {
       // alert('hi')
-      this.$emit("setListTitle",this.listTitle)
+      this.$emit("setListTitle", this.listTitle);
     },
     addList() {
       // document.querySelector(".textarea1").focus();
@@ -77,7 +76,7 @@ export default {
       newList.title = this.listTitle;
       // newList.createdAt = Date.now();
       // console.log(newList);
-      this.$store.dispatch({ type: "addList", newList});
+      this.$store.dispatch({ type: "addList", newList });
 
       setTimeout(() => {
         // dispatch({type:'saveBoard'})
@@ -89,7 +88,6 @@ export default {
     hideListComposerInput() {
       this.$emit("hideListComposerInput");
     },
-
 
     //     addList(){
     //   // document.querySelector(".textarea1").focus()
@@ -110,17 +108,14 @@ export default {
     //   this.cardTitle = null;
     //   // document.querySelector(".textarea1").focus()
     // },
-
   },
   mounted() {
     // document.getElementById("list-input").focus();
     // document.querySelector(".textarea1").focus()
-    // document.addEventListener("mousedown", this.close);
-    document.addEventListener("mouseup", this.close);
+    document.addEventListener("mousedown", this.close);
   },
   beforeDestroy() {
-    // document.removeEventListener("mousedown", this.close);
-    document.removeEventListener("mouseup", this.close);
+    document.removeEventListener("mousedown", this.close);
   },
   created() {
     // document.querySelector(".list-input").focus()

@@ -8,8 +8,8 @@
     <!-- <div v-if="cardComposerState"> -->
     <!-- <div> -->
     <card-composer-input
-     v-if="cardComposerState"
-        :listId="listId"
+      v-if="cardComposerState"
+      :listId="listId"
       :cardComposerState="cardComposerState"
       @hideCardComposerInput="hideCardComposerInput"
     ></card-composer-input>
@@ -21,7 +21,7 @@
 import CardComposerInput from "./card-composer-input.vue";
 import cardPreview from "./card-preview.vue";
 export default {
-  props: ["cards", "cardComposerState","listId"],
+  props: ["cards", "cardComposerState", "listId"],
   methods: {
     hideCardComposerInput() {
       this.$emit("hideCardComposerInput");
@@ -33,5 +33,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

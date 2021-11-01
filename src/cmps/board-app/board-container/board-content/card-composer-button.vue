@@ -7,7 +7,7 @@
 
 <script>
 export default {
-props:["cardComposerState"],
+  props: ["cardComposerState"],
   // data(){
   //   return{
   //       cardComposerState:false
@@ -21,14 +21,12 @@ props:["cardComposerState"],
     //   this.cardComposerState = !this.cardComposerState
     // }
   },
-  computed:{
+  computed: {
     // cardComposerState(){
     //   return this.$store.getters.cardComposerState
     // }
-
-  }
+  },
 };
 </script>
 
-<style>
-</style>
+<style></style>

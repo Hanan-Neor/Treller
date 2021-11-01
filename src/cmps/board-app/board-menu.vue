@@ -9,7 +9,7 @@
       <h3>MENU</h3>
       <button @click="toggleMenu">⨉</button>
     </div>
-   <hr class="board-menu-divider" />
+    <hr class="board-menu-divider" />
   </section>
 </template>
 
@@ -35,5 +35,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

@@ -1,8 +1,7 @@
 <template>
   <section
     class="board-content flex"
-    
-    style="gap: 20px; background-color: #0079bf; flex: 1; padding: 4px;overflow-x: auto; "
+    style="gap: 8px; background-color: #0079bf; flex: 1; padding: 4px;overflow-x: auto; "
   >
     <board-list
       v-for="list in board.lists"
@@ -19,9 +18,9 @@
 
 <script>
 import boardList from "./board-content/board-list.vue";
-import ListComposerButton from './board-content/list-composer-button.vue';
-import ListComposerInput from './board-content/list-composer-input.vue';
-import ListComposer from './board-content/list-composer.vue';
+import ListComposerButton from "./board-content/list-composer-button.vue";
+import ListComposerInput from "./board-content/list-composer-input.vue";
+import ListComposer from "./board-content/list-composer.vue";
 export default {
   data() {
     return {
@@ -37,7 +36,12 @@ export default {
     //     }
   },
 
-  components: { boardList, ListComposerButton, ListComposerInput, ListComposer },
+  components: {
+    boardList,
+    ListComposerButton,
+    ListComposerInput,
+    ListComposer,
+  },
   async created() {
     // this.$store.getters.boards
     //     .then(board=>{
@@ -50,5 +54,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

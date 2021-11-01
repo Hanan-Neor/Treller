@@ -1,17 +1,13 @@
 <template>
-   <section class="app-footer">
-       <div>
+  <section class="app-footer">
+    <div>
       hello from footer
-     </div>
+    </div>
   </section>
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
-<style>
-
-</style>
+<style></style>
