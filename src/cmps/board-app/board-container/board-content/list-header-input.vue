@@ -12,11 +12,11 @@
         placeholder="Enter list title…"
         rows="1"
         style="
-        overflow: hidden;
-        overflow-wrap: break-word;
-        resize: none;
-        width: 100%;
-      "
+          overflow: hidden;
+          overflow-wrap: break-word;
+          resize: none;
+          width: 100%;
+        "
       />
       <!-- onkeydown="if(event.keyCode == 13) return false;" -->
       <!-- @keydoup.enter="updateHeader" -->
@@ -52,7 +52,7 @@
 
 <script>
 export default {
-  props: ["title", "showInput", "listId"],
+  props: ['title', 'showInput', 'listId'],
   data() {
     return {
       titleToModel: this.title,
@@ -61,36 +61,25 @@ export default {
   methods: {
     close(e) {
       if (!this.$el.contains(e.target)) {
-        // if (!this.$el.contains(e.target)  && this.showInput){
-        // if (!document.getElementById('header-input').contains(e.target) && !this.showInput) {
-        this.$emit("hideHeaderInput");
+        this.$emit('hideHeaderInput');
       }
     },
-    // updateHeader(title = this.titleToModel, listId = this.listId) {
     updateHeader() {
-
-      if(!this.titleToModel)return
-      this.$emit("hideHeaderInput");
-      // console.log(this.titleToModel);
+      if (!this.titleToModel) return;
+      this.$emit('hideHeaderInput');
       const title = this.titleToModel;
       const listId = this.listId;
-      this.$store.dispatch({ type: "updateHeader", title, listId });
-
-      setTimeout(() => {
-        // dispatch({type:'saveBoard'})
-        this.$store.dispatch({ type: "saveBoard" });
-      }, 2000);
+      this.$store.dispatch({ type: 'updateHeader', title, listId });
     },
   },
   mounted() {
-    document.getElementById("header-input").select();
+    document.getElementById('header-input').select();
     // this.$refs.header-input.focus();
     // this.$refs.header-input.$el.focus()
-
-    document.addEventListener("mousedown", this.close);
+    document.addEventListener('mousedown', this.close);
   },
   beforeDestroy() {
-    document.removeEventListener("mousedown", this.close);
+    document.removeEventListener('mousedown', this.close);
   },
   created() {},
 };

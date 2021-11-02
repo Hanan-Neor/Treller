@@ -1,172 +1,173 @@
 .board-list {
-    min-width: 270px;
-    max-width: 270px;
+  min-width: 270px;
+  max-width: 270px;
 
-    & .board-list-content {
-        // width: 270px;
+  & .board-list-content {
+    // width: 270px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 0 4px 8px 8px;
+    border-radius: 3px;
+  }
+  & .board-list-content .list-header {
+    // margin-bottom: 8px;
+    padding-top: 6px;
+    padding-right: 4px;
+    padding-bottom: 6px;
+    & .list-header-button {
+      // padding: 8px;
+      width: 100%;
+      cursor: pointer;
+      overflow: hidden;
+      overflow-wrap: break-word;
+
+      // padding: 4px 8px;
+      // padding-left: 8px;
+      // padding-top: 3px;
+
+      // padding:4px 8px;
+      padding: 6px 8px;
+    }
+    & .list-header-input {
+      width: 100%;
+      // padding-top:4px ;
+      // height: 40px;
+      // height: auto;
+
+      // line-height: 16px;
+      // margin-bottom: 2px;
+      // margin-bottom: 6px;
+      & textarea {
+        // margin-bottom: -1.84% !important;
+        margin-bottom: -0.29rem !important;
+        outline: none;
+        padding: 6px 8px;
+        font: inherit;
+        font-size: 1rem;
+        border: 0;
+        margin: 0;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #0079bf;
+      }
+      & input {
+        outline: none;
+        padding: 6px 8px;
+        font: inherit;
+        font-size: 1rem;
+        border: 0;
+        margin: 0;
+        border-radius: 3px;
+        box-shadow: inset 0 0 0 2px #0079bf;
+      }
+      border-radius: 3px;
+      // height: auto;
+      // min-height: 32px;
+    }
+  }
+
+  & .board-list-content .card-preview {
+    background: #fff;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #091e4240;
+    overflow-wrap: break-word;
+    // & *{
+    &:hover {
+      background-color: #f4f5f7;
+    }
+
+    // }
+    & .edit-icon {
+      background-color: #f4f5f7;
+      opacity: 0.8;
+      &:hover {
+        background-color: #ebecf0;
+        opacity: 1;
+      }
+    }
+  }
+  & .board-list-content .card-composer-button {
+    // padding: 8px 8px 0;
+    border-radius: 3px;
+    margin-right: 4px;
+    margin-top: 8px;
+
+    padding: 8px;
+    cursor: pointer;
+    &:hover {
+      // padding: 8px;
+      background-color: #091e4214;
+    }
+  }
+  & .board-list-content .card-composer-input {
+    & .compose-input-buttons {
+      margin-top: 7px;
+      & button {
+        height: 100%;
+        margin: 0;
+        border: 0;
+        border-radius: 3px;
+        cursor: pointer;
+      }
+      & .left-side {
         display: flex;
-        flex-direction: column;
-        max-height: 100%;
-        padding: 0 4px 8px 8px;
-        border-radius: 3px;
+        gap: 4px;
+        & button.compose-add-button {
+          font-size: 1rem;
+          padding: 6px 12px;
+          color: #fff;
+          background-color: #0079bf;
+          &:hover {
+            background-color: #026aa7;
+          }
+        }
+        & button.compose-cancel-button {
+          font-size: 1.5rem;
+          // font-weight: 600;
+          // color: unset;
+          color: #42526e;
+          background-color: inherit;
+          // width: $height;
+        }
+      }
     }
-    & .board-list-content .list-header {
-        // margin-bottom: 8px;
-        padding-top: 6px;
-        padding-right: 4px;
-        padding-bottom: 6px;
-        & .list-header-button {
-            // padding: 8px;
-            cursor: pointer;
-            overflow: hidden;
-            overflow-wrap: break-word;
-
-            // padding: 4px 8px;
-            // padding-left: 8px;
-            // padding-top: 3px;
-
-            // padding:4px 8px;
-            padding: 6px 8px;
-        }
-        & .list-header-input {
-            // padding-top:4px ;
-            // height: 40px;
-            // height: auto;
-
-            // line-height: 16px;
-            // margin-bottom: 2px;
-            // margin-bottom: 6px;
-            & textarea {
-                // margin-bottom: -1.84% !important;
-                margin-bottom: -0.29rem !important;
-                outline: none;
-                padding: 6px 8px;
-                font: inherit;
-                font-size: 1rem;
-                border: 0;
-                margin: 0;
-                border-radius: 3px;
-                box-shadow: inset 0 0 0 2px #0079bf;
-            }
-            & input {
-                outline: none;
-                padding: 6px 8px;
-                font: inherit;
-                font-size: 1rem;
-                border: 0;
-                margin: 0;
-                border-radius: 3px;
-                box-shadow: inset 0 0 0 2px #0079bf;
-            }
-            border-radius: 3px;
-            // height: auto;
-            // min-height: 32px;
-        }
+    & textarea {
+      // focus {
+      outline: none;
+      //   }
+      font-family: inherit;
+      font-size: inherit;
+      border: 0;
+      padding: 8px;
+      border-radius: 3px;
+      box-shadow: 0 1px 0 #091e4240;
+      // max-height: 162px;
+      // min-height: 54px;
+      width: 100%;
     }
+  }
+  & .board-list-content .list-cards {
+    // display: flex;
+    // flex-direction: column;
+    // gap:8px;
+    // padding-right: 4px;
+    // margin-bottom: 8px;
 
-    & .board-list-content .card-preview {
-        background:#fff;
-        cursor: pointer;
-        padding: 8px;
-        border-radius: 3px;
-        box-shadow: 0 1px 0 #091e4240;
-        overflow-wrap: break-word;
-        // & *{
-        &:hover {
-            background-color: #f4f5f7;
-
-        }
-
-        // }
-        & .edit-icon {
-            background-color: #f4f5f7;
-            opacity: .8;
-            &:hover {
-                background-color: #ebecf0;
-                opacity: 1;
-            }
-        }
-    }
-    & .board-list-content .card-composer-button {
-        // padding: 8px 8px 0;
-        border-radius: 3px;
-        margin-right: 4px;
-        margin-top: 8px;
-
-        padding: 8px;
-        cursor: pointer;
-        &:hover {
-            // padding: 8px;
-            background-color: #091e4214;
-        }
-    }
-    & .board-list-content .card-composer-input {
-        & .compose-input-buttons {
-            margin-top: 7px;
-            & button {
-                height: 100%;
-                margin: 0;
-                border: 0;
-                border-radius: 3px;
-                cursor: pointer;
-            }
-            & .left-side {
-                display: flex;
-                gap: 4px;
-                & button.compose-add-button {
-                    font-size: 1rem;
-                    padding: 6px 12px;
-                    color: #fff;
-                    background-color: #0079bf;
-                    &:hover {
-                        background-color: #026aa7;
-                    }
-                }
-                & button.compose-cancel-button {
-                    font-size: 1.5rem;
-                    // font-weight: 600;
-                    // color: unset;
-                    color: #42526e;
-                    background-color: inherit;
-                    // width: $height;
-                }
-            }
-        }
-        & textarea {
-            // focus {
-            outline: none;
-            //   }
-            font-family: inherit;
-            font-size: inherit;
-            border: 0;
-            padding: 8px;
-            border-radius: 3px;
-            box-shadow: 0 1px 0 #091e4240;
-            // max-height: 162px;
-            // min-height: 54px;
-            width: 100%;
-        }
-    }
-    & .board-list-content .list-cards {
-        // display: flex;
-        // flex-direction: column;
-        // gap:8px;
-        // padding-right: 4px;
-        // margin-bottom: 8px;
-
-        // &::-webkit-scrollbar {
-        //     // height: 12px;
-        //     width: 8px;
-        // }
-        // &::-webkit-scrollbar-thumb {
-        //     border-radius: 5px;
-        //     background-color: rgba(0,0,0,.15);
-        // }
-        // &::-webkit-scrollbar-track {
-        //     border-radius: 5px;
-        //     // margin: 0 5px;
-        //     // margin: 8px;
-        //     background-color: hsla(0,0%,100%,.35);
-        // }
-    }
+    // &::-webkit-scrollbar {
+    //     // height: 12px;
+    //     width: 8px;
+    // }
+    // &::-webkit-scrollbar-thumb {
+    //     border-radius: 5px;
+    //     background-color: rgba(0,0,0,.15);
+    // }
+    // &::-webkit-scrollbar-track {
+    //     border-radius: 5px;
+    //     // margin: 0 5px;
+    //     // margin: 8px;
+    //     background-color: hsla(0,0%,100%,.35);
+    // }
+  }
 }

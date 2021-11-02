@@ -1,12 +1,9 @@
-.board-container{
-    &.show{
-        margin-right: $menuWidth;
-        
-    }
-    &.hide{
-
-    }
-    transition: margin-right .4s;
-    // transition: margin-right .4s ease-in-out;
-    
+.board-container {
+  &.show {
+    margin-right: $menuWidth;
+  }
+  &.hide {
+  }
+  transition: margin-right 0.4s;
+  // transition: margin-right .4s ease-in-out;
 }

@@ -12,18 +12,11 @@
 </template>
 
 <script>
-import BoardContainer from "../cmps/board-app/board-container.vue";
-import BoardMenu from "../cmps/board-app/board-menu.vue";
+import BoardContainer from '../cmps/board-app/board-container.vue';
+import BoardMenu from '../cmps/board-app/board-menu.vue';
 // import boardWrapper from '../cmps/board-wrapper/board-wrapper.vue'
 
 export default {
-  //   computed: {
-  //     menuState() {
-  //       // console.log(this.$store.getters.menuState);
-  //       return this.$store.getters.menuState;
-  //     },
-  //   },
-
   components: {
     // boardWrapper,
     BoardContainer,

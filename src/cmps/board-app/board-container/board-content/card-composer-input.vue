@@ -31,9 +31,9 @@
 </template>
 
 <script>
-import { boardService } from "./../../../../services/board.service";
+import { boardService } from './../../../../services/board.service';
 export default {
-  props: ["cardComposerState", "listId"],
+  props: ['cardComposerState', 'listId'],
   data() {
     return {
       // element:false
@@ -45,11 +45,11 @@ export default {
   methods: {
     close(e) {
       if (!this.$el.contains(e.target)) {
-        this.$emit("hideCardComposerInput");
+        this.$emit('hideCardComposerInput');
       }
     },
     addCard() {
-      document.querySelector(".textarea1").focus();
+      document.querySelector('.textarea1').focus();
 
       if (!this.cardTitle) return;
       // console.log(this.cardTitle)
@@ -57,38 +57,38 @@ export default {
       newCard.title = this.cardTitle;
       newCard.createdAt = Date.now();
       // console.log(newCard);
-      this.$store.dispatch({ type: "addCard", newCard, listId: this.listId });
+      this.$store.dispatch({ type: 'addCard', newCard, listId: this.listId });
 
-      setTimeout(() => {
-        // dispatch({type:'saveBoard'})
-        this.$store.dispatch({ type: "saveBoard" });
-      }, 2000);
+      // setTimeout(() => {
+      // this.$store.dispatch({ type: "saveBoard" });
+      // }, 100);
+
       this.cardTitle = null;
       // document.querySelector(".textarea1").focus()
     },
     hideCardComposerInput() {
-      this.$emit("hideCardComposerInput");
+      this.$emit('hideCardComposerInput');
     },
   },
   computed: {
     isRTL(s) {
       var ltrChars =
-          "A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02B8\u0300-\u0590\u0800-\u1FFF" +
-          "\u2C00-\uFB1C\uFDFE-\uFE6F\uFEFD-\uFFFF",
-        rtlChars = "\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC",
-        rtlDirCheck = new RegExp("^[^" + ltrChars + "]*[" + rtlChars + "]");
+          'A-Za-z\u00C0-\u00D6\u00D8-\u00F6\u00F8-\u02B8\u0300-\u0590\u0800-\u1FFF' +
+          '\u2C00-\uFB1C\uFDFE-\uFE6F\uFEFD-\uFFFF',
+        rtlChars = '\u0591-\u07FF\uFB1D-\uFDFD\uFE70-\uFEFC',
+        rtlDirCheck = new RegExp('^[^' + ltrChars + ']*[' + rtlChars + ']');
 
       return rtlDirCheck.test(s);
     },
   },
   mounted() {
-    document.querySelector(".textarea1").focus();
+    document.querySelector('.textarea1').focus();
     // this.$refs['textarea1'].focus()
-    document.addEventListener("mousedown", this.close);
+    document.addEventListener('mousedown', this.close);
     // document.addEventListener("mouseup", this.close);
   },
   beforeDestroy() {
-    document.removeEventListener("mousedown", this.close);
+    document.removeEventListener('mousedown', this.close);
     // document.removeEventListener("mouseup", this.close);
   },
   created() {},

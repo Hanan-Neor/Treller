@@ -1,15 +1,15 @@
 * {
-    box-sizing: border-box;
+  box-sizing: border-box;
 }
 
 html {
-    font-family: Montserrat, sans-serif;
-    line-height: 20px;
+  font-family: Montserrat, sans-serif;
+  line-height: 20px;
 }
 
 body {
-    margin: 0;
-    // background-attachment: fixed;
+  margin: 0;
+  // background-attachment: fixed;
 }
 
 h1,
@@ -18,25 +18,25 @@ h3,
 h4,
 h5,
 h6 {
-    margin: 0 0 1rem;
+  margin: 0 0 1rem;
 }
 
 h1 {
-    font-size: em(46px);
+  font-size: em(46px);
 }
 
 p {
-    margin: 0 0 1rem;
-    // max-width: 42ch;
+  margin: 0 0 1rem;
+  // max-width: 42ch;
 }
 
 a {
-    text-decoration: none;
+  text-decoration: none;
 }
 a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 img {
-    width: 100%;
+  width: 100%;
 }

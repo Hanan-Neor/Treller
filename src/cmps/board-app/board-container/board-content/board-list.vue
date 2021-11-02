@@ -20,11 +20,11 @@
 </template>
 
 <script>
-import CardComposerButton from "./card-composer-button.vue";
-import ListCards from "./list-cards.vue";
-import listHeader from "./list-header.vue";
+import CardComposerButton from './card-composer-button.vue';
+import ListCards from './list-cards.vue';
+import listHeader from './list-header.vue';
 export default {
-  props: ["list"],
+  props: ['list'],
 
   data() {
     return {
@@ -33,17 +33,9 @@ export default {
   },
   methods: {
     hideCardComposerInput() {
-      // this.cardComposerState = false;
       this.cardComposerState = !this.cardComposerState;
-
-      // alert('hi board-list')
     },
-    // toggleCardComposer(){
-    //   this.$store.dispatch({type:'toggleCardComposer'})
-    // }
     toggleCardComposer() {
-      // alert('hi')
-      // console.log(this.cardComposerState);
       this.cardComposerState = !this.cardComposerState;
     },
   },

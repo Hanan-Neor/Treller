@@ -1,7 +1,11 @@
 <template>
   <section
     class="board-header flex"
-    style="justify-content:space-between; background-color: #0079bf; padding:4px"
+    style="
+      justify-content: space-between;
+      background-color: #0079bf;
+      padding: 4px;
+    "
   >
     <div class="column-left flex">
       <!-- <button class="trello-button">Board</button> -->
@@ -25,7 +29,7 @@
 export default {
   methods: {
     toggleMenu() {
-      this.$store.dispatch({ type: "toggleMenu" });
+      this.$store.dispatch({ type: 'toggleMenu' });
     },
   },
   computed: {

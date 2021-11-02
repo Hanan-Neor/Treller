@@ -10,8 +10,8 @@
 </template>
 
 <script>
-import BoardContent from "./board-container/board-content.vue";
-import boardHeader from "./board-container/board-header.vue";
+import BoardContent from './board-container/board-content.vue';
+import boardHeader from './board-container/board-header.vue';
 export default {
   computed: {
     menuState() {

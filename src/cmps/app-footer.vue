@@ -1,8 +1,6 @@
 <template>
   <section class="app-footer">
-    <div>
-      hello from footer
-    </div>
+    <div>hello from footer</div>
   </section>
 </template>
 

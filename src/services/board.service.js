@@ -1,4 +1,4 @@
-// import { httpService } from './http.service.js';
+import { httpService } from './http.service.js';
 import { storageService } from './async-storage.service.js';
 import { utilService } from './util.service.js';
 const BOARD_KEY = 'board';
@@ -207,6 +207,7 @@ function remove(boardId) {
 }
 
 async function save(board) {
+    // console.log(board);
     if (board._id) {
         // board = await httpService.put(`board/${board._id}`, board); //SERVER STORAGE
         // return board; //SERVER STORAGE
@@ -595,7 +596,164 @@ async function _createBoards() {
                         }
                     }
                 ]
+            },
+
+
+            // =================   board 2   ===============
+
+
+            {
+                "_id": "b102",
+                "title": "board 2",
+                "createdAt": 1589983468418,
+                "createdBy": {
+                    "_id": "u101",
+                    "fullname": "Abi Abambi",
+                    "imgUrl": "http://some-img"
+                },
+                "style": {},
+                "labels": [
+                    {
+                        "id": "l101",
+                        "title": "Done",
+                        "color": "#61bd4f"
+                    }
+                ],
+                "members": [
+                    {
+                        "_id": "u101",
+                        "fullname": "Tal Tarablus",
+                        "imgUrl": "https://www.google.com"
+                    }
+                ],
+                "lists": [
+                    {
+                        "id": "g101",
+                        "title": "board 2",
+                        "cards": [
+                            {
+                                "id": "c124",
+                                "title": "Replace logo"
+                            },
+                            {
+                                "id": "c125",
+                                "title": "Add Samples"
+                            }
+                        ],
+                        "style": {}
+                    },
+                    {
+                        "id": "g102",
+                        "title": "board 2 list 2",
+                        "cards": [
+                            {
+                                "id": "c103",
+                                "title": "Do that"
+                            },
+                            {
+                                "id": "c104",
+                                "title": "Help me",
+                                "description": "description",
+                                "comments": [
+                                    {
+                                        "id": "ZdPnm",
+                                        "txt": "also @yaronb please CR this",
+                                        "createdAt": 1590999817436.0,
+                                        "byMember": {
+                                            "_id": "u101",
+                                            "fullname": "Tal Tarablus",
+                                            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                        }
+                                    }
+                                ],
+                                "checklists": [
+                                    {
+                                        "id": "YEhmF",
+                                        "title": "Checklist",
+                                        "todos": [
+                                            {
+                                                "id": "212jX",
+                                                "title": "To Do 1",
+                                                "isDone": false
+                                            }
+                                        ]
+                                    }
+                                ],
+                                "members": [
+                                    {
+                                        "_id": "u101",
+                                        "username": "Tal",
+                                        "fullname": "Tal Tarablus",
+                                        "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                    }
+                                ],
+                                "labelIds": ["101"],
+                                "createdAt": 1590999730348,
+                                "dueDate": 16156215211,
+                                "byMember": {
+                                    "_id": "u101",
+                                    "username": "Tal",
+                                    "fullname": "Tal Tarablus",
+                                    "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                                },
+                                "style": {
+                                    "bgColor": "#26de81"
+                                }
+                            }
+                        ],
+                        "style": {}
+                    },
+                    {
+                        "id": "g103",
+                        "title": "List 3",
+                        "cards": [
+                            {
+                                "id": "c101",
+                                "title": "Replace logo"
+                            },
+                            {
+                                "id": "c102",
+                                "title": "Add Samples"
+                            }
+                        ],
+                        "style": {}
+                    },
+                    // {
+                    //     "id": "g104",
+                    //     "title": "List 4",
+                    //     "cards": [
+                    //         {
+                    //             "id": "c101",
+                    //             "title": "Replace logo"
+                    //         },
+                    //         {
+                    //             "id": "c102",
+                    //             "title": "Add Samples"
+                    //         }
+                    //     ],
+                    //     "style": {}
+                    // },
+
+                ],
+                "activities": [
+                    {
+                        "id": "a101",
+                        "txt": "Changed Color",
+                        "createdAt": 154514,
+                        "byMember": {
+                            "_id": "u101",
+                            "fullname": "Abi Abambi",
+                            "imgUrl": "http://some-img"
+                        },
+                        "task": {
+                            "id": "c101",
+                            "title": "Replace Logo"
+                        }
+                    }
+                ]
             }
+
+
 
 
 

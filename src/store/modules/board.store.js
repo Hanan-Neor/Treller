@@ -1,37 +1,46 @@
-import { boardService } from "../../services/board.service.js";
-import { storageService } from "../../services/async-storage.service.js";
+import { boardService } from '../../services/board.service.js';
+import { storageService } from '../../services/async-storage.service.js';
 // import { filterService } from '../../services/filterFunctions';
 
 export const boardStore = {
   state: {
     boards: boardService.query(),
-    board: null,
+    currBoard: null,
+    // board: null,
     showBoardMenu: false,
     showCardComposerInput: false,
-    screen:{
-      showScreen:false,
-      card:null,
-      pos:{
-        x:100,
-        y:100,
-      }
-    }
-    // showScreen:true,
+    showScreen: false,
+    currCard: {
+      card: null,
+      pos: {
+        x: 100,
+        y: 100,
+      },
+      width: null,
+      listId: null,
+    },
   },
+
+  // ===================================================================
+  // ============================  GETTERS  ============================
+  // ===================================================================
+
   getters: {
     board(state) {
-      // console.log(state.boards);
-      return state.boards[0];
+      // return state.boards[0];
+      return state.currBoard;
     },
     boards(state) {
-      // console.log(state.boards);
       return state.boards;
     },
     menuState(state) {
       return state.showBoardMenu;
     },
+    currCard(state) {
+      return state.currCard;
+    },
     screenState(state) {
-      return state.screen;
+      return state.showScreen;
     },
     cardComposerState(state) {
       return state.showCardComposerInput;
@@ -40,183 +49,176 @@ export const boardStore = {
       return state.filterBy;
     },
   },
+
+  // =====================================================================
+  // ============================  MUTATIONS  ============================
+  // =====================================================================
+
   mutations: {
+    toggleScreen(state) {
+      state.showScreen = !state.showScreen;
+    },
+    toggleMenu(state) {
+      state.showBoardMenu = !state.showBoardMenu;
+    },
+
+    // ============================  MUTATIONS - BOARD  ============================
+
+    setCurrBoard(state, { board }) {
+      state.currBoard = board;
+    },
+
+    setBoards(state, { boards }) {
+      state.boards = boards;
+    },
+
+    removeBoard(state, { boardId }) {
+      const idx = state.boards.findIndex((t) => t._id === boardId);
+      state.boards.splice(idx, 1);
+    },
+
+    updateBoard(state, { board }) {
+      const idx = state.boards.findIndex((t) => t._id === board._id);
+      state.boards.splice(idx, 1, board);
+    },
+
+    addBoard(state, { board }) {
+      state.boards.push(board);
+    },
+
+    // ============================  MUTATIONS - LIST  ============================
+
+    removeList(state, { listId }) {
+      const currBoard = state.currBoard;
+      const idx = currBoard.lists.findIndex((list) => list.id === listId);
+      currBoard.lists.splice(idx, 1);
+      state.currBoard = currBoard;
+    },
+
+    addList(state, { newList, listId }) {
+      const currBoard = state.currBoard;
+      currBoard.lists.push(newList);
+      state.currBoard = currBoard;
+    },
+
+    updateHeader(state, { title, listId }) {
+      // const currBoard = JSON.parse(JSON.stringify(state.currBoard)) ;
+      const currBoard = state.currBoard;
+      const curr = currBoard.lists.find((list) => list.id === listId);
+      curr.title = title;
+      const idx = currBoard.lists.findIndex((list) => list.id === listId);
+      currBoard.lists.splice(idx, 1, curr);
+      state.currBoard = currBoard;
+    },
+
+    // ============================  MUTATIONS - CARD  ============================
+
     toggleCardComposer(state) {
       // alert('hi')
       state.showCardComposerInput = !state.showCardComposerInput;
     },
 
-    toggleScreen(state,card,pos) {
-      // if(card !== state.screen.card && pos !== state.screen.pos){
-      const screen = JSON.parse(JSON.stringify(state.screen))
-      screen.showScreen = !state.screen.showScreen;
-      if(card){
-        screen.card = card
-        
-      }
-      if(pos){
-        screen.pos.x = pos.x
-        screen.pos.y = pos.y
-
-        
-      }
-      state.screen = screen
-    // }
-    },
-    toggleMenu(state) {
-      state.showBoardMenu = !state.showBoardMenu;
-    },
-    setBoards(state, { boards }) {
-      state.boards = boards;
-    },
-    removeBoard(state, { boardId }) {
-      const idx = state.boards.findIndex((t) => t._id === boardId);
-      state.boards.splice(idx, 1);
-    },
-    updateBoard(state, { board }) {
-      const idx = state.boards.findIndex((t) => t._id === board._id);
-      state.boards.splice(idx, 1, board);
-    },
-    addBoard(state, { board }) {
-      state.boards.push(board);
+    setCurrCard(state, { card, pos, listId, elWidth }) {
+      const currCard = JSON.parse(JSON.stringify(state.currCard));
+      currCard.card = card;
+      currCard.pos = pos;
+      currCard.listId = listId;
+      currCard.width = elWidth;
+      state.currCard = currCard;
     },
 
-    addList(state, { newList, listId }) {
-      state.boards.then((board) => {
-        const board2 = JSON.parse(JSON.stringify(board[0]));
-
-        board[0].lists.push(newList);
-        state.board = board[0];
-      });
-      // const currList = state.boards
-      //   .then((board) => {
-      //     // const board2 = (JSON.parse(JSON.stringify(board[0])));
-      //     board[0].lists.push(newList)
-      //     // console.log(curr.cards);
-      //     // return curr
-      //     state.board = board[0]
-      //   })
+    removeCard(state, { cardId, listId }) {
+      const currBoard = state.currBoard;
+      // state.boards.then((board) => {
+      const curr = currBoard.lists.find((list) => list.id === listId);
+      const cardIdx = curr.cards.findIndex((card) => card.id === cardId);
+      curr.cards.splice(cardIdx, 1);
+      const idx = currBoard.lists.findIndex((list) => list.id === listId);
+      currBoard.lists.splice(idx, 1, curr);
+      state.currBoard = currBoard;
+      // });
     },
 
-    updateHeader(state, { title, listId }) {
-      state.boards.then((board) => {
-        // const board2 = (JSON.parse(JSON.stringify(board[0])))
-        const curr = JSON.parse(JSON.stringify(board[0].lists)).find(
-          (list) => list.id === listId
-        );
-        curr.title = title;
-        const idx = board[0].lists.findIndex((list) => list.id === listId);
-        board[0].lists.splice(idx, 1, curr);
-        state.board = board[0];
-      });
+    updateCard(state, { card, listId }) {
+      const cardId = card.id;
+      // const currBoard = JSON.parse(JSON.stringify(state.currBoard)) ;
+      const currBoard = state.currBoard;
+      // const currList = state.boards.then((board) => {
+      const curr = currBoard.lists.find((list) => list.id === listId);
+      const cardIdx = curr.cards.findIndex((card) => card.id === cardId);
+      curr.cards.splice(cardIdx, 1, card);
+      const idx = currBoard.lists.findIndex((list) => list.id === listId);
+      currBoard.lists.splice(idx, 1, curr);
+      state.currBoard = currBoard;
+      // });
     },
 
     addCard(state, { newCard, listId }) {
-      console.log(newCard);
-      const currList = state.boards.then((board) => {
-        // console.log(board[0]);
-        // console.log(board[0].lists[1].id);
-        // console.log(listId);
-        console.log(
-          JSON.parse(JSON.stringify(board[0].lists)).find(
-            (list) => list.id === listId
-          )
-        );
-        const curr = JSON.parse(JSON.stringify(board[0].lists)).find(
-          (list) => list.id === listId
-        );
-        curr.cards.push(newCard);
-        console.log(curr.cards);
-        // return curr
-        const idx = board[0].lists.findIndex((list) => list.id === listId);
-        board[0].lists.splice(idx, 1, curr);
-        state.board = board[0];
-        console.log(state.board);
-      });
-
-      // console.log(state.boards);
+      // const currBoard = JSON.parse(JSON.stringify(state.currBoard)) ;
+      const currBoard = state.currBoard;
+      // const curr = JSON.parse(JSON.stringify(currBoard.lists)).find(
+      const curr = currBoard.lists.find((list) => list.id === listId);
+      curr.cards.push(newCard);
+      console.log(curr.cards);
+      const idx = currBoard.lists.findIndex((list) => list.id === listId);
+      currBoard.lists.splice(idx, 1, curr);
+      state.currBoard = currBoard;
     },
-    setFilter(state, { filterBy }) {
-      // debugger
-      state.filterBy = filterBy;
-    },
-    setFilterField(state, { field, value }) {
-      state.filterBy[field] = value;
-    },
-    clearFilter(state) {
-      state.filterBy = {
-        amenity: "all",
-        amenities: [],
-        type: "all",
-        location: "",
-        country: "", //for explore list
-        numGuests: 0,
-        dates: { startDate: 0, endDate: 0 },
-        count: Infinity, //change this to PAGE_SIZE when add pagination
-        currPage: 1,
-        hostId: "",
-      };
-      console.log("filter clear");
-    },
-    showViewers(state) {
-      state.showViewers = true;
-    },
-    // addReview(state, { board }) {
-    //   const idx = state.boards.findIndex((t) => t._id === board._id);
-    //   state.boards.splice(idx, 1, board);
-    // },
   },
 
+  // ===================================================================
+  // ============================  ACTIONS  ============================
+  // ===================================================================
+
   actions: {
-    toggleCardComposer(context) {
-      context.commit({ type: "toggleCardComposer" });
+    toggleScreen(context, payload) {
+      context.commit(payload);
     },
 
-    toggleScreen(context,{card,pos}) {
-      //   console.log('clicked, store');
-      console.log(pos);
-      context.commit({ type: "toggleScreen" ,card,pos});
-    },
     toggleMenu(context) {
-      //   console.log('clicked, store');
-      context.commit({ type: "toggleMenu" });
+      context.commit({ type: 'toggleMenu' });
     },
 
-    // async liked(context,payload){
-    //     console.log(payload.boardId);
-    // },
-    async loadBoards(context) {
+    // ============================  ACTIONS - BOARD  ============================
+
+    async loadBoard(context, payload) {
       try {
-        const boards = await boardService.query(context.getters.filterBy);
-        context.commit({ type: "setBoards", boards });
-        return boards;
+        const board = await boardService.getById(payload);
+        context.commit({ type: 'setCurrBoard', board });
+        return board;
       } catch (err) {
-        console.log("Cannot load boards in store");
+        console.log('cannot load board');
         throw err;
       }
     },
+
+    async loadBoards(context) {
+      try {
+        const boards = await boardService.query(context.getters.filterBy);
+        context.commit({ type: 'setBoards', boards });
+        return boards;
+      } catch (err) {
+        console.log('Cannot load boards in store');
+        throw err;
+      }
+    },
+
     async removeBoard({ commit }, payload) {
       try {
         await boardService.remove(payload.boardId);
         commit(payload);
       } catch (err) {
-        console.log("Cannot remove", boardId);
+        console.log('Cannot remove', boardId);
         throw err;
       }
     },
-    async saveBoard({ commit, getters, state }, payload) {
-      // await boardService.updateBoard(state.board)
 
-      // console.log(payload);
-      // // alert('hi')
-      // // const boards = getters.boards
-      // const board = state.board
-      // console.log(board);
+    async saveBoard({ commit, getters, state }, payload) {
       // // const type = payload.board._id ? 'updateBoard' : 'addBoard';
       // const type = board._id ? 'updateBoard' : 'addBoard';
       try {
         // const savedBoard = await boardService.save(payload.board);
-        const savedBoard = await boardService.save(state.board);
+        const savedBoard = await boardService.save(state.currBoard);
         // commit({ type, board: savedBoard });
         return savedBoard;
       } catch (err) {
@@ -225,39 +227,58 @@ export const boardStore = {
       }
     },
 
+    // ============================  ACTIONS - LIST  ============================
+
+    removeList(context, payload) {
+      context.commit(payload);
+      context.dispatch({ type: 'saveBoard' });
+    },
+
     async addList({ commit, dispatch }, payload) {
       try {
-        console.log("payload", payload);
+        console.log('payload', payload);
         payload.newList.id = storageService._makeId();
         await commit(payload);
+        dispatch({ type: 'saveBoard' });
       } catch (err) {
-        console.log("Cannot save card");
+        console.log('Cannot save card');
         throw err;
       }
     },
 
-    updateHeader(context, payload) {
-      // console.log('context', context);
-      // console.log('payload', payload);
-      // this.commit(payload)
+    async updateHeader(context, payload) {
+      await context.commit(payload);
+      context.dispatch({ type: 'saveBoard' });
+    },
+
+    // ============================  ACTIONS - CARD  ============================
+
+    toggleCardComposer(context) {
+      context.commit({ type: 'toggleCardComposer' });
+    },
+
+    setCurrCard(context, payload) {
       context.commit(payload);
+    },
+
+    removeCard(context, payload) {
+      context.commit(payload);
+    },
+
+    saveCard(context, { card, listId }) {
+      context.commit({ type: 'updateCard', card, listId });
     },
 
     async addCard({ commit, dispatch }, payload) {
       // const type = payload.card._id ? 'updateCard' : 'addCard';
       try {
-        console.log("payload", payload);
+        console.log('payload', payload);
         payload.newCard.id = storageService._makeId();
         // const savedCard = await boardService.save(payload.card);
         await commit(payload);
-        // setTimeout(()=>{
-        //   dispatch({type:'saveBoard'})
-
-        // },2000)
-        // dispatch({type:'saveBoard'})
-        // return savedCard;
+        dispatch({ type: 'saveBoard' });
       } catch (err) {
-        console.log("Cannot save card");
+        console.log('Cannot save card');
         throw err;
       }
     },

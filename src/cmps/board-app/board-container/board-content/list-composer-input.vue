@@ -29,9 +29,9 @@
 </template>
 
 <script>
-import { boardService } from "../../../../services/board.service";
+import { boardService } from '../../../../services/board.service';
 export default {
-  props: ["listComposerState", "listId", "showInput", "clearTitle"],
+  props: ['listComposerState', 'listId', 'showInput', 'clearTitle'],
   data() {
     return {
       // element:false
@@ -40,7 +40,7 @@ export default {
     };
   },
   watch: {
-    clearTitle: function(newVal, oldVal) {
+    clearTitle: function (newVal, oldVal) {
       this.listTitle = null;
       // if (!showInput) return;
       // document.getElementById("list-input").focus();
@@ -49,23 +49,23 @@ export default {
 
   methods: {
     onEnter() {
-      this.$emit("onEnter");
+      this.$emit('onEnter');
     },
     close(e) {
       if (
         !this.$el.contains(e.target) &&
         !document
-          .querySelector(".board-list.list-composer")
+          .querySelector('.board-list.list-composer')
           .contains(e.target) &&
         this.showInput
       ) {
         // alert('hi')
-        this.$emit("hideListComposerInput");
+        this.$emit('hideListComposerInput');
       }
     },
     setListTitle() {
       // alert('hi')
-      this.$emit("setListTitle", this.listTitle);
+      this.$emit('setListTitle', this.listTitle);
     },
     addList() {
       // document.querySelector(".textarea1").focus();
@@ -76,46 +76,26 @@ export default {
       newList.title = this.listTitle;
       // newList.createdAt = Date.now();
       // console.log(newList);
-      this.$store.dispatch({ type: "addList", newList });
+      this.$store.dispatch({ type: 'addList', newList });
 
-      setTimeout(() => {
-        // dispatch({type:'saveBoard'})
-        this.$store.dispatch({ type: "saveBoard" });
-      }, 2000);
+      // setTimeout(() => {
+      //   // dispatch({type:'saveBoard'})
+      //   this.$store.dispatch({ type: "saveBoard" });
+      // }, 2000);
       this.listTitle = null;
       // document.querySelector(".textarea1").focus()
     },
     hideListComposerInput() {
-      this.$emit("hideListComposerInput");
+      this.$emit('hideListComposerInput');
     },
-
-    //     addList(){
-    //   // document.querySelector(".textarea1").focus()
-
-    //   if (!this.listTitle)return
-    //   // console.log(this.cardTitle)
-    //   let newList = boardService.getEmptyList()
-    //   newList.title = this.cardTitle
-    //   // newList.createdAt = Date.now()
-    //   // console.log(newCard);
-    //   this.$store.dispatch({ type: "addList" ,newList });
-
-    //         setTimeout(()=>{
-    //     // dispatch({type:'saveBoard'})
-    //   this.$store.dispatch({type:'saveBoard'})
-
-    //   },2000)
-    //   this.cardTitle = null;
-    //   // document.querySelector(".textarea1").focus()
-    // },
   },
   mounted() {
     // document.getElementById("list-input").focus();
     // document.querySelector(".textarea1").focus()
-    document.addEventListener("mousedown", this.close);
+    document.addEventListener('mousedown', this.close);
   },
   beforeDestroy() {
-    document.removeEventListener("mousedown", this.close);
+    document.removeEventListener('mousedown', this.close);
   },
   created() {
     // document.querySelector(".list-input").focus()

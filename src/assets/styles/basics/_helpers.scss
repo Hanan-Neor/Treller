@@ -1,81 +1,88 @@
-
 // Aspect ratios
 
-.ratio-16-9 { @include aspect-ratio(100, 56); }
+.ratio-16-9 {
+  @include aspect-ratio(100, 56);
+}
 
-.ratio-square { @include aspect-ratio(100, 100); }
+.ratio-square {
+  @include aspect-ratio(100, 100);
+}
 
-.ratio-card { @include aspect-ratio(100, 80); }
+.ratio-card {
+  @include aspect-ratio(100, 80);
+}
 
-.ratio-poster { @include aspect-ratio(100, 150); }
+.ratio-poster {
+  @include aspect-ratio(100, 150);
+}
 
 // Font Sizes
 .fs12 {
-    font-size: rem(12px);
-  }
-  .fs14 {
-    font-size: rem(14px);
-  }
-  .fs18 {
-    font-size: rem(18px);
-  }
-  .fs20 {
-    font-size: rem(20px);
-  }
-  .fs24 {
-    font-size: rem(24px);
-  }
-  .fs28 {
-    font-size: rem(28px);
-  }
-  .fs30 {
-    font-size: rem(30px);
-  }
-  
-  .text-center {
-    text-align: center;
-  }
-  // flex helpers
-  
-  .flex {
-    display: flex;
-  
-    > *.full {
-      flex: 1;
-    }
-    &.column {
-      flex-direction: column;
-    }
-    &.justify-center {
-      justify-content: center;
-    }
-    &.justify-between {
-      justify-content: space-between;
-    }
-    &.align-center {
-      align-items: center;
-    }
-  }
-  
-  .pointer {
-    cursor: pointer;
-  }
-  
-  .clear-list {
-    text-decoration: none;
-    list-style-type: none;
-    color: inherit;
-    margin: 0;
-    padding: 0;
-  }
-  .clear-link:hover, .clear-link{
-    text-decoration: none;
-    list-style-type: none;
-    color: inherit;
-  
-  }
+  font-size: rem(12px);
+}
+.fs14 {
+  font-size: rem(14px);
+}
+.fs18 {
+  font-size: rem(18px);
+}
+.fs20 {
+  font-size: rem(20px);
+}
+.fs24 {
+  font-size: rem(24px);
+}
+.fs28 {
+  font-size: rem(28px);
+}
+.fs30 {
+  font-size: rem(30px);
+}
 
-.trello-button{
+.text-center {
+  text-align: center;
+}
+// flex helpers
+
+.flex {
+  display: flex;
+
+  > *.full {
+    flex: 1;
+  }
+  &.column {
+    flex-direction: column;
+  }
+  &.justify-center {
+    justify-content: center;
+  }
+  &.justify-between {
+    justify-content: space-between;
+  }
+  &.align-center {
+    align-items: center;
+  }
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+.clear-list {
+  text-decoration: none;
+  list-style-type: none;
+  color: inherit;
+  margin: 0;
+  padding: 0;
+}
+.clear-link:hover,
+.clear-link {
+  text-decoration: none;
+  list-style-type: none;
+  color: inherit;
+}
+
+.trello-button {
   margin: 0;
   border: 0;
   font-size: 1rem;
@@ -83,10 +90,9 @@
   color: #fff;
   background-color: #ffffff3d;
   padding: 6px;
-  &:hover{
+  &:hover {
     background-color: #ffffff52;
   }
-
 }
 
 // .compose-add-button{
@@ -97,7 +103,6 @@
 //   &:hover{
 //       background-color: #026aa7;
 //   }
-
 
 // }
 // .compose-cncel-button{
@@ -110,10 +115,9 @@
 
 // }
 
-.board-menu-divider{
+.board-menu-divider {
   margin: 0;
   background-color: #091e4221;
-    border: 0;
-    height: 1px;
+  border: 0;
+  height: 1px;
 }
-  

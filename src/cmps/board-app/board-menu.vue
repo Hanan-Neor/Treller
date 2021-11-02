@@ -17,7 +17,7 @@
 export default {
   methods: {
     toggleMenu() {
-      this.$store.dispatch({ type: "toggleMenu" });
+      this.$store.dispatch({ type: 'toggleMenu' });
     },
   },
   computed: {

@@ -10,12 +10,8 @@
       :class="menuDisplay"
       @click="toggleListComposer"
     >
-      <!-- <div :class="{hide:showInput}"   @click="toggleListComposer"> -->
       <list-composer-button></list-composer-button>
     </div>
-    <!-- <list-composer-button  v-if="!showInput"  @click="toggleListComposer" ></list-composer-button> -->
-    <!-- <list-composer-input v-else :hideListComposerInput="toggleListComposer"></list-composer-input> -->
-
     <list-composer-input
       style="height: 2.5rem"
       class="comps"
@@ -26,26 +22,18 @@
       @hideListComposerInput="toggleListComposer"
       @setListTitle="setListTitle"
     ></list-composer-input>
-    <!-- <list-composer-input :class="{show:showInput}" @hideListComposerInput="toggleListComposer"></list-composer-input> -->
-    <!-- <div> -->
     <div class="buttons" :class="menuDisplay2">
       <button class="compose-add-button" @click="addList">Add list</button>
       <button class="compose-cancel-button" @click="toggleListComposer">
         ⨉
       </button>
     </div>
-    <!-- </div> -->
-    <!-- <div class="buttons" :class="menuDisplay2">
-      <button :class="menuDisplay2">Add list</button>
-      <button :class="menuDisplay2">X</button>
-      hhhhhhhhhh
-    </div> -->
   </section>
 </template>
 
 <script>
-import ListComposerButton from "./list-composer-button.vue";
-import ListComposerInput from "./list-composer-input.vue";
+import ListComposerButton from './list-composer-button.vue';
+import ListComposerInput from './list-composer-input.vue';
 
 export default {
   data() {
@@ -58,7 +46,6 @@ export default {
   methods: {
     setListTitle(titleToSave) {
       this.listTitle = titleToSave;
-      // (alert(this.listTitle))
     },
 
     toggleListComposer() {
@@ -69,24 +56,21 @@ export default {
     },
     focus() {
       setTimeout(() => {
-        document.getElementById("list-input").focus();
+        document.getElementById('list-input').focus();
       }, 100);
     },
     addList() {
-      document.getElementById("list-input").focus();
+      document.getElementById('list-input').focus();
       if (!this.listTitle) return;
       let newList = boardService.getEmptyList();
       newList.title = this.listTitle;
-      this.$store.dispatch({ type: "addList", newList });
-      setTimeout(() => {
-        this.$store.dispatch({ type: "saveBoard" });
-      }, 400);
+      this.$store.dispatch({ type: 'addList', newList });
       this.clearTitle = !this.clearTitle;
       // document.getElementById("list-input").scrollIntoView();
       // window.scrollTo(0, 2000);
 
-      location.href = "#";
-      location.href = "#list-input";
+      location.href = '#';
+      location.href = '#list-input';
 
       // var scrollDiv = document.getElementById("list-input").offsetLeft;
       // window.scrollTo({ top: scrollDiv, behavior: 'smooth'});

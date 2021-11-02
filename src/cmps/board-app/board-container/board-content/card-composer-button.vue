@@ -7,25 +7,9 @@
 
 <script>
 export default {
-  props: ["cardComposerState"],
-  // data(){
-  //   return{
-  //       cardComposerState:false
-  //   }
-  // },
-  methods: {
-    // toggleCardComposer(){
-    //   this.$store.dispatch({type:'toggleCardComposer'})
-    // }
-    // toggleCardComposer(){
-    //   this.cardComposerState = !this.cardComposerState
-    // }
-  },
-  computed: {
-    // cardComposerState(){
-    //   return this.$store.getters.cardComposerState
-    // }
-  },
+  props: ['cardComposerState'],
+  methods: {},
+  computed: {},
 };
 </script>
 

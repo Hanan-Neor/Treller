@@ -1,15 +1,15 @@
-import Vue from 'vue'
-import app from './app.vue'
-import router from './router'
-import store from './store'
-import TextareaAutosize from 'vue-textarea-autosize'
+import Vue from 'vue';
+import app from './app.vue';
+import router from './router';
+import store from './store';
+import TextareaAutosize from 'vue-textarea-autosize';
 import './assets/styles/main.scss';
 
-Vue.use(TextareaAutosize)
-Vue.config.productionTip = false
+Vue.use(TextareaAutosize);
+Vue.config.productionTip = false;
 
 new Vue({
   router,
   store,
-  render: h => h(app)
-}).$mount('#app')
+  render: (h) => h(app),
+}).$mount('#app');
