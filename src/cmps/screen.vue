@@ -9,15 +9,11 @@
       :style="position"
       @mousedown.stop=""
     >
-      <!-- {{card.title}} -->
-      <!-- {{currCard.card.title}} -->
-
       <textarea-autosize
         ref="textarea2"
         id="textarea2"
-        @change.native="saveCard"
-        @keydown.enter.native="handleEnter"
-        v-model="card.title"
+        v-model="titleToShow"
+        @keydown.enter.prevent.native="handleEnter"
         class="textarea2"
         dir="auto"
         placeholder="Enter a title for this card…"
@@ -30,6 +26,7 @@
         "
       ></textarea-autosize>
       <!-- <div>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div> -->
+      <button class="save-button" @click="handleEnter">Save</button>
       <button @click="deleteCard">DELETE</button>
       <!-- <div @click="blur">hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div> -->
       <!-- {{listId}} -->
@@ -43,6 +40,7 @@ export default {
   // props:['card'],
   data() {
     return {
+      titleToShow: null,
       card: null,
       pos: {
         x: 100,
@@ -54,9 +52,10 @@ export default {
   },
 
   methods: {
-    handleEnter(){
-      this.saveCard()
-      this.toggleScreen()
+    handleEnter() {
+      this.saveCard();
+      this.toggleScreen();
+      document.querySelector('.textarea2').blur();
     },
     deleteCard() {
       this.$store.dispatch({
@@ -76,9 +75,11 @@ export default {
       // this.$store.getters.boards.then((boards)=>{
       //     console.log(boards[0]);
       // })
+      const cardToSave = this.card;
+      cardToSave.title = this.titleToShow;
       this.$store.dispatch({
         type: 'saveCard',
-        card: this.card,
+        card: cardToSave,
         listId: this.listId,
       });
       setTimeout(() => {
@@ -120,22 +121,16 @@ export default {
       this.pos.y = newVal.pos.y;
       this.width = newVal.width;
       this.listId = newVal.listId;
-      // this.$refs.textarea2.select()
+      this.titleToShow = newVal.card.title;
+      // document.querySelector('.textarea2').innerText = newVal.card.title;
+      setTimeout(() => {
+        document.querySelector('.textarea2').select();
+      }, 100);
     },
   },
 
-  mounted() {
-    // this.$refs.content.style.top = this.$store.getters.screenState.pos.y
-    // console.log(this.pos.x);
-    // this.$refs.content.style.left = `${this.pos.y}`
-    // console.log(this.pos.y);
-  },
-  created() {
-    //   console.log('hi');
-    //   this.card = this.$store.getters.screenState.card
-    //   this.pos = this.$store.getters.screenState.pos
-    //   console.log(this.pos);
-  },
+  mounted() {},
+  created() {},
 };
 </script>
 

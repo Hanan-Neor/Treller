@@ -5,6 +5,7 @@
     <input
       id="list-input"
       autofocus
+      autocomplete="off"
       type="text"
       v-model="listTitle"
       class="textarea1"
@@ -17,7 +18,7 @@
         resize: none;
         width: 100%;
       "
-      @keyup.enter.prevent="onEnter"
+      @keydown.enter.prevent="onEnter"
       @change="setListTitle"
     />
     <!-- </form> -->
@@ -50,7 +51,9 @@ export default {
   methods: {
     onEnter() {
       if (!this.listTitle) return;
+      this.setListTitle();
       this.$emit('onEnter');
+      // this.addList();
     },
     close(e) {
       if (
