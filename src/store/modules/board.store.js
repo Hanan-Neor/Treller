@@ -159,7 +159,6 @@ export const boardStore = {
       // const curr = JSON.parse(JSON.stringify(currBoard.lists)).find(
       const curr = currBoard.lists.find((list) => list.id === listId);
       curr.cards.push(newCard);
-      console.log(curr.cards);
       const idx = currBoard.lists.findIndex((list) => list.id === listId);
       currBoard.lists.splice(idx, 1, curr);
       state.currBoard = currBoard;
@@ -236,7 +235,6 @@ export const boardStore = {
 
     async addList({ commit, dispatch }, payload) {
       try {
-        console.log('payload', payload);
         payload.newList.id = storageService._makeId();
         await commit(payload);
         dispatch({ type: 'saveBoard' });
@@ -272,7 +270,6 @@ export const boardStore = {
     async addCard({ commit, dispatch }, payload) {
       // const type = payload.card._id ? 'updateCard' : 'addCard';
       try {
-        console.log('payload', payload);
         payload.newCard.id = storageService._makeId();
         // const savedCard = await boardService.save(payload.card);
         await commit(payload);

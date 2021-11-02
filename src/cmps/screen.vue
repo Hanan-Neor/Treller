@@ -16,6 +16,7 @@
         ref="textarea2"
         id="textarea2"
         @change.native="saveCard"
+        @keydown.enter.native="handleEnter"
         v-model="card.title"
         class="textarea2"
         dir="auto"
@@ -53,6 +54,10 @@ export default {
   },
 
   methods: {
+    handleEnter(){
+      this.saveCard()
+      this.toggleScreen()
+    },
     deleteCard() {
       this.$store.dispatch({
         type: 'removeCard',

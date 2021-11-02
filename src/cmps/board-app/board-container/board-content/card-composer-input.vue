@@ -4,7 +4,7 @@
     <!-- <form> -->
     <textarea-autosize
       ref="textarea1"
-      @keyup.enter="addCard"
+      @keydown.enter.prevent.native="handleEnter"
       v-model="cardTitle"
       class="textarea1"
       dir="auto"
@@ -48,9 +48,13 @@ export default {
         this.$emit('hideCardComposerInput');
       }
     },
+    handleEnter(){
+      // if(!this.cardTitle) return
+      this.addCard()
+    },
     addCard() {
       document.querySelector('.textarea1').focus();
-
+      
       if (!this.cardTitle) return;
       // console.log(this.cardTitle)
       let newCard = boardService.getEmptyCard();
@@ -60,7 +64,7 @@ export default {
       this.$store.dispatch({ type: 'addCard', newCard, listId: this.listId });
 
       // setTimeout(() => {
-      // this.$store.dispatch({ type: "saveBoard" });
+        // this.$store.dispatch({ type: "saveBoard" });
       // }, 100);
 
       this.cardTitle = null;

@@ -184,7 +184,7 @@ const user = {
 
 
 async function query(filterBy) {
-    console.log('filter in service', filterBy);
+    // console.log('filter in service', filterBy);
     try {
         // let boards = await httpService.get(`board`, filterBy); //SERVER STORAGE
         let boards = await storageService.query(BOARD_KEY); //CLIENT STORAGE

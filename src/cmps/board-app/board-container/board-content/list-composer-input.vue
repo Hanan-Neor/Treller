@@ -49,6 +49,7 @@ export default {
 
   methods: {
     onEnter() {
+      if (!this.listTitle) return;
       this.$emit('onEnter');
     },
     close(e) {
