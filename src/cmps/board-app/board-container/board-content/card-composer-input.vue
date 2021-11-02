@@ -48,13 +48,13 @@ export default {
         this.$emit('hideCardComposerInput');
       }
     },
-    handleEnter(){
+    handleEnter() {
       // if(!this.cardTitle) return
-      this.addCard()
+      this.addCard();
     },
     addCard() {
       document.querySelector('.textarea1').focus();
-      
+
       if (!this.cardTitle) return;
       // console.log(this.cardTitle)
       let newCard = boardService.getEmptyCard();
@@ -64,7 +64,7 @@ export default {
       this.$store.dispatch({ type: 'addCard', newCard, listId: this.listId });
 
       // setTimeout(() => {
-        // this.$store.dispatch({ type: "saveBoard" });
+      // this.$store.dispatch({ type: "saveBoard" });
       // }, 100);
 
       this.cardTitle = null;

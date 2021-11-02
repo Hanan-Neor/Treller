@@ -1,5 +1,5 @@
 <template>
-  <section class="list-cards">
+  <section class="list-cards" :class="listId">
     <card-preview
       v-for="card in cards"
       :listId="listId"

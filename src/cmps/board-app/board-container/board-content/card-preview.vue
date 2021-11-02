@@ -1,5 +1,5 @@
 <template>
-  <section class="card-preview">
+  <section class="card-preview" ref="check">
     <div class="" style="position: relative">
       {{ card.title }}
       <div
@@ -27,9 +27,16 @@ export default {
 
   methods: {
     toggleScreen() {
-      //  async toggleScreen() {
+      // console.log(
+      //   document.querySelector(`.list-cards.${this.listId}`).scrollTop
+      // );
+      // console.log(document.querySelector(`.board-content`).scrollLeft);
+      const rect = this.$el.getBoundingClientRect();
+      const pos = {
+        x: rect.left,
+        y: rect.top,
+      };
       const card = this.card;
-      const pos = this.cardPosition;
       const listId = this.listId;
       const elWidth = this.$el.offsetWidth;
       this.$store.dispatch({ type: 'setCurrCard', card, pos, listId, elWidth });
@@ -38,19 +45,7 @@ export default {
     },
   },
 
-  computed: {
-    cardPosition() {
-      const rect = this.$el.getBoundingClientRect();
-      return {
-        //  x : this.$el.clientX ,
-        // y : this.$el.clientY
-        //  x : this.$el.offsetLeft ,
-        // y : this.$el.offsetTop
-        x: rect.left,
-        y: rect.top,
-      };
-    },
-  },
+  computed: {},
   mounted() {
     this.$el.onmouseover = () => {
       this.$refs.edit.style.display = 'block';

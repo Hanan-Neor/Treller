@@ -4,6 +4,7 @@
 }
 
 .main-layout {
+  display: -ms-grid;
   display: grid;
   // min-height: 100vh;
   grid-template-columns: 2rem 1fr 2rem;
