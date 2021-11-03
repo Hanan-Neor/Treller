@@ -4,8 +4,8 @@
     :class="menuDisplay"
     style="flex: 1; background-color: lightblue; padding: 1px; overflow-x: auto"
   >
-    <board-header></board-header>
-    <board-content></board-content>
+    <board-header :board="board"></board-header>
+    <board-content :board="board"></board-content>
   </section>
 </template>
 
@@ -13,6 +13,8 @@
 import BoardContent from './board-container/board-content.vue';
 import boardHeader from './board-container/board-header.vue';
 export default {
+  props:['board'],
+
   computed: {
     menuState() {
       // console.log(this.$store.getters.menuState);
@@ -25,6 +27,7 @@ export default {
       };
     },
   },
+
 
   components: { boardHeader, BoardContent },
 };

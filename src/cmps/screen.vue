@@ -48,6 +48,8 @@ export default {
       },
       width: null,
       listId: null,
+
+      screenContentHeight: null,
     };
   },
 
@@ -63,9 +65,13 @@ export default {
         cardId: this.card.id,
         listId: this.listId,
       });
-      setTimeout(() => {
+
+      // setTimeout(() => {
+      //   this.$store.dispatch({ type: 'saveBoard' });
+      // }, 100);
+      this.$nextTick(function () {
         this.$store.dispatch({ type: 'saveBoard' });
-      }, 100);
+      });
       this.toggleScreen();
     },
     toggleScreen() {
@@ -82,9 +88,12 @@ export default {
         card: cardToSave,
         listId: this.listId,
       });
-      setTimeout(() => {
+      // setTimeout(() => {
+      //   this.$store.dispatch({ type: 'saveBoard' });
+      // }, 100);
+      this.$nextTick(function () {
         this.$store.dispatch({ type: 'saveBoard' });
-      }, 100);
+      });
     },
   },
 
@@ -93,10 +102,18 @@ export default {
       return this.$store.getters.currCard;
     },
     position() {
+      // setTimeout(() => {
+      //   console.log(this.screenContentHeight);
+      //   console.log(this.$el.offsetHeight);
+      // }, 70);
+      const isOut =
+        this.pos.y + this.screenContentHeight > this.$el.offsetHeight
+          ? true
+          : false;
       return {
-        // top:'100px',
-        // left:'200px'
-        top: this.pos.y + 'px',
+        // top: this.pos.y + 'px',
+        top: isOut ? 'unset' : this.pos.y + 'px',
+        bottom: isOut ? 0 + 'px' : 'unset',
         left: this.pos.x + 'px',
         width: this.width + 'px',
       };
@@ -123,9 +140,14 @@ export default {
       this.listId = newVal.listId;
       this.titleToShow = newVal.card.title;
       // document.querySelector('.textarea2').innerText = newVal.card.title;
+
       setTimeout(() => {
+        this.screenContentHeight =
+          document.querySelector('.screen-content').offsetHeight;
+      }, 50);
+      this.$nextTick(function () {
         document.querySelector('.textarea2').select();
-      }, 100);
+      });
     },
   },
 

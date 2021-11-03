@@ -357,7 +357,7 @@ async function _createBoards() {
 
             {
                 "_id": "b101",
-                "title": "Robot dev proj",
+                "title": "BOARD 1",
                 "createdAt": 1589983468418,
                 "createdBy": {
                     "_id": "u101",
@@ -375,9 +375,14 @@ async function _createBoards() {
                 "members": [
                     {
                         "_id": "u101",
-                        "fullname": "Tal Tarablus",
-                        "imgUrl": "https://www.google.com"
-                    }
+                        "fullname": "Lauren",
+                        "imgUrl": "https://res.cloudinary.com/dymtestxz/image/upload/v1626737459/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/32ac3cfb-6279-48a6-a0be-1168a86a9fad_ztoixt.jpg"
+                        },
+                    {
+                        "_id": "u102",
+                        "fullname": "Nathanael",
+                        "imgUrl": "https://res.cloudinary.com/dymtestxz/image/upload/v1626735749/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/a89a7679-f8de-4d16-938c-1a4fa1b8005e_wmwu3m.jpg"
+                        },
                 ],
                 "lists": [
                     {
@@ -604,7 +609,7 @@ async function _createBoards() {
 
             {
                 "_id": "b102",
-                "title": "board 2",
+                "title": "BOARD 2",
                 "createdAt": 1589983468418,
                 "createdBy": {
                     "_id": "u101",
@@ -622,8 +627,18 @@ async function _createBoards() {
                 "members": [
                     {
                         "_id": "u101",
-                        "fullname": "Tal Tarablus",
-                        "imgUrl": "https://www.google.com"
+                        "fullname": "Matthias",
+                        "imgUrl": "https://res.cloudinary.com/dymtestxz/image/upload/v1626731966/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/2627c314-c765-46ec-a8a0-6b2b3bd50042_rrkzx9.jpg"
+                    },
+                    {
+                        "_id": "u102",
+                        "fullname": "Vojta",
+                        "imgUrl": "https://res.cloudinary.com/dymtestxz/image/upload/v1626731900/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/c69dc931-b7b4-44d9-9a2c-1227b4d713cf_bgsy9t.jpg"
+                    },
+                    {
+                        "_id": "u103",
+                        "fullname": "Martin",
+                        "imgUrl": "https://res.cloudinary.com/dymtestxz/image/upload/v1626732348/sprint4/spaces/4%20-%20Superbe%20chalet%20Hautes%20Vosges%20en%20pleine%20nature/reviewers/dffd943e-3ac7-429c-bb7c-39226f969a5e_s8alpi.jpg"
                     }
                 ],
                 "lists": [

@@ -2,4 +2,11 @@
   & > div {
     gap: 4px;
   }
+  & img {
+    align-self: center;
+    object-fit: cover;
+    height: 28px;
+    width: auto;
+    border-radius: 3rem;
+  }
 }

@@ -55,9 +55,12 @@ export default {
       }
     },
     focus() {
-      setTimeout(() => {
+      // setTimeout(() => {
+      //   document.getElementById('list-input').focus();
+      // }, 100);
+      this.$nextTick(function () {
         document.getElementById('list-input').focus();
-      }, 100);
+      });
     },
     addList() {
       document.getElementById('list-input').focus();

@@ -28,9 +28,10 @@ import ListComposerButton from './board-content/list-composer-button.vue';
 import ListComposerInput from './board-content/list-composer-input.vue';
 import ListComposer from './board-content/list-composer.vue';
 export default {
+  props:['board'],
   data() {
     return {
-      board: {},
+      // board: {},
     };
   },
   computed: {
@@ -42,17 +43,17 @@ export default {
     //     }
   },
 
-  watch: {
-    '$route.params.boardId': {
-      immediate: true,
-      async handler() {
-        const { boardId } = this.$route.params;
-        this.board = await this.$store.dispatch('loadBoard', boardId);
-        // console.log(boardId);
-        // this.board = boards[0];
-      },
-    },
-  },
+  // watch: {
+  //   '$route.params.boardId': {
+  //     immediate: true,
+  //     async handler() {
+  //       const { boardId } = this.$route.params;
+  //       this.board = await this.$store.dispatch('loadBoard', boardId);
+  //       // console.log(boardId);
+  //       // this.board = boards[0];
+  //     },
+  //   },
+  // },
 
   components: {
     boardList,
@@ -64,6 +65,7 @@ export default {
     // console.log(this.$el.offsetWidth);
   },
   async created() {
+    
     // this.$store.getters.boards
     //     .then(board=>{
     //         this.board = board[0]

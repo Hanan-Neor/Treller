@@ -6,7 +6,7 @@
     style="width: 340px; background-color: #f4f5f7"
   >
     <div class="menu-header">
-      <h3>MENU</h3>
+      <h3>MENU - {{board.title}}</h3>
       <button @click="toggleMenu">⨉</button>
     </div>
     <hr class="board-menu-divider" />
@@ -15,6 +15,7 @@
 
 <script>
 export default {
+  props:['board'],
   methods: {
     toggleMenu() {
       this.$store.dispatch({ type: 'toggleMenu' });

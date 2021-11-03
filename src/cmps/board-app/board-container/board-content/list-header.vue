@@ -12,7 +12,7 @@
       :showInput="showInput"
       @hideHeaderInput="showInput = false"
     />
-    <button @click="removeList">De</button>
+    <button @click="removeList">🗑</button>
   </section>
 </template>
 
