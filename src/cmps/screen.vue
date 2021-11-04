@@ -134,6 +134,7 @@ export default {
     currCard(newVal, oldVal) {
       //  console.log(newVal);
       this.card = newVal.card;
+      // if(!this.card)return
       this.pos.x = newVal.pos.x;
       this.pos.y = newVal.pos.y;
       this.width = newVal.width;

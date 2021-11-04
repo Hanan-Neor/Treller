@@ -179,7 +179,12 @@ export const boardStore = {
     },
 
     // ============================  ACTIONS - BOARD  ============================
-
+    async createBoards() {
+      // if (!await boardService.query().length) {
+      await boardService._createBoards();
+      console.log('created from store!!');
+      // }
+    },
     async loadBoard(context, payload) {
       try {
         const board = await boardService.getById(payload);
@@ -193,8 +198,17 @@ export const boardStore = {
 
     async loadBoards(context) {
       try {
-        const boards = await boardService.query(context.getters.filterBy);
-        context.commit({ type: 'setBoards', boards });
+        // const boards = await boardService.query(context.getters.filterBy);
+        // if(!context.getters.boards)
+        const boards = boardService
+          .query(context.getters.filterBy)
+          .then((boards) => {
+            console.log('boards', boards);
+            context.commit({ type: 'setBoards', boards });
+            // context.commit({ type: 'setCurrBoard', board: boards[0] });
+            return boards;
+          });
+
         return boards;
       } catch (err) {
         console.log('Cannot load boards in store');

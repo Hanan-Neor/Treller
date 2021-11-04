@@ -1,5 +1,6 @@
 <template>
   <section
+    v-if="board"
     class="board-app flex"
     style="position: relative; overflow-x: hidden"
   >
@@ -27,11 +28,33 @@ export default {
       immediate: true,
       async handler() {
         const { boardId } = this.$route.params;
+        if (!this.board) return;
         this.board = await this.$store.dispatch('loadBoard', boardId);
         // console.log(boardId);
         // this.board = boards[0];
       },
     },
+  },
+  created() {
+    // this.board = this.$store.getters.board
+
+    // this.$store.dispatch({ type: 'loadBoards' }).then((boards) => {
+      // console.log(boards);
+      // console.log(boards[0]._id);
+    //   setTimeout(() => {
+    //     this.$router.push('/board/' + boards[0]._id);
+    //   }, 2000);
+    // });
+
+
+    // console.log(board);
+    // console.log(board._id);
+    // try{
+
+    //   this.board = board;
+    // }catch(err){
+    //   console.log(err);
+    // }
   },
 
   components: {

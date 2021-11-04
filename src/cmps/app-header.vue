@@ -31,8 +31,12 @@ export default {
       boards: null,
     };
   },
-  async created() {
-    this.boards = await this.$store.getters.boards;
+  created() {
+    // this.$nextTick(() => {
+    setTimeout(() => {
+      this.boards = this.$store.getters.boards;
+    }, 200);
+    // });
   },
 };
 </script>

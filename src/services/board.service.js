@@ -11,10 +11,11 @@ export const boardService = {
     getEmptyList,
     getEmptyCard,
     getById,
+    _createBoards
 };
 
 window.boardService = boardService;
-_createBoards();
+// _createBoards();
 
 
 // ================================================================================
@@ -183,7 +184,8 @@ const user = {
 
 
 
-async function query(filterBy) {
+// async function query(filterBy) {
+    async function query() {
     // console.log('filter in service', filterBy);
     try {
         // let boards = await httpService.get(`board`, filterBy); //SERVER STORAGE
