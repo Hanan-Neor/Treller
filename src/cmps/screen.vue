@@ -1,4 +1,5 @@
 <template>
+  <!-- <div v-if="screenState" @mousedown="toggleScreen" class="screen" :class="screenDisplay"> -->
   <div @mousedown="toggleScreen" class="screen" :class="screenDisplay">
     <!-- <div ref="content" class="contenty" style="background-color:#fff;position:fixed" > -->
     <!-- <div style="position:relative; width:100%;height:100%"> -->
@@ -9,6 +10,8 @@
       :style="position"
       @mousedown.stop=""
     >
+      <quick-editor :card="card" :listId="listId"></quick-editor>
+
       <textarea-autosize
         ref="textarea2"
         id="textarea2"
@@ -27,7 +30,7 @@
       ></textarea-autosize>
       <!-- <div>hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div> -->
       <button class="save-button" @click="handleEnter">Save</button>
-      <button @click="deleteCard">DELETE</button>
+      <!-- <button @click="deleteCard">DELETE</button> -->
       <!-- <div @click="blur">hhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhhh</div> -->
       <!-- {{listId}} -->
     </div>
@@ -36,7 +39,10 @@
 </template>
 
 <script>
+import QuickEditorMenu from './screen-cmp/quick-editor-menu.vue';
+import quickEditor from './screen-cmp/quick-editor.vue';
 export default {
+  components: { quickEditor, QuickEditorMenu },
   // props:['card'],
   data() {
     return {
@@ -48,8 +54,9 @@ export default {
       },
       width: null,
       listId: null,
-
+      // screeHeight: null,
       screenContentHeight: null,
+      isOut: false,
     };
   },
 
@@ -59,23 +66,27 @@ export default {
       this.toggleScreen();
       document.querySelector('.textarea2').blur();
     },
-    deleteCard() {
-      this.$store.dispatch({
-        type: 'removeCard',
-        cardId: this.card.id,
-        listId: this.listId,
-      });
+    // deleteCard() {
+    //   this.$store.dispatch({
+    //     type: 'removeCard',
+    //     cardId: this.card.id,
+    //     listId: this.listId,
+    //   });
 
-      // setTimeout(() => {
-      //   this.$store.dispatch({ type: 'saveBoard' });
-      // }, 100);
-      this.$nextTick(function () {
-        this.$store.dispatch({ type: 'saveBoard' });
-      });
-      this.toggleScreen();
-    },
+    //   // setTimeout(() => {
+    //   //   this.$store.dispatch({ type: 'saveBoard' });
+    //   // }, 100);
+    //   this.$nextTick(function () {
+    //     this.$store.dispatch({ type: 'saveBoard' });
+    //   });
+    //   this.toggleScreen();
+    // },
     toggleScreen() {
       this.$store.dispatch({ type: 'toggleScreen' });
+      setTimeout(()=>{
+        this.$store.dispatch({ type: 'resetCurrCard' });
+      },200)//animation time
+      
     },
     saveCard() {
       // this.$store.getters.boards.then((boards)=>{
@@ -107,7 +118,8 @@ export default {
       //   console.log(this.$el.offsetHeight);
       // }, 70);
       const isOut =
-        this.pos.y + this.screenContentHeight > this.$el.offsetHeight
+        // this.pos.y + this.screenContentHeight > this.screeHeight
+        this.pos.y + this.screenContentHeight > window.innerHeight
           ? true
           : false;
       return {
@@ -152,7 +164,9 @@ export default {
     },
   },
 
-  mounted() {},
+  mounted() {
+    // this.screeHeight = this.$el.offsetHeight;
+  },
   created() {},
 };
 </script>

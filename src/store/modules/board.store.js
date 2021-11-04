@@ -126,6 +126,17 @@ export const boardStore = {
       currCard.width = elWidth;
       state.currCard = currCard;
     },
+    resetCurrCard(state, { card, pos, listId, elWidth }) {
+      const currCard = {};
+      currCard.card = {};
+      currCard.pos = {
+        x: null,
+        y: null,
+      };
+      currCard.listId = null;
+      currCard.width = null;
+      state.currCard = currCard;
+    },
 
     removeCard(state, { cardId, listId }) {
       const currBoard = state.currBoard;
@@ -273,6 +284,9 @@ export const boardStore = {
       context.commit(payload);
     },
 
+    resetCurrCard(context, payload) {
+      context.commit(payload);
+    },
     removeCard(context, payload) {
       context.commit(payload);
     },

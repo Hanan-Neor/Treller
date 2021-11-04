@@ -1,0 +1,48 @@
+.quick-editor {
+  & .quick-editor-menu {
+    position: absolute;
+    right: 0;
+    // transform: translateX(90%);
+    transform: translateX(100%);
+    // transition: transform 85ms ease-in;
+    // opacity: 0;
+    &.show{
+        // transform: translateX(-20px);
+
+        // opacity: 1;
+    }
+
+    & button {
+      width: -moz-fit-content;
+      width: fit-content;
+      background: #0009;
+      border-radius: 3px;
+      clear: both;
+      color: #e6e6e6;
+      display: block;
+      float: left;
+      margin: 0 8px 4px 8px;
+      padding: 6px 12px 6 px 8px;
+      text-decoration: none;
+      transition: transform 85ms;
+      &:hover {
+        background: #000c;
+        color: #fff;
+        transform: translateX(5px);
+      }
+    }
+
+    &.off-page-bottom {
+      bottom: 0;
+    }
+    &.off-page-right {
+        align-items: end;
+      right: unset;
+      transform: translateX(-100%);
+
+      & button:hover {
+        transform: translateX(-5px);
+      }
+    }
+  }
+}
