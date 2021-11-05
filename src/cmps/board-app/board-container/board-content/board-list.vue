@@ -1,5 +1,5 @@
 <template>
-  <section class="board-list" style="">
+  <section id="board" class="board-list" style="">
     <div class="board-list-content" style="background-color: #ebecf0">
       <list-header :listId="list.id" :title="list.title"></list-header>
       <!-- <list-cards :cards="list.cards" :cardComposerState="cardComposerState" @hideCardComposerInput="cardComposerState = false"></list-cards> -->

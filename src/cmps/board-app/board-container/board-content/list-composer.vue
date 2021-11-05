@@ -70,13 +70,12 @@ export default {
       this.$store.dispatch({ type: 'addList', newList });
       this.clearTitle = !this.clearTitle;
       // document.getElementById("list-input").scrollIntoView();
-      // window.scrollTo(0, 2000);
 
-      location.href = '#';
-      location.href = '#list-input';
-
-      // var scrollDiv = document.getElementById("list-input").offsetLeft;
-      // window.scrollTo({ top: scrollDiv, behavior: 'smooth'});
+      this.$nextTick(function () {
+        document
+          .getElementById('list-input')
+          .scrollIntoView({ behavior: 'smooth' });
+      });
     },
   },
   computed: {

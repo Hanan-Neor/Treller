@@ -1,11 +1,24 @@
 <template>
   <section class="list-cards" :class="listId">
-    <card-preview
-      v-for="card in cards"
-      :listId="listId"
-      :card="card"
-      :key="card.id"
-    ></card-preview>
+    <draggable
+    :list="cards"
+      group="card"
+      @start="drag = true"
+      @end="onEnd"
+        style=" display:flex;flex-direction:column;gap: 8px"
+    >
+    <!-- animation=150 -->
+      <!-- @end="drag = false" -->
+      <!-- v-model="myArray" -->
+      <!-- <div v-for="element in myArray" :key="element.id">{{element.name}}</div> -->
+
+      <card-preview
+        v-for="card in cards"
+        :listId="listId"
+        :card="card"
+        :key="card.id"
+      ></card-preview>
+    </draggable>
     <card-composer-input
       v-if="cardComposerState"
       :listId="listId"
@@ -18,16 +31,21 @@
 <script>
 import CardComposerInput from './card-composer-input.vue';
 import cardPreview from './card-preview.vue';
+import draggable from 'vuedraggable';
 export default {
   props: ['cards', 'cardComposerState', 'listId'],
   methods: {
+    onEnd() {
+      this.drag = false;
+      this.$store.dispatch({type:'saveBoard'})
+    },
     hideCardComposerInput() {
       this.$emit('hideCardComposerInput');
       // alert('hi from list-cards')
     },
   },
 
-  components: { cardPreview, CardComposerInput },
+  components: { cardPreview, CardComposerInput, draggable },
 };
 </script>
 

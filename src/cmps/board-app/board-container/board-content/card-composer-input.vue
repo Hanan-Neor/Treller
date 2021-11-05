@@ -4,6 +4,7 @@
     <!-- <form> -->
     <textarea-autosize
       ref="textarea1"
+      id="card-composer-input"
       @keydown.enter.prevent.native="handleEnter"
       v-model="cardTitle"
       class="textarea1"
@@ -66,6 +67,11 @@ export default {
       // setTimeout(() => {
       // this.$store.dispatch({ type: "saveBoard" });
       // }, 100);
+      this.$nextTick(function () {
+        document
+          .getElementById('card-composer-input')
+          .scrollIntoView({ behavior: 'smooth' });
+      });
 
       this.cardTitle = null;
       // document.querySelector(".textarea1").focus()

@@ -1,5 +1,5 @@
 <template>
-  <section class="card-preview" ref="check">
+  <section id="card" class="card-preview" ref="check">
     <div class="" style="position: relative">
       {{ card.title }}
       <div
