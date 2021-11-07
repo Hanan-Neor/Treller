@@ -31,13 +31,27 @@ export default {
       boards: null,
     };
   },
-  created() {
-    // this.$nextTick(() => {
-    setTimeout(() => {
-      this.boards = this.$store.getters.boards;
-    }, 200);
-    // });
+
+  watch: {
+    boardsFromStore(newVal, oldVal) {
+      // console.log(newVal);
+      this.boards = newVal;
+    },
   },
+
+  computed: {
+    boardsFromStore() {
+      return this.$store.getters.boards;
+    },
+  },
+
+  // created() {
+  //   // this.$nextTick(() => {
+  //   setTimeout(() => {
+  //     this.boards = this.$store.getters.boards;
+  //   }, 1000);
+  //   // });
+  // },
 };
 </script>
 

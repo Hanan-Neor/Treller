@@ -188,8 +188,10 @@ const user = {
     async function query() {
     // console.log('filter in service', filterBy);
     try {
+        let boards = await httpService.get(`board`); //SERVER STORAGE
         // let boards = await httpService.get(`board`, filterBy); //SERVER STORAGE
-        let boards = await storageService.query(BOARD_KEY); //CLIENT STORAGE
+        // let boards = await storageService.query(BOARD_KEY); //CLIENT STORAGE
+        
         // const boardsForDisplay = await filterService.getBoardsForDisplay(
         //   boards,
         //   filterBy
@@ -211,19 +213,19 @@ function remove(boardId) {
 async function save(board) {
     // console.log(board);
     if (board._id) {
-        // board = await httpService.put(`board/${board._id}`, board); //SERVER STORAGE
-        // return board; //SERVER STORAGE
-        return storageService.put(BOARD_KEY, board); //CLIENT STORAGE
+        board = await httpService.put(`board/${board._id}`, board); //SERVER STORAGE
+        return board; //SERVER STORAGE
+        // return storageService.put(BOARD_KEY, board); //CLIENT STORAGE
     } else {
-        // board = await httpService.post(`board`, board); //SERVER STORAGE
-        // return board; //SERVER STORAGE
-        return storageService.post(BOARD_KEY, board); //CLIENT STORAGE
+        board = await httpService.post(`board`, board); //SERVER STORAGE
+        return board; //SERVER STORAGE
+        // return storageService.post(BOARD_KEY, board); //CLIENT STORAGE
     }
 }
 
 async function getById(boardId) {
-    //   return httpService.get(`board/${boardId}`); //SERVER STORAGE
-    const board = await storageService.get(BOARD_KEY, boardId); //CLIENT STORAGE
+      return httpService.get(`board/${boardId}`); //SERVER STORAGE
+    // const board = await storageService.get(BOARD_KEY, boardId); //CLIENT STORAGE
     return board; //CLIENT STORAGE
 }
 

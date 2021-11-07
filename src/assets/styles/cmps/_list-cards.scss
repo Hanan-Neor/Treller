@@ -1,7 +1,26 @@
 .list-cards {
+//  & .sortable-ghost {
+//     // opacity: .6;
+//     background-color: yellow;
+//   }
+
   position: relative;
   overflow-y: auto;
   padding-bottom: 1px;
+  // & .draggable{
+  //    .sortable-ghost {
+  //     // opacity: .6;
+  //     background-color: yellow;
+  //   }
+  //   .sortable-drag{
+  //     background-color: red;
+  //   }
+  //   .sortable-chosen{
+  //     background-color: blue;
+  //   }
+  
+    
+  // }
 
   display: flex;
   flex-direction: column;

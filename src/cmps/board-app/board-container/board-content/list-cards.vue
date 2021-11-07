@@ -1,12 +1,19 @@
 <template>
   <section class="list-cards" :class="listId">
     <draggable
+    class="draggable"
     :list="cards"
       group="card"
       @start="drag = true"
       @end="onEnd"
-        style=" display:flex;flex-direction:column;gap: 8px"
+        style=" display:flex;flex-direction:column;gap: 8px;"
+        ghostClass= "sortable-ghost"
+        chosenClass= "sortable-chosen"
+        dragClass= "sortable-drag"
     >
+    <!-- ghostClass: "sortable-ghost",  // Class name for the drop placeholder
+	chosenClass: "sortable-chosen",  // Class name for the chosen item
+	dragClass: "sortable-drag",  // Class name for the dragging item -->
     <!-- animation=150 -->
       <!-- @end="drag = false" -->
       <!-- v-model="myArray" -->

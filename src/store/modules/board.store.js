@@ -4,7 +4,8 @@ import { storageService } from '../../services/async-storage.service.js';
 
 export const boardStore = {
   state: {
-    boards: boardService.query(),
+    // boards: boardService.query(),
+    boards: null,
     currBoard: null,
     // board: null,
     showBoardMenu: false,
@@ -246,7 +247,7 @@ export const boardStore = {
         // commit({ type, board: savedBoard });
         return savedBoard;
       } catch (err) {
-        // console.log('Cannot save board', review, boardId);
+        console.log('Cannot save board', review, boardId);
         throw err;
       }
     },

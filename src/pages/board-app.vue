@@ -28,8 +28,11 @@ export default {
       immediate: true,
       async handler() {
         const { boardId } = this.$route.params;
-        if (!this.board) return;
+        // console.log(boardId);
+        if (!boardId) return;
+        // if (!this.board) return;
         this.board = await this.$store.dispatch('loadBoard', boardId);
+        // console.log(this.board);
         // console.log(boardId);
         // this.board = boards[0];
       },

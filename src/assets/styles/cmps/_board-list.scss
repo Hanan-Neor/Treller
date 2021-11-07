@@ -1,9 +1,11 @@
 .board-list {
+  
   min-width: 270px;
   max-width: 270px;
-  height:fit-content;
+  // height:fit-content;
 
   & .board-list-content {
+    
     // width: 270px;
     display: flex;
     flex-direction: column;
@@ -68,6 +70,7 @@
   }
 
   & .board-list-content .card-preview {
+    
     background: #fff;
     cursor: pointer;
     padding: 8px;

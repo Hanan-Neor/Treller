@@ -16,6 +16,7 @@
         width: 100%;
       "
     ></textarea-autosize>
+      <!-- :max-height="400" -->
     <button class="save-button" @click="handleEnter">Save</button>
   </section>
 </template>
