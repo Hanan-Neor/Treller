@@ -1,11 +1,9 @@
 .board-list {
-  
   min-width: 270px;
   max-width: 270px;
   // height:fit-content;
 
   & .board-list-content {
-    
     // width: 270px;
     display: flex;
     flex-direction: column;
@@ -14,10 +12,47 @@
     border-radius: 3px;
   }
   & .board-list-content .list-header {
+    position: relative;
     // margin-bottom: 8px;
     padding-top: 6px;
     padding-right: 4px;
     padding-bottom: 6px;
+
+    & .menu-button {
+      background-color: inherit;
+      border-radius: 3px;
+      height: 2rem;
+      width: 2rem;
+      padding: 6px;
+      cursor: pointer;
+      border: 0;
+      &:hover {
+        background-color: #091e4214;
+        // opacity: 1;
+      }
+    }
+    & .list-header-menu {
+      position: absolute;
+      right: -100px;
+      // left: 244.01px;
+      // top: 82px;
+      // width: 304px;
+      width: 200px;
+      height: 200px;
+      color: #5e6c84;
+      background-color: #fff;
+      z-index: 3;
+
+      border-radius: 3px;
+      box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+
+      & h4{
+        margin: 0;
+        padding: 1rem;
+        align-self: center;
+      }
+    }
+
     & .list-header-button {
       // padding: 8px;
       width: 100%;
@@ -70,7 +105,6 @@
   }
 
   & .board-list-content .card-preview {
-    
     background: #fff;
     cursor: pointer;
     padding: 8px;

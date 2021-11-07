@@ -15,6 +15,8 @@
           padding: 4px;
         "
       >
+          <!-- width:1.8rem;
+          height:1.8rem; -->
         🖍
       </div>
     </div>

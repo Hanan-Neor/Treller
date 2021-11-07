@@ -4,12 +4,18 @@
       <!-- <button class="trello-button">...</button> -->
       <button class="trello-button">home</button>
       <button class="trello-button">boards</button>
-      <router-link :to="'/board/' + boards[0]._id">
-        <button class="trello-button">board 1</button></router-link
+
+      <router-link v-for="board in boards" :to="'/board/' + board._id" :key="board._id">
+        <button class="trello-button">{{board.title}}</button></router-link
+      >
+
+      <!-- <router-link :to="'/board/' + boards[0]._id">
+        <button class="trello-button">{{boards[0].title}}</button></router-link
       >
       <router-link :to="'/board/' + boards[1]._id">
-        <button class="trello-button">board 2</button></router-link
-      >
+        <button class="trello-button">{{boards[1].title}}</button></router-link
+      > -->
+
       <!-- <input type="text" placeholder="Jump to...">  -->
     </div>
     <div class="column-center">

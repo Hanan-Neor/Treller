@@ -77,6 +77,13 @@ export const boardStore = {
       const idx = state.boards.findIndex((t) => t._id === boardId);
       state.boards.splice(idx, 1);
     },
+    updateBoardTitle(state, { title, boardId }) {
+      state.currBoard.title = title;
+
+      const idx = state.boards.findIndex((board) => board._id === boardId);
+      state.boards.splice(idx, 1, state.currBoard); //????
+      // state.boards[idx].title = title
+    },
 
     updateBoard(state, { board }) {
       const idx = state.boards.findIndex((t) => t._id === board._id);
@@ -235,6 +242,17 @@ export const boardStore = {
       } catch (err) {
         console.log('Cannot remove', boardId);
         throw err;
+      }
+    },
+
+    async updateBoardTitle(context, payload) {
+      // console.log('payload',payload);
+      try {
+        context.commit(payload);
+        await context.dispatch({ type: 'saveBoard' });
+        // context.dispatch({ type: 'loadBoards' });
+      } catch (err) {
+        console.log('cannot update board title');
       }
     },
 
