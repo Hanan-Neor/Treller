@@ -1,9 +1,14 @@
 .board-content {
+  gap: 8px;
+  // background-color: #0079bf;
+  background-color: inherit;
+  flex: 1;
+  padding: 4px;
+  overflow-x: auto;
+
   // .sortable-ghost {
   //   // opacity: .6;
   // }
-
-
 
   // width: 1000px;
   &::-webkit-scrollbar {

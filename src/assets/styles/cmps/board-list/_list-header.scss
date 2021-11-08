@@ -1,0 +1,89 @@
+.list-header {
+  position: relative;
+  // margin-bottom: 8px;
+  padding-top: 6px;
+  padding-right: 4px;
+  padding-bottom: 6px;
+
+  & .menu-button {
+    background-color: inherit;
+    border-radius: 3px;
+    height: 2rem;
+    width: 2rem;
+    padding: 6px;
+    cursor: pointer;
+    border: 0;
+    &:hover {
+      background-color: #091e4214;
+      // opacity: 1;
+    }
+  }
+  & .list-header-menu {
+    position: absolute;
+    right: -100px;
+    // left: 244.01px;
+    // top: 82px;
+    // width: 304px;
+    width: 200px;
+    height: 200px;
+    color: #5e6c84;
+    background-color: #fff;
+    z-index: 3;
+
+    border-radius: 3px;
+    box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+
+    & h4 {
+      margin: 0;
+      padding: 1rem;
+      align-self: center;
+    }
+    & .board-menu-divider {
+      margin: 0 12px;
+    }
+
+    & .menu-option {
+      cursor: pointer;
+      padding: 6px 12px;
+      color: #172b4d;
+      &:hover {
+        background-color: #091e420a;
+      }
+    }
+  }
+
+  & .list-header-button {
+    // padding: 8px;
+    width: 100%;
+    cursor: pointer;
+    overflow: hidden;
+    overflow-wrap: break-word;
+    padding: 6px 8px;
+  }
+  & .list-header-input {
+    width: 100%;
+    border-radius: 3px;
+    & textarea {
+      // margin-bottom: -1.84% !important;
+      margin-bottom: -0.29rem !important;
+      outline: none;
+      padding: 6px 8px;
+      font: inherit;
+      font-size: 1rem;
+      border: 0;
+      margin: 0;
+      border-radius: 3px;
+      box-shadow: inset 0 0 0 2px #0079bf;
+    }
+    & input {
+      outline: none;
+      padding: 6px 8px;
+      font: inherit;
+      font-size: 1rem;
+      border: 0;
+      margin: 0;
+      border-radius: 3px;
+      box-shadow: inset 0 0 0 2px #0079bf;
+    }
+  }
+}

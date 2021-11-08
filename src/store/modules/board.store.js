@@ -11,6 +11,7 @@ export const boardStore = {
     showBoardMenu: false,
     showCardComposerInput: false,
     showScreen: false,
+    showCreateBoardScreen:false,
     currCard: {
       card: null,
       pos: {
@@ -43,6 +44,9 @@ export const boardStore = {
     screenState(state) {
       return state.showScreen;
     },
+    screenCreateBoardState(state) {
+      return state.showCreateBoardScreen;
+    },
     cardComposerState(state) {
       return state.showCardComposerInput;
     },
@@ -59,6 +63,9 @@ export const boardStore = {
     toggleScreen(state) {
       state.showScreen = !state.showScreen;
     },
+    toggleCreateBoardScreen(state) {
+      state.showCreateBoardScreen = !state.showCreateBoardScreen;
+    },
     toggleMenu(state) {
       state.showBoardMenu = !state.showBoardMenu;
     },
@@ -74,8 +81,15 @@ export const boardStore = {
     },
 
     removeBoard(state, { boardId }) {
-      const idx = state.boards.findIndex((t) => t._id === boardId);
+      let idx = state.boards.findIndex((t) => t._id === boardId);
       state.boards.splice(idx, 1);
+      // console.log('length',state.boards.length);
+      // console.log('idx',idx);
+      if (state.boards.length === idx) {
+        idx--;
+      }
+      state.currBoard = state.boards[idx];
+      // state.currBoard = this.state.boards[this.state.boards.length - 1];
     },
     updateBoardTitle(state, { title, boardId }) {
       state.currBoard.title = title;
@@ -90,8 +104,14 @@ export const boardStore = {
       state.boards.splice(idx, 1, board);
     },
 
-    addBoard(state, { board }) {
-      state.boards.push(board);
+    addBoard(state, { newBoard }) {
+      // console.log('newboard',newBoard);
+      state.currBoard = newBoard;
+      let boards = state.boards;
+      boards.push(newBoard);
+      // state.boards.push(newBoard);
+      // console.log(state.currBoard);
+      state.boards = boards;
     },
 
     // ============================  MUTATIONS - LIST  ============================
@@ -192,6 +212,9 @@ export const boardStore = {
     toggleScreen(context, payload) {
       context.commit(payload);
     },
+    toggleCreateBoardScreen(context, payload) {
+      context.commit(payload);
+    },
 
     toggleMenu(context) {
       context.commit({ type: 'toggleMenu' });
@@ -201,7 +224,7 @@ export const boardStore = {
     async createBoards() {
       // if (!await boardService.query().length) {
       await boardService._createBoards();
-      console.log('created from store!!');
+      // console.log('created from store!!');
       // }
     },
     async loadBoard(context, payload) {
@@ -222,7 +245,7 @@ export const boardStore = {
         const boards = boardService
           .query(context.getters.filterBy)
           .then((boards) => {
-            console.log('boards', boards);
+            // console.log('boards', boards);
             context.commit({ type: 'setBoards', boards });
             // context.commit({ type: 'setCurrBoard', board: boards[0] });
             return boards;
@@ -237,6 +260,7 @@ export const boardStore = {
 
     async removeBoard({ commit }, payload) {
       try {
+        // console.log(payload.boardId);
         await boardService.remove(payload.boardId);
         commit(payload);
       } catch (err) {
@@ -253,6 +277,21 @@ export const boardStore = {
         // context.dispatch({ type: 'loadBoards' });
       } catch (err) {
         console.log('cannot update board title');
+      }
+    },
+
+    async addBoard(context, payload) {
+      try {
+        let board = boardService.getEmptyBoard();
+        // console.log('board from store',board);
+        board.title = payload.title
+        board.style.bgColor = payload.bgColor
+        const newBoard = await boardService.save(board);
+        // console.log(newBoard);
+        context.commit({ type: 'addBoard', newBoard });
+        return newBoard;
+      } catch (err) {
+        console.log('Cannot add board', err);
       }
     },
 

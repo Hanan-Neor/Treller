@@ -1,12 +1,12 @@
 <template>
-  <div @mousedown="toggleScreen" class="screen" :class="screenDisplay">
+  <div @mousedown.self="toggleScreen" class="screen" :class="screenDisplay">
     <div
       ref="content"
       class="screen-content"
       style=""
       :style="position"
-      @mousedown.stop=""
     >
+      <!-- @mousedown.stop="" -->
       <screen-content :card="card" :listId="listId"></screen-content>
     </div>
   </div>

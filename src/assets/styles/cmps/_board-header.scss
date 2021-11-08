@@ -1,4 +1,10 @@
 .board-header {
+  justify-content: space-between;
+  // background-color: #0079bf;
+  background-color: inherit;
+
+  padding: 4px;
+
   & > div {
     gap: 4px;
   }
@@ -9,25 +15,27 @@
     width: auto;
     border-radius: 3rem;
   }
-  & .board-title{
-    & button{
+  & .board-title {
+    // height: 100%;
+    // height: 34px;
+    position: relative;
+    & button {
       height: 100%;
     }
     & input {
+      // position: relative;
+      // display: inline-block;
+
       width: 0;
-    // & textarea {
-      // z-index: 2;
-      // width: 80px !important;
+      // height: 100%;
       outline: none;
-      padding: 6px;
+      padding: 6px 4.5px 6px 6px;
       font: inherit;
       font-size: 1rem;
-      // font-size: 0.875rem;
       border: 0;
       margin: 0;
       height: 100%;
       border-radius: 3px;
     }
-
   }
 }

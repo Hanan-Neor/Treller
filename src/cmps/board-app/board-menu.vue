@@ -6,19 +6,34 @@
     style="width: 340px; background-color: #f4f5f7"
   >
     <div class="menu-header">
-      <h3>MENU - {{board.title}}</h3>
+      <h3>MENU - {{ board.title }}</h3>
       <button @click="toggleMenu">⨉</button>
     </div>
     <hr class="board-menu-divider" />
+
+    <div @click="removeBoard">Remove board</div>
   </section>
 </template>
 
 <script>
 export default {
-  props:['board'],
+  props: ['board'],
   methods: {
     toggleMenu() {
       this.$store.dispatch({ type: 'toggleMenu' });
+    },
+    async removeBoard() {
+      this.toggleMenu();
+      await this.$store.dispatch({
+        type: 'removeBoard',
+        boardId: this.board._id,
+      });
+      // setTimeout(()=>{
+      this.$store.getters.board
+        ? this.$router.push('/board/' + this.$store.getters.board._id)
+        : this.$router.push('/');
+
+      // },1000)
     },
   },
   computed: {

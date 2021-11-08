@@ -206,8 +206,8 @@ const user = {
 }
 
 function remove(boardId) {
-    //   return httpService.delete(`board/${boardId}`); //SERVER STORAGE
-    return storageService.remove(BOARD_KEY, boardId); //CLIENT STORAGE
+      return httpService.delete(`board/${boardId}`); //SERVER STORAGE
+    // return storageService.remove(BOARD_KEY, boardId); //CLIENT STORAGE
 }
 
 async function save(board) {
@@ -298,56 +298,58 @@ function getEmptyCard() {
 }
 
 function getEmptyBoard() {
-    return {
-        // _id: 's' + utilService.makeId(), //CLIENT STORAGE
-        name: '',
-        imgUrls: [
-            //TODO change this when we start using cloudinary
-            'https://images.unsplash.com/photo-1480074568708-e7b720bb3f09?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-            'https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=750&q=80',
-            'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-            'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-            'https://images.unsplash.com/photo-1484154218962-a197022b5858?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=753&q=80',
-        ],
-        price: 0,
-        description: '',
-        capacity: 1,
-        amenities: [],
-        type: 'home',
-        host: {
-            _id: '',
-            fullname: '',
-            imgUrl: '',
-        },
-        loc: {
-            country: '',
-            countryCode: '',
-            address: '',
-            lat: 0,
-            lng: 0,
-        },
-        reviews: [
-            //removed content because a new board has no reviews
-            // {
-            //   _id: '',
-            //   txt: '',
-            //   rate:{
-            //     "cleanliness":2,
-            //     "checkin":3,
-            //     "communication":3,
-            //     "accuracy":1,
-            //     "value":5,
-            //     "location":3
-            //   },
-            //   by: {
-            //     _id: '',
-            //     fullname: '',
-            //     imgUrl: '',
-            //   },
-            // },
-        ],
-        likedByUserIds: [],
-    };
+    // const id = utilService.makeId()
+    // console.log(id);
+    const newBoard = {
+        
+            // "_id": null,
+            "title": "NEW BOARD",
+            "createdAt": null,
+            "createdBy": {
+               
+            },
+            "style": {},
+            "labels": [
+                
+            ],
+            "members": [
+               
+            ],
+            "lists": [
+                {
+                    "id": "g101",
+                    "title": "To Do",
+                    "cards": [
+                     
+                    ],
+                    "style": {}
+                },
+                {
+                    "id": "g102",
+                    "title": "Doing",
+                    "cards": [
+                    ],
+                    "style": {}
+                },
+                {
+                    "id": "g103",
+                    "title": "Done",
+                    "cards": [
+                    ],
+                    "style": {}
+                },
+
+            ],
+            "activities": [
+               
+            ]
+        }
+
+        // newBoard._id = id
+        return newBoard
+
+        
+    
 }
 
 async function _createBoards() {

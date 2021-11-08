@@ -1,8 +1,9 @@
 .app-header {
   justify-content: space-between;
   align-items: center;
-  // background-color: lightgrey;
-  background-color: #0067a3;
+  background-color: rgba(0, 0, 0, 0.15); //for bgcolor
+  // background-color: rgba(0, 0, 0, 0.32);  //for bgphoto
+  
   padding: 4px;
   & > div {
     gap: 4px;

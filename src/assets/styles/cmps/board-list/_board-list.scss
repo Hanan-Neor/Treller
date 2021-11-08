@@ -1,0 +1,14 @@
+.board-list {
+  min-width: 270px;
+  max-width: 270px;
+  // height:fit-content;
+
+  & .board-list-content {
+    // width: 270px;
+    display: flex;
+    flex-direction: column;
+    max-height: 100%;
+    padding: 0 4px 8px 8px;
+    border-radius: 3px;
+  }
+}

@@ -6,6 +6,8 @@
       
       v-model="titleToEdit"
       @blur="closeEditor"
+      @keydown.enter.prevent.native="closeEditor"
+
     />
 
 </template>
@@ -24,7 +26,10 @@ export default {
     methods:{
         closeEditor(){
             this.$emit('closeEditor' , this.titleToEdit)
-        }
+        },
+        // handleEnter(){
+        //     this.closeEditor
+        // }
     },
   components: {
     AutosizeInput,

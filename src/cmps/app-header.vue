@@ -3,11 +3,11 @@
     <div class="column-left flex">
       <!-- <button class="trello-button">...</button> -->
       <button class="trello-button">home</button>
-      <button class="trello-button">boards</button>
+      <boards-menu-button :boards="boards"></boards-menu-button>
 
-      <router-link v-for="board in boards" :to="'/board/' + board._id" :key="board._id">
+      <!-- <router-link v-for="board in boards" :to="'/board/' + board._id" :key="board._id">
         <button class="trello-button">{{board.title}}</button></router-link
-      >
+      > -->
 
       <!-- <router-link :to="'/board/' + boards[0]._id">
         <button class="trello-button">{{boards[0].title}}</button></router-link
@@ -22,8 +22,8 @@
       <div>TRELLER</div>
     </div>
     <div class="column-right flex">
-      <button class="trello-button">+</button>
       <!-- <button class="trello-button">!</button> -->
+      <create-button></create-button>
       <button class="trello-button">🔔</button>
       <div>HN</div>
     </div>
@@ -31,6 +31,8 @@
 </template>
 
 <script>
+import boardsMenuButton from './app-header-cmps/boards-menu-button.vue';
+import CreateButton from './app-header-cmps/create-button.vue';
 export default {
   data() {
     return {
@@ -43,6 +45,8 @@ export default {
       // console.log(newVal);
       this.boards = newVal;
     },
+  },
+  methods: {
   },
 
   computed: {
@@ -58,7 +62,12 @@ export default {
   //   }, 1000);
   //   // });
   // },
+  components: {
+    boardsMenuButton,
+    CreateButton,
+  },
 };
 </script>
 
-<style></style>
+<styl
+    CreateBoardModale></style>

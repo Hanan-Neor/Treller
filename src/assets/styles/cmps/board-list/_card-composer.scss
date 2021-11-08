@@ -1,0 +1,61 @@
+.board-list-content .card-composer-button {
+  // padding: 8px 8px 0;
+  border-radius: 3px;
+  margin-right: 4px;
+  margin-top: 8px;
+
+  padding: 8px;
+  cursor: pointer;
+  &:hover {
+    // padding: 8px;
+    background-color: #091e4214;
+  }
+}
+
+.list-cards .card-composer-input {
+  & .compose-input-buttons {
+    margin-top: 7px;
+    & button {
+      height: 100%;
+      margin: 0;
+      border: 0;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+    & .left-side {
+      display: flex;
+      gap: 4px;
+      & button.compose-add-button {
+        font-size: 1rem;
+        padding: 6px 12px;
+        color: #fff;
+        background-color: #0079bf;
+        &:hover {
+          background-color: #026aa7;
+        }
+      }
+      & button.compose-cancel-button {
+        font-size: 1.5rem;
+        // font-weight: 600;
+        // color: unset;
+        color: #42526e;
+        background-color: inherit;
+        // width: $height;
+      }
+    }
+  }
+  & textarea {
+    // focus {
+    outline: none;
+    //   }
+    font-family: inherit;
+    font-size: inherit;
+    border: 0;
+    padding: 8px;
+    border-radius: 3px;
+    box-shadow: 0 1px 0 #091e4240;
+    // max-height: 162px;
+    // min-height: 54px;
+    width: 100%;
+  }
+}

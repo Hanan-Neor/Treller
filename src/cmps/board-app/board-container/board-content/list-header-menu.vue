@@ -3,7 +3,7 @@
       <h4>List actions</h4>
     <hr class="board-menu-divider" />
 
-    <button @click="removeList">Delete list</button>
+    <div class="menu-option" @click="removeList">Delete list</div>
   </section>
 </template>
 

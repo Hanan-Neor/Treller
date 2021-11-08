@@ -1,5 +1,6 @@
 <template>
   <div id="app" class="app">
+    <screen-create-board></screen-create-board>
     <screen></screen>
     <app-header class="" />
     <router-view class="main-height" />
@@ -9,18 +10,31 @@
 <script>
 import appHeader from './cmps/app-header.vue';
 import appFooter from './cmps/app-footer.vue';
-import Screen from './cmps/screen.vue';
+import Screen from './cmps/screen-edit-card.vue';
 import { boardService } from './services/board.service';
+import ScreenCreateBoard from './cmps/screen-create-board.vue';
 
 export default {
   data() {
     return {};
   },
+  // watch: {
+  //   boards(newVal, oldVal) {
+     
+  //   },
+  // },
+  // computed:{
+  //   board(){
+  //     this.$store.getters.boards
+  //   }
+  // },
+
+
   async created() {
     const isFirstLaunch = await boardService.query();
-    console.log('isFirstLaunch', isFirstLaunch.length);
+    // console.log('isFirstLaunch', isFirstLaunch.length);
     let boards = await this.$store.dispatch({ type: 'loadBoards' });
-    console.log(boards);
+    // console.log(boards);
 
 
     // if (isFirstLaunch.length) return;
@@ -36,6 +50,7 @@ export default {
     appHeader,
     appFooter,
     Screen,
+    ScreenCreateBoard,
   },
 };
 </script>

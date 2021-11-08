@@ -1,0 +1,20 @@
+.boards-menu{
+    gap:3px;
+    position: absolute;
+    top:42px;
+    left: 0;
+    z-index: 1;
+    background-color: #fff;
+    padding: .5rem;
+    border-radius: 3px;
+    & a{
+        text-decoration: none;
+        color: inherit;
+        &:hover{
+            background-color: #091e420a
+        }
+        & div{
+            padding: 9px 0;
+        }
+    }
+}

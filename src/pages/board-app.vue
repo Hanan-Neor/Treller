@@ -2,7 +2,6 @@
   <section
     v-if="board"
     class="board-app flex"
-    style="position: relative; overflow-x: hidden"
   >
     <board-container :board="board"></board-container>
     <!-- <transition name="slide" type="animation"> -->
@@ -32,6 +31,11 @@ export default {
         if (!boardId) return;
         // if (!this.board) return;
         this.board = await this.$store.dispatch('loadBoard', boardId);
+        const bgColor = this.board.style.bgColor
+        if(bgColor){
+          // this.$el.style.backgroundColor = bgColor
+          document.querySelector('.app').style.backgroundColor = bgColor
+        }
         // console.log(this.board);
         // console.log(boardId);
         // this.board = boards[0];

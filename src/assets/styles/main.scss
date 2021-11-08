@@ -10,18 +10,28 @@
 @import './basics/base';
 
 // Compon./ents
-@import '././cmps/app-header';
-@import './cmps/app-footer';
-@import './cmps/list-composer';
+@import '././cmps/app-header/app-header';
+@import './cmps/board-list/list-composer';
 @import './cmps/board-menu';
 @import './cmps/board-header';
 @import './cmps/board-container';
 @import './cmps/board-content';
-@import './cmps/board-list';
-@import './cmps/list-cards';
+@import './cmps/board-list/board-list';
+@import './cmps/board-list/list-cards';
 @import './cmps/quick-editor';
+@import './cmps/app-header/boards-menu';
+@import './cmps/board-list/list-header';
+@import './cmps/board-list/card-preview';
+@import './cmps/board-list/card-composer';
+@import './cmps/create-board-modal';
 
 @import './cmps/screen';
+@import './cmps/screen-create-board';
+
+// Pages
+
+@import './pages/board-app';
+
 
 @import 'app';
 // @import './home';

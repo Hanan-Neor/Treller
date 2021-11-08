@@ -1,11 +1,6 @@
 <template>
   <section
     class="board-header flex"
-    style="
-      justify-content: space-between;
-      background-color: #0079bf;
-      padding: 4px;
-    "
   >
     <div class="column-left flex">
       <board-title :board="board"></board-title>

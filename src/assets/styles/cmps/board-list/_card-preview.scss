@@ -1,0 +1,22 @@
+.card-preview {
+  background: #fff;
+  cursor: pointer;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #091e4240;
+  overflow-wrap: break-word;
+  // & *{
+  &:hover {
+    background-color: #f4f5f7;
+  }
+
+  // }
+  & .edit-icon {
+    background-color: #f4f5f7;
+    opacity: 0.8;
+    &:hover {
+      background-color: #ebecf0;
+      opacity: 1;
+    }
+  }
+}

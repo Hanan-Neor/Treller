@@ -1,13 +1,6 @@
 <template>
   <section
     class="board-content flex"
-    style="
-      gap: 8px;
-      background-color: #0079bf;
-      flex: 1;
-      padding: 4px;
-      overflow-x: auto;
-    "
   >
     <draggable  :list="board.lists" group="board" @start="drag = true" @end="onEnd" animation=150 style="display:flex;gap: 8px;">
       <board-list
