@@ -2,6 +2,7 @@
   <section
     class="board-content flex"
   >
+    <!-- <draggable  :list="board.lists" group="list" @start="drag = true" @end="onEnd" animation=150 style="display:flex;gap: 8px;"> -->
     <draggable  :list="board.lists" group="board" @start="drag = true" @end="onEnd" animation=150 style="display:flex;gap: 8px;">
       <board-list
         v-for="list in board.lists"
@@ -9,6 +10,7 @@
         :key="list.id"
       ></board-list>
     </draggable>
+
     <!-- {{board[0].lists[0]}} -->
     <!-- <board-list :list="board.lists[0]"/> -->
     <list-composer></list-composer>
@@ -38,6 +40,9 @@ export default {
     },
   },
   computed: {
+
+
+    
     //    async board(){
     //        try{
     //            return this.$store.getters.boards

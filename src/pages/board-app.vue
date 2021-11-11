@@ -1,8 +1,5 @@
 <template>
-  <section
-    v-if="board"
-    class="board-app flex"
-  >
+  <section v-if="board" class="board-app flex">
     <board-container :board="board"></board-container>
     <!-- <transition name="slide" type="animation"> -->
     <!-- <board-menu v-if="menuState"></board-menu> -->
@@ -22,6 +19,15 @@ export default {
       board: {},
     };
   },
+  methods: {
+    handleBgColor() {
+      const bgColor = this.board.style.bgColor;
+      if (bgColor) {
+        // this.$el.style.backgroundColor = bgColor
+        document.querySelector('.app').style.backgroundColor = bgColor;
+      }
+    },
+  },
   watch: {
     '$route.params.boardId': {
       immediate: true,
@@ -31,11 +37,8 @@ export default {
         if (!boardId) return;
         // if (!this.board) return;
         this.board = await this.$store.dispatch('loadBoard', boardId);
-        const bgColor = this.board.style.bgColor
-        if(bgColor){
-          // this.$el.style.backgroundColor = bgColor
-          document.querySelector('.app').style.backgroundColor = bgColor
-        }
+
+        this.handleBgColor();
         // console.log(this.board);
         // console.log(boardId);
         // this.board = boards[0];
@@ -44,20 +47,16 @@ export default {
   },
   created() {
     // this.board = this.$store.getters.board
-
     // this.$store.dispatch({ type: 'loadBoards' }).then((boards) => {
-      // console.log(boards);
-      // console.log(boards[0]._id);
+    // console.log(boards);
+    // console.log(boards[0]._id);
     //   setTimeout(() => {
     //     this.$router.push('/board/' + boards[0]._id);
     //   }, 2000);
     // });
-
-
     // console.log(board);
     // console.log(board._id);
     // try{
-
     //   this.board = board;
     // }catch(err){
     //   console.log(err);

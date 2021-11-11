@@ -1,9 +1,9 @@
 <template>
-  <section id="card" class="card-preview" ref="check">
+  <section @click="openCardDetails" id="card" class="card-preview" ref="check">
     <div class="" style="position: relative">
       {{ card.title }}
       <div
-        @click="toggleScreen"
+        @click.stop="toggleScreen"
         class="edit-icon"
         ref="edit"
         style="
@@ -15,7 +15,7 @@
           padding: 4px;
         "
       >
-          <!-- width:1.8rem;
+        <!-- width:1.8rem;
           height:1.8rem; -->
         🖍
       </div>
@@ -29,10 +29,6 @@ export default {
 
   methods: {
     toggleScreen() {
-      // console.log(
-      //   document.querySelector(`.list-cards.${this.listId}`).scrollTop
-      // );
-      // console.log(document.querySelector(`.board-content`).scrollLeft);
       const rect = this.$el.getBoundingClientRect();
       const pos = {
         x: rect.left,
@@ -42,8 +38,37 @@ export default {
       const listId = this.listId;
       const elWidth = this.$el.offsetWidth;
       this.$store.dispatch({ type: 'setCurrCard', card, pos, listId, elWidth });
-      // await this.$store.dispatch({type:"setCurrCard", card,pos})
-      this.$store.dispatch({ type: 'toggleScreen' });
+      this.$store.dispatch({ type: 'openCardQuickEditor' });
+      // setTimeout(() => {
+      // this.$nextTick(() => {
+        this.$store.dispatch({ type: 'toggleScreen' });
+      // });
+      // },500);
+    },
+
+    openCardDetails() {
+      // this.toggleScreen()
+
+      this.$store.dispatch({
+        type: 'setCurrCard',
+        card:this.card,
+        pos: this.pos,
+        listId: this.listId,
+        elWidth: this.$el.offsetWidth,
+      });
+      this.$store.dispatch({ type: 'openCardDetails' });
+      // this.$nextTick(() => {
+        this.$store.dispatch({ type: 'toggleScreen' });
+      // });
+
+      // this.$store.dispatch({ type: 'toggleScreen' });
+      const route =
+        '/board/' + this.$store.getters.board._id + '/' + this.card.id;
+      console.log('params', this.$route.params);
+      if (this.card.id === this.$route.params.cardId) return;
+      this.$router.push(route);
+      // this.$router.push('/board/'+ this.$store.getters.board._id +'/' + this.card.id )
+      //  this.$router.push('/board/' + this.$store.getters.board._id)
     },
   },
 

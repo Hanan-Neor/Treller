@@ -11,7 +11,7 @@ export const boardStore = {
     showBoardMenu: false,
     showCardComposerInput: false,
     showScreen: false,
-    showCreateBoardScreen:false,
+    showCreateBoardScreen: false,
     currCard: {
       card: null,
       pos: {
@@ -21,6 +21,7 @@ export const boardStore = {
       width: null,
       listId: null,
     },
+    isQuickEdit: false,
   },
 
   // ===================================================================
@@ -38,11 +39,14 @@ export const boardStore = {
     menuState(state) {
       return state.showBoardMenu;
     },
+    screenState(state) {
+      return state.showScreen;
+    },
     currCard(state) {
       return state.currCard;
     },
-    screenState(state) {
-      return state.showScreen;
+    isQuickEdit(state) {
+      return state.isQuickEdit;
     },
     screenCreateBoardState(state) {
       return state.showCreateBoardScreen;
@@ -61,6 +65,7 @@ export const boardStore = {
 
   mutations: {
     toggleScreen(state) {
+
       state.showScreen = !state.showScreen;
     },
     toggleCreateBoardScreen(state) {
@@ -68,6 +73,18 @@ export const boardStore = {
     },
     toggleMenu(state) {
       state.showBoardMenu = !state.showBoardMenu;
+    },
+    // switchCardModal(state){
+    //   state.quickEdit = !state.quickEdit
+    // },
+
+    openCardDetails(state) {
+      // alert('details')
+      state.isQuickEdit = false;
+    },
+    openCardQuickEditor(state) {
+      // alert('edit')
+      state.isQuickEdit = true;
     },
 
     // ============================  MUTATIONS - BOARD  ============================
@@ -153,6 +170,7 @@ export const boardStore = {
       currCard.listId = listId;
       currCard.width = elWidth;
       state.currCard = currCard;
+      // console.log(state.currCard);
     },
     resetCurrCard(state, { card, pos, listId, elWidth }) {
       const currCard = {};
@@ -220,6 +238,13 @@ export const boardStore = {
       context.commit({ type: 'toggleMenu' });
     },
 
+    openCardDetails(context) {
+      context.commit({ type: 'openCardDetails' });
+    },
+    openCardQuickEditor(context) {
+      context.commit({ type: 'openCardQuickEditor' });
+    },
+
     // ============================  ACTIONS - BOARD  ============================
     async createBoards() {
       // if (!await boardService.query().length) {
@@ -284,8 +309,8 @@ export const boardStore = {
       try {
         let board = boardService.getEmptyBoard();
         // console.log('board from store',board);
-        board.title = payload.title
-        board.style.bgColor = payload.bgColor
+        board.title = payload.title;
+        board.style.bgColor = payload.bgColor;
         const newBoard = await boardService.save(board);
         // console.log(newBoard);
         context.commit({ type: 'addBoard', newBoard });

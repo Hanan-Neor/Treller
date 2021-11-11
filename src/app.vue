@@ -10,9 +10,9 @@
 <script>
 import appHeader from './cmps/app-header.vue';
 import appFooter from './cmps/app-footer.vue';
-import Screen from './cmps/screen-edit-card.vue';
+import Screen from './cmps/screen-card.vue';
 import { boardService } from './services/board.service';
-import ScreenCreateBoard from './cmps/screen-create-board.vue';
+import ScreenCreateBoard from './cmps/screen-board.vue';
 
 export default {
   data() {

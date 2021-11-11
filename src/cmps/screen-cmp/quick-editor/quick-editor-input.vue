@@ -1,5 +1,6 @@
 <template>
   <section class="quick-editor-input">
+    <!-- value="card.title" -->
     <textarea-autosize
       ref="textarea2"
       id="textarea2"
@@ -16,7 +17,7 @@
         width: 100%;
       "
     ></textarea-autosize>
-      <!-- :max-height="400" -->
+    <!-- :max-height="400" -->
     <button class="save-button" @click="handleEnter">Save</button>
   </section>
 </template>
@@ -71,6 +72,16 @@ export default {
         this.$store.dispatch({ type: 'saveBoard' });
       });
     },
+  },
+  mounted() {
+    document.querySelector('.textarea2').select();
+  },
+  created() {
+    this.titleToShow = this.card.title;
+
+    this.$nextTick(function () {
+      document.querySelector('.textarea2').select();
+    });
   },
 };
 </script>

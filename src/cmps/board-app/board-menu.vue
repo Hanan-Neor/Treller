@@ -11,30 +11,41 @@
     </div>
     <hr class="board-menu-divider" />
 
-    <div @click="removeBoard">Remove board</div>
+    <board-menu-buttons
+      :board="board"
+      @toggleMenu="toggleMenu"
+    ></board-menu-buttons>
+
+    <hr class="board-menu-divider" />
+
+    <board-menu-activities  :board="board"></board-menu-activities>
   </section>
 </template>
 
 <script>
+import BoardMenuActivities from './board-menu/board-menu-activities.vue';
+import boardMenuButtons from './board-menu/board-menu-buttons.vue';
 export default {
+  components: { boardMenuButtons, BoardMenuActivities },
   props: ['board'],
   methods: {
     toggleMenu() {
       this.$store.dispatch({ type: 'toggleMenu' });
     },
-    async removeBoard() {
-      this.toggleMenu();
-      await this.$store.dispatch({
-        type: 'removeBoard',
-        boardId: this.board._id,
-      });
-      // setTimeout(()=>{
-      this.$store.getters.board
-        ? this.$router.push('/board/' + this.$store.getters.board._id)
-        : this.$router.push('/');
+    // async removeBoard() {
+    //   // this.$router.push('/'); //  ?
+    //   this.toggleMenu();
+    //   await this.$store.dispatch({
+    //     type: 'removeBoard',
+    //     boardId: this.board._id,
+    //   });
+    //   // setTimeout(()=>{
+    //   this.$store.getters.board
+    //     ? this.$router.push('/board/' + this.$store.getters.board._id)
+    //     : this.$router.push('/');
 
-      // },1000)
-    },
+    //   // },1000)
+    // },
   },
   computed: {
     menuState() {

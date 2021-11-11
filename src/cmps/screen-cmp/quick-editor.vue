@@ -1,7 +1,7 @@
 <template>
   <section class="quick-editor">
     <quick-editor-menu :card="card" :listId="listId"></quick-editor-menu>
-    <quick-editor-input :card="card" :listId="listId"></quick-editor-input>
+    <quick-editor-input  :card="card" :listId="listId"></quick-editor-input>
   </section>
 </template>
 
@@ -14,6 +14,9 @@ export default {
     QuickEditorMenu,
     quickEditorInput
   },
+  created(){
+    // console.log(this.card);
+  }
 };
 </script>
 

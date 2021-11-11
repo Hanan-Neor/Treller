@@ -1,6 +1,15 @@
 <template>
-  <section class="quick-editor-menu flex column" :class="styles"  style="">
-    <button class="trello-button">Open card</button>
+  <section class="quick-editor-menu flex column" :class="styles" style="">
+    <button
+      class="trello-button"
+      @click="
+        () => {
+          this.$store.dispatch({ type: 'openCardDetails' });
+        }
+      "
+    >
+      Open card
+    </button>
     <button class="trello-button">Edit labels</button>
     <button class="trello-button">Change members</button>
     <button class="trello-button">Change cover</button>
@@ -28,20 +37,7 @@ export default {
 
   watch: {
     card: function (newVal, oldVal) {
-      this.rect = this.$el.getBoundingClientRect();
-      //   console.log(this.rect);
-      this.isOffPageBottom =
-        this.rect.bottom > document.querySelector('.screen').offsetHeight
-          ? true
-          : false;
-      //   this.rect.bottom > window.innerHeight ? true : false;
-      this.isOffPageRight =
-        this.rect.right > document.querySelector('.screen').offsetWidth
-          ? true
-          : false;
-      this.loaded = true;
-      //   console.log(this.rect.bottom);
-      //   console.log(this.isOffPageBottom);
+      this.handlePosition();
     },
   },
 
@@ -65,6 +61,20 @@ export default {
         this.loaded = false;
       }, 200); //animation time
     },
+    handlePosition() {
+      this.rect = this.$el.getBoundingClientRect();
+      //   console.log(this.rect);
+      this.isOffPageBottom =
+        this.rect.bottom > document.querySelector('.screen').offsetHeight
+          ? true
+          : false;
+      //   this.rect.bottom > window.innerHeight ? true : false;
+      this.isOffPageRight =
+        this.rect.right > document.querySelector('.screen').offsetWidth
+          ? true
+          : false;
+      this.loaded = true;
+    },
   },
 
   computed: {
@@ -75,14 +85,12 @@ export default {
         // 'off-page-right': isOut,
         'off-page-bottom': this.isOffPageBottom,
         'off-page-right': this.isOffPageRight,
-        'loaded' : this.loaded
+        loaded: this.loaded,
       };
     },
   },
   mounted() {
-    // console.log(this.$el.offsetHeight);
-    // this.rect = +JSON.parse(JSON.stringify(this.$el.getBoundingClientRect()));
-    // console.log(this.rect);
+    this.handlePosition();
   },
 };
 </script>

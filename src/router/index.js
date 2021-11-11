@@ -21,6 +21,11 @@ const routes = [
     name: 'Board-App',
     component: boardApp,
   },
+  {
+    path: '/board/:boardId/:cardId',
+    name: 'Board-App',
+    component: boardApp,
+  },
 ];
 
 const router = new vueRouter({
