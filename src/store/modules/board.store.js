@@ -12,6 +12,8 @@ export const boardStore = {
     showCardComposerInput: false,
     showScreen: false,
     showCreateBoardScreen: false,
+    showLabels: false,
+    // showLabels: false,
     currCard: {
       card: null,
       pos: {
@@ -42,6 +44,9 @@ export const boardStore = {
     screenState(state) {
       return state.showScreen;
     },
+    labelsState(state){
+      return state.showLabels
+    },
     currCard(state) {
       return state.currCard;
     },
@@ -65,7 +70,6 @@ export const boardStore = {
 
   mutations: {
     toggleScreen(state) {
-
       state.showScreen = !state.showScreen;
     },
     toggleCreateBoardScreen(state) {
@@ -161,6 +165,10 @@ export const boardStore = {
     toggleCardComposer(state) {
       // alert('hi')
       state.showCardComposerInput = !state.showCardComposerInput;
+    },
+
+    toggleLabels(state) {
+      state.showLabels = !state.showLabels;
     },
 
     setCurrCard(state, { card, pos, listId, elWidth }) {
@@ -361,6 +369,10 @@ export const boardStore = {
 
     toggleCardComposer(context) {
       context.commit({ type: 'toggleCardComposer' });
+    },
+
+    toggleLabels(context,payload) {
+      context.commit(payload);
     },
 
     setCurrCard(context, payload) {

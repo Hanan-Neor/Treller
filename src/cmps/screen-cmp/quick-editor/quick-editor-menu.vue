@@ -10,12 +10,12 @@
     >
       Open card
     </button>
-    <button class="trello-button">Edit labels</button>
-    <button class="trello-button">Change members</button>
-    <button class="trello-button">Change cover</button>
-    <button class="trello-button">Move</button>
-    <button class="trello-button">Copy</button>
-    <button class="trello-button">Edit dates</button>
+    <button @click="handleMenu()" class="trello-button">Edit labels</button>
+    <button @click="handleMenu()" class="trello-button">Change members</button>
+    <button @click="handleMenu('COVER')" class="trello-button">Change cover</button>
+    <button @click="handleMenu()" class="trello-button">Move</button>
+    <button @click="handleMenu()" class="trello-button">Copy</button>
+    <button @click="handleMenu()" class="trello-button">Edit dates</button>
     <button @click="deleteCard" class="trello-button">Delete</button>
     <!-- {{ card.title }} -->
   </section>
@@ -42,6 +42,10 @@ export default {
   },
 
   methods: {
+    handleMenu(val){
+      console.log(val);
+      this.$emit('handleMenu',val)
+    },
     deleteCard() {
       this.$store.dispatch({
         type: 'removeCard',

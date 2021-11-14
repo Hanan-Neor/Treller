@@ -1,30 +1,30 @@
 <template>
-  <section @click="openCardDetails" id="card" class="card-preview" ref="check">
-    <div class="" style="position: relative">
-      {{ card.title }}
+  <section @click="openCardDetails" id="card" class="card-preview" ref="check" style="position:relative">
+    <card-preview-header :card="card"></card-preview-header>
+    <card-preview-content :card="card"></card-preview-content>
+    <!-- <div class="" style="position: relative">
+      {{ card.title }} -->
       <div
         @click.stop="toggleScreen"
         class="edit-icon"
         ref="edit"
         style="
-          display: none;
-          position: absolute;
-          right: -4px;
-          top: -4px;
-          border-radius: 3px;
-          padding: 4px;
+    
         "
       >
-        <!-- width:1.8rem;
-          height:1.8rem; -->
+          <!-- height:28px;
+          width:28px; -->
         🖍
       </div>
-    </div>
+    <!-- </div> -->
   </section>
 </template>
 
 <script>
+import CardPreviewContent from './card-preview-cmps/card-preview-content.vue';
+import cardPreviewHeader from './card-preview-cmps/card-preview-header.vue';
 export default {
+  components: { cardPreviewHeader, CardPreviewContent },
   props: ['card', 'listId'],
 
   methods: {

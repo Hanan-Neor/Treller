@@ -1,6 +1,7 @@
 <template>
   <section v-if="card" class="screen-content" :style="position">
     <!-- <section v-if="displayed" class="screen-content" :style="position"> -->
+      
     <quick-editor  :card="card" :listId="listId"></quick-editor>
     <modal-open-card></modal-open-card>
   </section>

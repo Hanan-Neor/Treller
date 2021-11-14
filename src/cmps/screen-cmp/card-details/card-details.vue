@@ -13,7 +13,7 @@
       transform: translateX(-50%);
     "
   >
-  <window-cover v-if="card.style"></window-cover>
+  <window-cover v-if="card.style" :card="card"></window-cover>
   <!-- <window-cover v-if="card.style.bgColor"></window-cover> -->
   <window-title :card="card"></window-title>
   <window-content></window-content>

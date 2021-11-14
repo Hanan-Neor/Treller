@@ -1,12 +1,11 @@
 <template>
-  <section class="window-cover" :style="{'background-color':card.style.bgColor}">
+  <section class="card-content-badges">
       
   </section>
 </template>
 
 <script>
 export default {
-  props:['card'],
 
 }
 </script>

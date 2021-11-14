@@ -1,5 +1,11 @@
 <template>
   <section class="quick-editor-input">
+
+    <section style="background-color:#fff; border-radius:3px; margin-bottom:1rem">
+        <card-preview-header :card="card" style=""></card-preview-header>
+
+    <card-content-labels :card="card" style="margin-left:8px;padding-top:6px"></card-content-labels>
+
     <!-- value="card.title" -->
     <textarea-autosize
       ref="textarea2"
@@ -18,13 +24,22 @@
       "
     ></textarea-autosize>
     <!-- :max-height="400" -->
+    </section>
     <button class="save-button" @click="handleEnter">Save</button>
   </section>
 </template>
 
 <script>
+import cardContentLabels from './../../board-app/board-container/board-content/card-preview-cmps/card-content-labels.vue'
+import cardPreviewHeader from './../../board-app/board-container/board-content/card-preview-cmps/card-preview-header.vue'
+
 export default {
   props: ['card', 'listId'],
+    components: {
+    cardContentLabels,
+    cardPreviewHeader
+  },
+
   data() {
     return {
       titleToShow: null,

@@ -1,0 +1,20 @@
+.card-content-labels {
+  width: fit-content;
+
+  & span {
+    padding: 0 8px;
+    border-radius: 4px;
+    font-size: 0;
+    min-width: 40px;
+    height: 8px;
+    display: flex;
+    align-items: center;
+    transition: all 0.3s;
+    &.show {
+    //   min-width: 40px;
+      font-size: 0.75rem;
+      height: 1rem;
+      font-size: 0.75rem;
+    }
+  }
+}

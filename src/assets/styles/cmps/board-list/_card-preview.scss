@@ -1,7 +1,8 @@
 .card-preview {
+  // font-size:14px;
   background: #fff;
   cursor: pointer;
-  padding: 8px;
+  // padding: 8px;
   border-radius: 3px;
   box-shadow: 0 1px 0 #091e4240;
   overflow-wrap: break-word;
@@ -14,6 +15,16 @@
   & .edit-icon {
     background-color: #f4f5f7;
     opacity: 0.8;
+
+    display: none;
+    position: absolute;
+    right: 2px;
+    top: 2px;
+    border-radius: 3px;
+    padding: 4px;
+    height: 1.75rem;
+    width: 1.75rem;
+    text-align:center;
     &:hover {
       background-color: #ebecf0;
       opacity: 1;
