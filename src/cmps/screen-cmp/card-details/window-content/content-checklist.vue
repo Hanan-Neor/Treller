@@ -1,6 +1,6 @@
 <template>
   <section class="content-checklist">
-      checklist
+     <h3> checklist </h3>
   </section>
 </template>
 

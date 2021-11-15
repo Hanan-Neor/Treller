@@ -45,9 +45,13 @@ export default {
       const board = this.$store.getters.board;
       return board.labels;
     },
+    currCard(){
+      return this.$store.getters.currCard.card
+    }
   },
   watch: {
-    card(newVal, oldVal) {
+    // card(newVal, oldVal) {
+    currCard(newVal, oldVal) {
       const board = this.$store.getters.board;
       let labels = [];
       // console.log(board.labels);

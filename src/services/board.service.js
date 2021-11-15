@@ -272,20 +272,20 @@ function getEmptyCard() {
         ],
         "members": [
             {
-                "_id": "u101",
-                "username": "Tal",
-                "fullname": "Tal Tarablus",
-                "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+                // "_id": "u101",
+                // "username": "Tal",
+                // "fullname": "Tal Tarablus",
+                // "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
             }
         ],
-        "labelIds": ["101"],
+        "labelIds": [],
         "createdAt": null,
         "dueDate": null,
         "byMember": {
-            "_id": "u101",
-            "username": "Tal",
-            "fullname": "Tal Tarablus",
-            "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
+            // "_id": "u101",
+            // "username": "Tal",
+            // "fullname": "Tal Tarablus",
+            // "imgUrl": "http://res.cloudinary.com/shaishar9/image/upload/v1590850482/j1glw3c9jsoz2py0miol.jpg"
         },
         "style": {
             "bgColor": ""
@@ -310,6 +310,36 @@ function getEmptyBoard() {
             },
             "style": {},
             "labels": [
+                {
+                    "id" : "101",
+                    "title" : "",
+                    "color" : "#7bc86c"
+                }, 
+                {
+                    "id" : "102",
+                    "title" : "",
+                    "color" : "#F5DD29"
+                }, 
+                {
+                    "id" : "103",
+                    "title" : "",
+                    "color" : "#FFAF3F"
+                },
+                {
+                    "id" : "104",
+                    "title" : "",
+                    "color" : "#EF7564"
+                }, 
+                {
+                    "id" : "105",
+                    "title" : "",
+                    "color" : "#CD8DE5"
+                }, 
+                {
+                    "id" : "106",
+                    "title" : "",
+                    "color" : "#5BA4CF"
+                }
                 
             ],
             "members": [

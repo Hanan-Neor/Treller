@@ -6,7 +6,7 @@
         <input type="text" v-model="title" class="modal-input basic-input" placeholder="Add board title" />
       </div>
       <div class="background-picker">
-        <input type="color" v-model="bgColor" />
+        <input type="color" v-model="bgColor" value="#ffffff"/>
       </div>
       <div class="buttons">
         <button @click="addBoard" class="trello-button">Create board</button>
@@ -20,7 +20,7 @@ export default {
   data() {
     return {
       title: null,
-      bgColor: "#000000",
+      bgColor: "#ffffff",
     };
   },
   methods: {
@@ -33,6 +33,8 @@ export default {
         bgColor: this.bgColor,
       });
       this.$router.push('/board/' + newBoard._id);
+      this.title='';
+      this.bgColor = "#fff"
     },
   },
   mounted(){

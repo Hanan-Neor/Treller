@@ -2,7 +2,7 @@
   <section class="quick-editor-input">
 
     <section style="background-color:#fff; border-radius:3px; margin-bottom:1rem">
-        <card-preview-header :card="card" style=""></card-preview-header>
+        <card-preview-header :card="card" style=""  v-if="card.style.bgColor"></card-preview-header>
 
     <card-content-labels :card="card" style="margin-left:8px;padding-top:6px"></card-content-labels>
 

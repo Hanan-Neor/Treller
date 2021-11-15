@@ -1,6 +1,6 @@
 <template>
   <section @click="openCardDetails" id="card" class="card-preview" ref="check" style="position:relative">
-    <card-preview-header :card="card"></card-preview-header>
+    <card-preview-header :card="card" v-if="card.style.bgColor"></card-preview-header>
     <card-preview-content :card="card"></card-preview-content>
     <!-- <div class="" style="position: relative">
       {{ card.title }} -->

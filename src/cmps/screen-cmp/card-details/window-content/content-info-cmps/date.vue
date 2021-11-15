@@ -1,11 +1,12 @@
 <template>
-  <section class="content-description">
-      <h3>description</h3>
+  <section class="date">
+      
   </section>
 </template>
 
 <script>
 export default {
+  props:['card'],
 
 }
 </script>

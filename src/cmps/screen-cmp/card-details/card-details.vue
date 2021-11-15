@@ -13,11 +13,16 @@
       transform: translateX(-50%);
     "
   >
-  <window-cover v-if="card.style" :card="card"></window-cover>
-  <!-- <window-cover v-if="card.style.bgColor"></window-cover> -->
-  <window-title :card="card"></window-title>
-  <window-content></window-content>
-  <window-sidebar></window-sidebar>
+    <window-cover v-if="card.style.bgColor" :card="card"></window-cover>
+    <main class="flex column" style="padding: 1rem;flex: 1; gap:2rem">
+      <!-- <window-cover  :card="card"></window-cover> -->
+      <window-title :card="card" :listId="listId"></window-title>
+      <div class="flex" style="flex: 1">
+        <window-content :card="card"></window-content>
+        <window-sidebar :card="card" :listId="listId"></window-sidebar>
+      </div>
+    </main>
+
     <!-- <div>
       {{ card.title }}
     </div> -->
@@ -30,7 +35,7 @@ import windowTitle from './window-title.vue';
 import windowContent from './window-content.vue';
 import windowSidebar from './window-sidebar.vue';
 export default {
-  components: { windowCover,windowTitle,windowContent,windowSidebar },
+  components: { windowCover, windowTitle, windowContent, windowSidebar },
   data() {
     return {
       card: null,
@@ -53,11 +58,9 @@ export default {
       this.listId = newVal.listId;
     },
   },
-//   created() {
-//       const data2 = this.currCard
-//     this.card = data2.card;
-//     this.listId = data2.listId;
-//   },
+  // created() {
+  //   this.card = this.$store.getters.currCard.card;
+  // },
 };
 </script>
 

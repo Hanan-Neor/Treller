@@ -1,9 +1,9 @@
 <template>
-  <section class="window-content">
-    <content-info></content-info>
-    <content-description></content-description>
-    <content-checklist></content-checklist>
-    <content-activities></content-activities>
+  <section class="window-content flex column" style="gap:2rem">
+    <content-info :card="card"></content-info>
+    <content-description :card="card"></content-description>
+    <content-checklist :card="card"></content-checklist>
+    <content-activities :card="card"></content-activities>
   </section>
 </template>
 
@@ -13,6 +13,7 @@ import ContentActivities from './window-content/content-activities.vue';
 import ContentChecklist from './window-content/content-checklist.vue';
 import contentInfo from './window-content/content-info.vue';
 export default {
+  props:['card'],
   components: {
     contentInfo,
     contentDescription,

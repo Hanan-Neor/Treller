@@ -10,7 +10,7 @@
     >
       Open card
     </button>
-    <button @click="handleMenu()" class="trello-button">Edit labels</button>
+    <button @click="handleMenu('LABELS')" class="trello-button">Edit labels</button>
     <button @click="handleMenu()" class="trello-button">Change members</button>
     <button @click="handleMenu('COVER')" class="trello-button">Change cover</button>
     <button @click="handleMenu()" class="trello-button">Move</button>

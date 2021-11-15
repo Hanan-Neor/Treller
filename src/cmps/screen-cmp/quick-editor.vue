@@ -19,6 +19,23 @@
         transform: translateX(103%);
       "
     ></modal-change-cover>
+    <modal-edit-labels
+      v-if="popupToShow === 'LABELS'"
+      :card="card"
+      :listId="listId"
+      @handleMenu="handleMenu"
+      style="
+        z-index: 4;
+        width: 300px;
+        height: 400px;
+        position: absolute;
+        background-color: #fff;
+        opacity: 1;
+        top: 0;
+        right: 0;
+        transform: translateX(103%);
+      "
+    ></modal-edit-labels>
     <quick-editor-menu
       @handleMenu="handleMenu"
       :card="card"
@@ -27,7 +44,6 @@
     <!-- <quick-editor-content :card="card" :listId="listId"></quick-editor-content> -->
     <quick-editor-input :card="card" :listId="listId"></quick-editor-input>
     <!-- <button class="save-button" @click="handleEnter">Save</button> -->
-    
   </section>
 </template>
 
@@ -36,6 +52,7 @@
 import QuickEditorMenu from './quick-editor/quick-editor-menu.vue';
 import quickEditorInput from './quick-editor/quick-editor-input.vue';
 import ModalChangeCover from './quick-editor/modal-change-cover.vue';
+import ModalEditLabels from './quick-editor/modal-edit-labels.vue';
 export default {
   props: ['card', 'listId'],
   data() {
@@ -57,6 +74,7 @@ export default {
     QuickEditorMenu,
     quickEditorInput,
     ModalChangeCover,
+    ModalEditLabels,
   },
   created() {
     // console.log(this.card);

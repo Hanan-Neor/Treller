@@ -1,6 +1,6 @@
 <template>
   <section class="content-activities">
-      activities
+     <h3> activities </h3>
   </section>
 </template>
 

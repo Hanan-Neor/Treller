@@ -1,10 +1,14 @@
 .card-content-labels {
   width: fit-content;
+  flex-wrap: wrap;
 
   & span {
+    // color:none;
+    color:#fff;
     padding: 0 8px;
     border-radius: 4px;
     font-size: 0;
+    // font-size: 0.75rem;
     min-width: 40px;
     height: 8px;
     display: flex;
@@ -12,7 +16,8 @@
     transition: all 0.3s;
     &.show {
     //   min-width: 40px;
-      font-size: 0.75rem;
+    min-width: 56px;
+
       height: 1rem;
       font-size: 0.75rem;
     }
