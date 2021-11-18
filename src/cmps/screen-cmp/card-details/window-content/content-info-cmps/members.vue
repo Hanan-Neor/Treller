@@ -1,5 +1,5 @@
 <template>
-  <section class="members">
+  <section v-if="card.members.length" class="members">
       <div>Members</div>
             <img
       v-for="member in card.members"
@@ -21,7 +21,9 @@
 export default {
   props:['card'],
 
-
+mounted(){
+  console.log(this.card.members.length);
+}
 }
 </script>
 

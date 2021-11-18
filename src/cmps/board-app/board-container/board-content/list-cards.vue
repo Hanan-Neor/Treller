@@ -1,20 +1,24 @@
 <template>
   <section class="list-cards" :class="listId">
     <draggable
-    class="draggable"
-    :list="cards"
+      class="draggable"
+      :list="cards"
       group="card"
       @start="drag = true"
       @end="onEnd"
-        style=" display:flex;flex-direction:column;gap: 8px;"
-        ghostClass= "sortable-ghost"
-        chosenClass= "sortable-chosen"
-        dragClass= "sortable-drag"
+      delay="1000"
+      delayOnTouchOnly="true"
+      touchStartThreshold="10"
+      animation="150"
+      style="display: flex; flex-direction: column; gap: 8px"
+      ghostClass="sortable-ghost"
+      chosenClass="sortable-chosen"
+      dragClass="sortable-drag"
     >
-    <!-- ghostClass: "sortable-ghost",  // Class name for the drop placeholder
+      <!-- ghostClass: "sortable-ghost",  // Class name for the drop placeholder
 	chosenClass: "sortable-chosen",  // Class name for the chosen item
 	dragClass: "sortable-drag",  // Class name for the dragging item -->
-    <!-- animation=150 -->
+      <!-- animation=150 -->
       <!-- @end="drag = false" -->
       <!-- v-model="myArray" -->
       <!-- <div v-for="element in myArray" :key="element.id">{{element.name}}</div> -->
@@ -44,7 +48,7 @@ export default {
   methods: {
     onEnd() {
       this.drag = false;
-      this.$store.dispatch({type:'saveBoard'})
+      this.$store.dispatch({ type: 'saveBoard' });
     },
     hideCardComposerInput() {
       this.$emit('hideCardComposerInput');

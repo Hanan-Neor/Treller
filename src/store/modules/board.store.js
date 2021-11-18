@@ -44,8 +44,8 @@ export const boardStore = {
     screenState(state) {
       return state.showScreen;
     },
-    labelsState(state){
-      return state.showLabels
+    labelsState(state) {
+      return state.showLabels;
     },
     currCard(state) {
       return state.currCard;
@@ -182,7 +182,8 @@ export const boardStore = {
     },
     resetCurrCard(state, { card, pos, listId, elWidth }) {
       const currCard = {};
-      currCard.card = {};
+      currCard.card = card;
+      // currCard.card = {};
       currCard.pos = {
         x: null,
         y: null,
@@ -219,6 +220,7 @@ export const boardStore = {
     },
 
     addCard(state, { newCard, listId }) {
+      // addCard(state,  newCard, listId ) {
       // const currBoard = JSON.parse(JSON.stringify(state.currBoard)) ;
       const currBoard = state.currBoard;
       // const curr = JSON.parse(JSON.stringify(currBoard.lists)).find(
@@ -227,6 +229,43 @@ export const boardStore = {
       const idx = currBoard.lists.findIndex((list) => list.id === listId);
       currBoard.lists.splice(idx, 1, curr);
       state.currBoard = currBoard;
+    },
+
+    relocateCard(state, { relocation, card, listId }) {
+      let boardToSave = {};
+      // alert('hi')
+      if (state.currBoard._id === relocation.board) {
+        boardToSave = state.currBoard;
+      } else {
+        boardToSave = JSON.parse(JSON.stringify(state.boards.find((board) => board._id === relocation.board)
+          )
+        );
+      }
+
+      // const boardToSave = state.boards.find(board=> board._id === relocation.board)
+
+      // state.currBoard = boardToSave;
+
+      // console.log(boardToSave);
+      const listToSave = boardToSave.lists.find(
+        (list) => list.id === relocation.list
+      );
+      listToSave.cards.splice(relocation.pos - 1, 0, card);
+      const idx = boardToSave.lists.findIndex(
+        (list) => list.id === relocation.list
+      );
+      boardToSave.lists.splice(idx, 1, listToSave);
+      // console.log(boardToSave);
+      // state.currBoard = boardToSave;
+
+
+      if (state.currBoard._id === relocation.board) {
+        state.currBoard = boardToSave;
+      } else {
+       const boardIdx= state.boards.findIndex((board) => board._id === relocation.board)
+       state.boards.splice(boardIdx,1,boardToSave)
+      }
+
     },
   },
 
@@ -371,7 +410,7 @@ export const boardStore = {
       context.commit({ type: 'toggleCardComposer' });
     },
 
-    toggleLabels(context,payload) {
+    toggleLabels(context, payload) {
       context.commit(payload);
     },
 
@@ -380,7 +419,8 @@ export const boardStore = {
     },
 
     resetCurrCard(context, payload) {
-      context.commit(payload);
+      const card = boardService.getEmptyCard();
+      context.commit({ type: 'resetCurrCard', card });
     },
     removeCard(context, payload) {
       context.commit(payload);
@@ -392,15 +432,24 @@ export const boardStore = {
 
     async addCard({ commit, dispatch }, payload) {
       // const type = payload.card._id ? 'updateCard' : 'addCard';
+      // console.log(payload);
+      // const newCard = payload.newCard
       try {
+        // newCard.id = storageService._makeId();
         payload.newCard.id = storageService._makeId();
-        // const savedCard = await boardService.save(payload.card);
+        // await commit({type:'addCard',newCard,listId});
         await commit(payload);
         dispatch({ type: 'saveBoard' });
       } catch (err) {
         console.log('Cannot save card');
         throw err;
       }
+    },
+    relocateCard(context, payload) {
+      context.commit(payload);
+      const cardId = payload.card.id;
+      const listId = payload.listId;
+      context.commit({ type: 'removeCard', cardId, listId });
     },
   },
 };

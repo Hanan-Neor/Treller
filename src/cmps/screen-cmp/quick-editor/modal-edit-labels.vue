@@ -1,7 +1,7 @@
 <template>
   <section class="modal-edit-labels" style="padding: 0.75rem">
     <labels
-    :card="card"
+      :card="card"
       :boardLabels="boardLabels"
       v-model="label"
       @input="addLabel"
@@ -23,25 +23,18 @@ export default {
     };
   },
   methods: {
-    close(e) {
-      if (!this.$el.contains(e.target)) {
-        // this.$emit('resetPopup');
-        this.$emit('handleMenu', null);
-      }
-    },
-
     addLabel() {
       // alert('hi')
       const cardToSave = this.card;
       const isExistLabel = cardToSave.labelIds.find((labelId) => {
-       return labelId === this.label.id;
+        return labelId === this.label.id;
       });
       if (isExistLabel) {
         const idx = cardToSave.labelIds.findIndex((labelId) => {
-         return labelId === this.label.id;
+          return labelId === this.label.id;
         });
 
-        cardToSave.labelIds.splice(idx,1);
+        cardToSave.labelIds.splice(idx, 1);
       } else {
         cardToSave.labelIds.push(this.label.id);
       }
@@ -64,14 +57,14 @@ export default {
       });
     },
   },
-  mounted() {
-    document.addEventListener('mousedown', this.close);
-  },
-  beforeDestroy() {
-    document.removeEventListener('mousedown', this.close);
-  },
   created() {
     const boardLabels = this.$store.getters.board.labels;
+
+    // boardLabels.sort(function (a, b) {
+    //   // return a.title - b.title;
+    //   return a.color - b.color;
+    // });
+
     // let labels = [];
     // for (var i = 0; i < board.labels.length; i++) {
     //   for (var j = 0; j < this.card.labelIds.length; j++) {

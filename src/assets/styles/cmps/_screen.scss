@@ -1,5 +1,8 @@
 .screen {
   // display: none;
+  overflow-y: auto;
+  overflow-x: hidden;
+
   z-index: 20;
   position: fixed;
   top: 0;
@@ -10,6 +13,7 @@
   cursor: pointer;
   opacity: 0;
   pointer-events: none;
+  cursor: unset;
   transition: all 0.1s;
   &.show {
     // display: block;

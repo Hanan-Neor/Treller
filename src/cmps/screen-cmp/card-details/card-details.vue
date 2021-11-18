@@ -6,7 +6,7 @@
     style="
       border-radius: 3px;
       min-height: 500px;
-      background-color: #fff;
+
       position: absolute;
       left: 50%;
       top: 48px;
@@ -14,11 +14,11 @@
     "
   >
     <window-cover v-if="card.style.bgColor" :card="card"></window-cover>
-    <main class="flex column" style="padding: 1rem;flex: 1; gap:2rem">
+    <main class="flex column" style="padding: 1rem; flex: 1; gap: 2rem">
       <!-- <window-cover  :card="card"></window-cover> -->
       <window-title :card="card" :listId="listId"></window-title>
-      <div class="flex" style="flex: 1">
-        <window-content :card="card"></window-content>
+      <div class="flex" style="flex: 1; gap:1rem">
+        <window-content :card="card" :listId="listId"></window-content>
         <window-sidebar :card="card" :listId="listId"></window-sidebar>
       </div>
     </main>

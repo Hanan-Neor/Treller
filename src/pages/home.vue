@@ -6,7 +6,13 @@
 </template>
 
 <script>
-export default {};
+export default {
+async created(){
+    let boards = await this.$store.dispatch({ type: 'loadBoards' });
+    console.log(boards);
+    this.$router.push('/board/'+boards[0]._id)
+  }
+};
 </script>
 
 <style></style>

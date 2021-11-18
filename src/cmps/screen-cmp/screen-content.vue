@@ -56,7 +56,7 @@ export default {
         this.width = newVal.width;
       }
       this.listId = newVal.listId;
-      console.log(this.card);
+      // console.log(this.card);
 
       setTimeout(() => {
         this.screenContentHeight =

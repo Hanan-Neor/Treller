@@ -1,9 +1,18 @@
 <template>
-  <section
-    class="board-content flex"
-  >
+  <section class="board-content flex">
     <!-- <draggable  :list="board.lists" group="list" @start="drag = true" @end="onEnd" animation=150 style="display:flex;gap: 8px;"> -->
-    <draggable  :list="board.lists" group="board" @start="drag = true" @end="onEnd" animation=150 style="display:flex;gap: 8px;">
+      <!-- handle=".list-header" -->
+    <draggable
+      :list="board.lists"
+      group="board"
+      @start="drag = true"
+      @end="onEnd"
+      delay= 1000
+      delayOnTouchOnly= true
+      touchStartThreshold= 10
+      animation="150"
+      style="display: flex; gap: 8px"
+    >
       <board-list
         v-for="list in board.lists"
         :list="list"
@@ -40,9 +49,6 @@ export default {
     },
   },
   computed: {
-
-
-    
     //    async board(){
     //        try{
     //            return this.$store.getters.boards

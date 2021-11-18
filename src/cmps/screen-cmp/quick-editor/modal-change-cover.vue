@@ -16,13 +16,6 @@ export default {
     };
   },
   methods: {
-    close(e) {
-      if (!this.$el.contains(e.target)) {
-        // this.$emit('resetPopup');
-        this.$emit('handleMenu' , null);
-      }
-    },
-
     changeCardCover() {
       // alert('hi')
       const cardToSave = this.card;
@@ -38,13 +31,6 @@ export default {
       });
     },
   },
-  mounted() {
-    document.addEventListener('mousedown', this.close);
-  },
-  beforeDestroy() {
-    document.removeEventListener('mousedown', this.close);
-  },
-
   components: {
     colors,
   },

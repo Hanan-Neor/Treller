@@ -64,7 +64,7 @@ export default {
       // this.$store.dispatch({ type: 'toggleScreen' });
       const route =
         '/board/' + this.$store.getters.board._id + '/' + this.card.id;
-      console.log('params', this.$route.params);
+      // console.log('params', this.$route.params);
       if (this.card.id === this.$route.params.cardId) return;
       this.$router.push(route);
       // this.$router.push('/board/'+ this.$store.getters.board._id +'/' + this.card.id )

@@ -6,11 +6,20 @@
         v-for="label in boardLabels"
         @click="addLabel(label)"
         :key="label.id"
-        style="height: 2rem; border-radius: 3px; color:#fff;display:flex; justify-content:space-between;align-items:center;padding:6px 12px"
+        style="
+          height: 2rem;
+          border-radius: 3px;
+          color: #fff;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          padding: 6px 12px;
+          cursor: pointer;
+        "
         :style="{ 'background-color': label.color }"
       >
-      <span>
-        {{ label.title }}
+        <span>
+          {{ label.title }}
         </span>
         <!-- <span
           v-if="
@@ -54,7 +63,7 @@ export default {
     },
   },
   created() {
-    console.log(this.boardLabels);
+    // console.log(this.boardLabels);
   },
 };
 </script>

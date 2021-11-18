@@ -1,0 +1,27 @@
+.window-sidebar {
+  flex: 1;
+  gap: 8px;
+//   border:none;
+// box-shadow: none;
+
+& .sidebar-button {
+    border-radius: 3px;
+      border:none;
+    background-color: #091e420a;
+    text-align: left;
+    color: inherit;
+    cursor: pointer;
+    height: 2rem;
+    padding:6px 12px;
+
+    &:hover {
+      background-color: #091e4214;
+    }
+  }
+
+  & .popup-container {
+    &.off-page-right {
+      right: -0.5rem;
+    }
+  }
+}

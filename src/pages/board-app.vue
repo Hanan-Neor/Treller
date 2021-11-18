@@ -28,6 +28,11 @@ export default {
       }
     },
   },
+  computed: {
+    currBoard() {
+      this.$store.getters.board;
+    },
+  },
   watch: {
     '$route.params.boardId': {
       immediate: true,
@@ -43,6 +48,9 @@ export default {
         // console.log(boardId);
         // this.board = boards[0];
       },
+    },
+    currBoard(newVal, oldVal) {
+      this.board = newVal;
     },
   },
   created() {

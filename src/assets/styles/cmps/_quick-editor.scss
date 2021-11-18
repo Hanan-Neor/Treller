@@ -1,6 +1,7 @@
 .quick-editor {
   .quick-editor-input {
     & textarea {
+      box-shadow: none;
       // margin-bottom: -1.84% !important;
       width: 100%;
       // margin-bottom: -0.29rem !important;
@@ -32,11 +33,32 @@
     }
   }
 
-  & .quick-editor-menu {
+  & .quick-editor-menu-container {
+    padding-left: 8px;
     position: absolute;
     right: 0;
     // transform: translateX(90%);
     transform: translateX(100%);
+    &.off-page-bottom {
+      bottom: 0;
+
+    }
+    &.off-page-right {
+      left: 0;
+      transform: translateX(-103%);
+      & .quick-editor-menu{
+        align-items: end;
+        right: unset;
+      }
+      & .popup-container{
+        right:0
+      }
+    }
+    
+
+
+  }
+  & .quick-editor-menu {
     // transition: transform 85ms ease-in;
     // opacity: 0;
     &.show {
@@ -54,7 +76,8 @@
       color: #e6e6e6;
       display: block;
       float: left;
-      margin: 0 8px 4px 8px;
+      // margin: 0 8px 4px 8px;
+      margin-bottom:4px;
       padding: 6px 12px 6 px 8px;
       text-decoration: none;
       transition: transform 85ms;
@@ -65,13 +88,13 @@
       }
     }
 
-    &.off-page-bottom {
-      bottom: 0;
-    }
+    // &.off-page-bottom {
+    //   bottom: 0;
+    // }
     &.off-page-right {
-      align-items: end;
-      right: unset;
-      transform: translateX(-100%);
+      // align-items: end;
+      // right: unset;
+      // transform: translateX(-100%);
 
       & button:hover {
         transform: translateX(-5px);

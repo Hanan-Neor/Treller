@@ -1,7 +1,7 @@
 <template>
-  <section class="window-title" style="">
+  <section v-if="card.title" class="window-title" style="">
     <div>
-      <h2 style="margin:0">{{ card.title }}</h2>
+      <h2  style="margin:0">{{ card.title }}</h2>
     </div>
     <div>in list {{ listById.title }}</div>
   </section>
@@ -18,6 +18,9 @@ export default {
       // console.log(list);
     },
   },
+  // created(){
+  //   console.log(this.card);
+  // }
 };
 </script>
 

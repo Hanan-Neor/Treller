@@ -2,8 +2,10 @@
   <section class="card-preview-content">
       <card-content-labels :card="card"></card-content-labels>
       <card-content-title :card="card"></card-content-title>
+      <div v-if="card.dueDate || card.members.length || card.checklist || card.description" class="flex justify-between" style="margin-top:4px">
       <card-content-badges :card="card"></card-content-badges>
       <card-content-members :card="card"></card-content-members>
+      </div>
   </section>
 </template>
 

@@ -18,6 +18,21 @@ button{
   font-family: inherit;
 }
 
+textarea {
+  // focus {
+  outline: none;
+  //   }
+  font-family: inherit;
+  font-size: inherit;
+  border: 0;
+  padding: 8px;
+  border-radius: 3px;
+  box-shadow: 0 1px 0 #091e4240;
+  // max-height: 162px;
+  // min-height: 54px;
+  width: 100%;
+}
+
 h1,
 h2,
 h3,

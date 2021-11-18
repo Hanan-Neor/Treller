@@ -36,6 +36,9 @@
 // }
 
 .card-details {
+  cursor: auto;
+  background-color: #f4f5f7;
+
   display: flex;
   flex-direction: column;
   width: 770px;
@@ -46,19 +49,8 @@
     // background-color: lightskyblue;
   }
   & .window-content {
+    
     // background-color: maroon;
     flex:4;
-  }
-  & .window-sidebar {
-    & button {
-      text-align: left;
-      color: inherit;
-      background-color: inherit;
-      &:hover {
-        // background-color: #091e4214;
-      }
-    }
-    flex:1;
-    // background-color: rgb(168, 71, 71);
   }
 }

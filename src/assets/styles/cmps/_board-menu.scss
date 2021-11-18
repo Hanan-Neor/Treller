@@ -36,4 +36,19 @@
       margin: 0;
     }
   }
+  & .board-menu-buttons{
+
+    &>div{
+      cursor:pointer;
+      border-radius: 3px;
+      padding:6px;
+      &:hover{
+        background-color: #091e4214;
+      }
+
+    }
+
+  }
+
+  
 }

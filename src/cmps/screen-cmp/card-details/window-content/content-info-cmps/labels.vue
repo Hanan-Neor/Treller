@@ -1,5 +1,5 @@
 <template>
-  <section class="labels">
+  <section  v-if="card.labelIds.length" class="labels">
     <div>Labels</div>
   
     <section class="flex" style="gap:4px">

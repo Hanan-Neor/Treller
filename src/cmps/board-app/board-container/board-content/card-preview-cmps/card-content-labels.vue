@@ -1,5 +1,6 @@
 <template>
   <section
+  v-if="card.labelIds[0]"
     class="card-content-labels"
     style="display: flex; gap: 4px; margin-bottom: 4px"
     @click.stop="toggleLables"

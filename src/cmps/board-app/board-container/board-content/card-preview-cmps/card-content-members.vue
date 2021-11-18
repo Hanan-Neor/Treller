@@ -1,5 +1,5 @@
 <template>
-  <section class="card-content-members flex" style="justify-content: flex-end;">
+  <section class="card-content-members flex" style="justify-content: flex-end;gap:4px">
     <img
       v-for="member in card.members"
       :src="member.imgUrl"

@@ -1,0 +1,25 @@
+.popup-container {
+  box-shadow: 0 8px 16px -4px #091e4240, 0 0 0 1px #091e4214;
+  z-index: 4;
+  min-width: 300px;
+  height: 400px;
+  position: absolute;
+  background-color: #fff;
+  opacity: 1;
+  top: 0;
+
+  &.off-page-bottom {
+    top: unset;
+    bottom: 0;
+  }
+  &.off-page-right {
+
+      // left:0
+      right:0
+    // transform: translateX(-100%);
+  }
+
+  .close-button{
+    z-index:1
+  }
+}

@@ -16,9 +16,11 @@
       @toggleMenu="toggleMenu"
     ></board-menu-buttons>
 
+    
+
     <hr class="board-menu-divider" />
 
-    <board-menu-activities  :board="board"></board-menu-activities>
+    <board-menu-activities :board="board"></board-menu-activities>
   </section>
 </template>
 

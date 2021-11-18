@@ -45,7 +45,7 @@ export default {
   // },
   watch: {
     checkHeight(newVal, oldVal) {
-      console.log(newVal);
+      // console.log(newVal);
       this.new = newVal;
     },
   },
