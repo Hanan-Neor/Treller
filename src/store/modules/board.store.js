@@ -4,6 +4,9 @@ import { storageService } from '../../services/async-storage.service.js';
 
 export const boardStore = {
   state: {
+    draggingFrom: null,
+    time: Date.now(),
+    updatedActivities: false,
     // boards: boardService.query(),
     boards: null,
     currBoard: null,
@@ -31,6 +34,15 @@ export const boardStore = {
   // ===================================================================
 
   getters: {
+    updatedActivities(state){
+      return state.updatedActivities
+    },
+    draggingFrom(state) {
+      return state.draggingFrom;
+    },
+    time(state) {
+      return state.time;
+    },
     board(state) {
       // return state.boards[0];
       return state.currBoard;
@@ -69,6 +81,59 @@ export const boardStore = {
   // =====================================================================
 
   mutations: {
+    updateActCardTitle(state, { card }) {
+      state.updatedActivities = !state.updatedActivities;
+
+      let activities = state.currBoard.activities;
+      activities = activities.map((activity) => {
+        if (activity.actPayload.card.id == card.id) {
+          activity.actPayload.card.title = card.title;
+        }
+        return activity;
+      });
+      state.currBoard.activities = activities;
+      // })
+    },
+    updateActDeletedCard(state, { card }) {
+      state.updatedActivities = !state.updatedActivities;
+
+      let activities = state.currBoard.activities;
+      activities = activities.filter((activity) => {
+        return activity.actPayload.card.id !== card.id;
+      });
+      state.currBoard.activities = activities;
+      // })
+    },
+    updateActListTitle(state, { listId }) {
+      state.updatedActivities = !state.updatedActivities;
+
+      let activities = state.currBoard.activities;
+      const list = state.currBoard.lists.find((list) => list.id === listId);
+      activities = activities.map((activity) => {
+        if (activity.actPayload.currList.id === list.id) {
+          activity.actPayload.currList.title = list.title;
+        }
+        if (activity.actPayload.prevList.id === list.id) {
+          activity.actPayload.prevList.title = list.title;
+        }
+
+        return activity;
+      });
+      state.currBoard.activities = activities;
+    },
+    setStartDragPos(state, { list }) {
+      // console.log(listTitle);
+      state.draggingFrom = list;
+    },
+
+    setInterval(state) {
+      state.time = Date.now();
+    },
+
+    addActivity(state, { activity }) {
+      state.currBoard.activities.unshift(activity);
+      state.updatedActivities = !state.updatedActivities;
+    },
     toggleScreen(state) {
       state.showScreen = !state.showScreen;
     },
@@ -193,11 +258,13 @@ export const boardStore = {
       state.currCard = currCard;
     },
 
-    removeCard(state, { cardId, listId }) {
+    removeCard(state, { card, listId }) {
       const currBoard = state.currBoard;
       // state.boards.then((board) => {
       const curr = currBoard.lists.find((list) => list.id === listId);
-      const cardIdx = curr.cards.findIndex((card) => card.id === cardId);
+      const cardIdx = curr.cards.findIndex(
+        (loopCard) => loopCard.id === card.id
+      );
       curr.cards.splice(cardIdx, 1);
       const idx = currBoard.lists.findIndex((list) => list.id === listId);
       currBoard.lists.splice(idx, 1, curr);
@@ -237,7 +304,9 @@ export const boardStore = {
       if (state.currBoard._id === relocation.board) {
         boardToSave = state.currBoard;
       } else {
-        boardToSave = JSON.parse(JSON.stringify(state.boards.find((board) => board._id === relocation.board)
+        boardToSave = JSON.parse(
+          JSON.stringify(
+            state.boards.find((board) => board._id === relocation.board)
           )
         );
       }
@@ -258,14 +327,14 @@ export const boardStore = {
       // console.log(boardToSave);
       // state.currBoard = boardToSave;
 
-
       if (state.currBoard._id === relocation.board) {
         state.currBoard = boardToSave;
       } else {
-       const boardIdx= state.boards.findIndex((board) => board._id === relocation.board)
-       state.boards.splice(boardIdx,1,boardToSave)
+        const boardIdx = state.boards.findIndex(
+          (board) => board._id === relocation.board
+        );
+        state.boards.splice(boardIdx, 1, boardToSave);
       }
-
     },
   },
 
@@ -274,6 +343,78 @@ export const boardStore = {
   // ===================================================================
 
   actions: {
+    //   updateCardActivity(context,{ card, listTitle }){
+    updateActCardTitle(context, { card }) {
+      console.log('card', card);
+      context.commit({ type: 'updateActCardTitle', card });
+    },
+    updateActListTitle(context, { listId }) {
+      context.commit({ type: 'updateActListTitle', listId });
+    },
+
+    startDrag(context, { card, list }) {
+      context.commit({ type: 'setStartDragPos', list });
+      // console.log(payload);
+      // console.log(payload.listTitle);
+    },
+    endDrag(context, { card, list }) {
+      const prevList = context.getters.draggingFrom;
+      // console.log(draggingFrom);
+      // console.log(card);
+      // const currList = list
+
+      // const txt = {
+      //   menu:
+      //     'moved ' + card.title + ' from ' + draggingFrom + ' to ' + listTitle,
+      //   details: 'moved this card from ' + draggingFrom + ' to ' + listTitle,
+      // };
+      context.dispatch({
+        type: 'addActivity',
+        action: 'MOVE_CARD',
+        card,
+        list,
+        prevList,
+      });
+    },
+
+    timeInterval(context) {
+      setInterval(() => {
+        context.commit({ type: 'setInterval' });
+      }, 1000);
+    },
+
+    // addActivity(context, payload) {
+    //   let activity = boardService.getEmptyActivity();
+    //   activity.txt = payload.txt;
+    //   activity.task.id = payload.card.id;
+    //   activity.task.title = payload.card.title;
+    //   //  console.log(activity);
+    //   context.commit({ type: 'addActivity', activity });
+    // },
+
+    addActivity(context, payload) {
+      console.log(payload);
+
+      let activity = boardService.getEmptyActivity();
+      activity.action = payload.action;
+      activity.actPayload.card.id = payload.card.id;
+      activity.actPayload.card.title = payload.card.title;
+      activity.actPayload.currList.id = payload.list.id;
+      activity.actPayload.currList.title = payload.list.title;
+      // if(payload.prevList.id){
+
+      activity.actPayload.prevList.id = payload.prevList.id;
+      activity.actPayload.prevList.title = payload.prevList.title;
+      // }
+      if (payload.member) {
+        activity.actPayload.member._id = payload.member._id;
+        activity.actPayload.member.fullname = payload.member.fullname;
+      }
+      console.log(activity);
+      // activity.actPayload.prevList.id = payload.listId;
+      context.commit({ type: 'addActivity', activity });
+    },
+
     toggleScreen(context, payload) {
       context.commit(payload);
     },
@@ -384,7 +525,38 @@ export const boardStore = {
     // ============================  ACTIONS - LIST  ============================
 
     removeList(context, payload) {
+      const list = context.getters.board.lists.find(
+        (list) => list.id === payload.listId
+      );
+
+      // context.commit({ type: 'updateActDeletedList', list });
+      list.cards.map((card) => {
+        // context.dispatch({
+        //   type: 'removeCard',
+        //   card,
+        //   listId: payload.listId,
+        // });
+        context.commit({ type: 'updateActDeletedCard', card });
+      });
       context.commit(payload);
+
+      const prevList = {
+        id: '',
+        title: '',
+      };
+      const card = {
+        id: '',
+        title: '',
+      };
+
+      context.dispatch({
+        type: 'addActivity',
+        action: 'REMOVE_LIST',
+        card,
+        list,
+        prevList,
+      });
+
       context.dispatch({ type: 'saveBoard' });
     },
 
@@ -392,9 +564,27 @@ export const boardStore = {
       try {
         payload.newList.id = storageService._makeId();
         await commit(payload);
+
+        const prevList = {
+          id: '',
+          title: '',
+        };
+        const card = {
+          id: '',
+          title: '',
+        };
+
+        dispatch({
+          type: 'addActivity',
+          action: 'ADD_LIST',
+          card,
+          list: payload.newList,
+          prevList,
+        });
+
         dispatch({ type: 'saveBoard' });
       } catch (err) {
-        console.log('Cannot save card');
+        console.log('Cannot save list');
         throw err;
       }
     },
@@ -423,6 +613,29 @@ export const boardStore = {
       context.commit({ type: 'resetCurrCard', card });
     },
     removeCard(context, payload) {
+      const currList = context.getters.board.lists.find(
+        (list) => list.id === payload.listId
+      );
+      // const listTitle = currList.title;
+      // const card = currList.find((card2) => card2.id === payload.cardId);
+      const card = payload.card;
+      context.commit({ type: 'updateActDeletedCard', card });
+      // const txt = {
+      //   menu: 'deleted ' + card.title + ' from ' + listTitle,
+      //   details: 'deleted this card from ' + listTitle,
+      // };
+      const prevList = {
+        id: '',
+        title: '',
+      };
+
+      context.dispatch({
+        type: 'addActivity',
+        action: 'REMOVE_CARD',
+        card,
+        list: currList,
+        prevList,
+      });
       context.commit(payload);
     },
 
@@ -430,7 +643,7 @@ export const boardStore = {
       context.commit({ type: 'updateCard', card, listId });
     },
 
-    async addCard({ commit, dispatch }, payload) {
+    async addCard({ getters, commit, dispatch }, payload) {
       // const type = payload.card._id ? 'updateCard' : 'addCard';
       // console.log(payload);
       // const newCard = payload.newCard
@@ -439,6 +652,36 @@ export const boardStore = {
         payload.newCard.id = storageService._makeId();
         // await commit({type:'addCard',newCard,listId});
         await commit(payload);
+
+        const currList = getters.board.lists.find(
+          (list) => list.id === payload.listId
+        );
+        const prevList = {
+          id: '',
+          title: '',
+        };
+
+        // const listTitle = currList.title;
+        // const txt = {
+        //   menu:'added ' + payload.newCard.title + ' to ' + listTitle,
+        //   details: 'added this card to ' + listTitle
+        // }
+        // dispatch({
+        //   type: 'addActivity',
+        //   card: payload.newCard,
+        //   txt,
+        //   // txt: 'added ' + payload.newCard.title + ' to ' + listTitle,
+        // });
+
+        const action = 'ADD_CARD';
+        dispatch({
+          type: 'addActivity',
+          card: payload.newCard,
+          list: currList,
+          prevList,
+          action,
+        });
+
         dispatch({ type: 'saveBoard' });
       } catch (err) {
         console.log('Cannot save card');

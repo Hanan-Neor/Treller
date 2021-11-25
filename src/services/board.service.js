@@ -7,6 +7,7 @@ export const boardService = {
     query,
     remove,
     save,
+    getEmptyActivity,
     getEmptyBoard,
     getEmptyList,
     getEmptyCard,
@@ -223,6 +224,46 @@ async function save(board) {
     }
 }
 
+function getEmptyActivity(){
+    let activity = {
+                        "id": utilService.makeId(),
+                        // "txt":"",
+                        // "txt": {
+                        //     "menu":"",
+                        //     "details":""
+                        // },
+                        "action":"",
+                        "createdAt": Date.now(),
+                        "byMember": {
+                            "_id" : "u102",
+                            "fullname" : "Nathanael",
+                            "imgUrl" : "https://res.cloudinary.com/dymtestxz/image/upload/v1626735749/sprint4/spaces/9%20-%20Manor%20cottage/reviewers/a89a7679-f8de-4d16-938c-1a4fa1b8005e_wmwu3m.jpg"
+                        },
+                        "actPayload":{
+                            "card": {
+                                "id": "",
+                                "title": ""
+                            },
+                            "currList": {
+                                "id": "",
+                                "title": ""
+                            },
+                            "prevList": {
+                                "id": "",
+                                "title": ""
+                            },
+                            "member":{
+                                "_id":"",
+                                "fullname":"",
+                            }
+
+
+                        }
+                    }
+
+                    return activity
+    }
+
 async function getById(boardId) {
       return httpService.get(`board/${boardId}`); //SERVER STORAGE
     // const board = await storageService.get(BOARD_KEY, boardId); //CLIENT STORAGE
@@ -279,7 +320,7 @@ function getEmptyCard() {
             // }
         ],
         "labelIds": [],
-        "createdAt": null,
+        "createdAt": Date.now(),
         "dueDate": null,
         "byMember": {
             // "_id": "u101",
@@ -304,7 +345,7 @@ function getEmptyBoard() {
         
             // "_id": null,
             "title": "NEW BOARD",
-            "createdAt": null,
+            "createdAt": Date.now(),
             "createdBy": {
                
             },

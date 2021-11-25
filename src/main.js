@@ -6,6 +6,8 @@ import TextareaAutosize from 'vue-textarea-autosize';
 import './assets/styles/main.scss';
 import ElementUI from 'element-ui';
 import 'element-ui/lib/theme-chalk/index.css';
+import moment from 'moment';
+moment().format();
 Vue.use(ElementUI);
 Vue.use(TextareaAutosize);
 Vue.config.productionTip = false;

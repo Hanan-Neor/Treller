@@ -69,6 +69,8 @@ export default {
       this.$emit('hideHeaderInput');
       const title = this.titleToModel;
       const listId = this.listId;
+        this.$store.dispatch({ type: 'updateActListTitle',listId});
+
       this.$store.dispatch({ type: 'updateHeader', title, listId });
     },
   },

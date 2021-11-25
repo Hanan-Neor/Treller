@@ -1,7 +1,7 @@
 <template>
   <section class="board-menu-activities">
       <h4>Activity</h4>
-      <activity-list :activities="board.activities"></activity-list>
+      <activity-list :activities="board.activities" :isMenu="true"></activity-list>
   </section>
 </template>
 
@@ -11,7 +11,7 @@ export default {
 props:['board'],
 data(){
     return{
-
+        isMenu:true
     }
 },
 components:{

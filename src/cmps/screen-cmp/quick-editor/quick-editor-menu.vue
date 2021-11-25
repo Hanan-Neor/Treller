@@ -117,6 +117,7 @@ export default {
     },
     copyCard() {
       const cardToSave = JSON.parse(JSON.stringify(this.card));
+      cardToSave.activities = [];
       this.$store.dispatch({
         type: 'addCard',
         newCard: cardToSave,
@@ -140,7 +141,7 @@ export default {
     deleteCard() {
       this.$store.dispatch({
         type: 'removeCard',
-        cardId: this.card.id,
+        card: this.card,
         listId: this.listId,
       });
       this.$nextTick(function () {

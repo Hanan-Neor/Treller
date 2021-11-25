@@ -89,7 +89,7 @@ export default {
       }
     }
 
-    console.log(`labels in card ${this.card.id} and board`, labels);
+    // console.log(`labels in card ${this.card.id} and board`, labels);
 
     // this.boardLabels = this.getBoardLabels()
     // this.boardLabels = board.labels

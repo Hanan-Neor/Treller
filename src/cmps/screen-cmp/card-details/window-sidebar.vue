@@ -32,6 +32,7 @@
         :card="card"
         :listId="listId"
         @handleMenu="handleMenu"
+        
       ></modal-change-members>
     </popup-container>
 
@@ -103,7 +104,7 @@ export default {
     deleteCard() {
       this.$store.dispatch({
         type: 'removeCard',
-        cardId: this.card.id,
+        card: this.card,
         listId: this.listId,
       });
       this.$nextTick(function () {

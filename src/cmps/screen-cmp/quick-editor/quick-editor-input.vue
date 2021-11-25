@@ -98,6 +98,9 @@ export default {
         card: cardToSave,
         listId: this.listId,
       });
+        this.$store.dispatch({ type: 'updateActCardTitle',card:cardToSave});
+
+      
       // setTimeout(() => {
       //   this.$store.dispatch({ type: 'saveBoard' });
       // }, 100);

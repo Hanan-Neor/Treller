@@ -61,6 +61,11 @@ export default {
       };
     },
   },
+  // created(){
+  //   setInterval(()=>{
+  //     this.time = Date.now()
+  //   },1000)
+  // }
 };
 </script>
 
