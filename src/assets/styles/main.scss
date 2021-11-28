@@ -12,7 +12,12 @@
 // Compon./ents
 @import '././cmps/app-header/app-header';
 @import './cmps/board-list/list-composer';
+
 @import './cmps/board-menu';
+@import './cmps/board-menu-cmps/board-menu-content';
+@import './cmps/board-menu-cmps/board-menu-content-background';
+@import './cmps/board-menu-cmps/board-menu-content-colors';
+
 @import './cmps/board-header';
 @import './cmps/board-container';
 @import './cmps/board-content';

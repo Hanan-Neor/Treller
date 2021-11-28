@@ -4,6 +4,8 @@ import { storageService } from '../../services/async-storage.service.js';
 
 export const boardStore = {
   state: {
+    boardUpdateSwitch:false,
+    menuSection: null,
     draggingFrom: null,
     time: Date.now(),
     updatedActivities: false,
@@ -34,8 +36,14 @@ export const boardStore = {
   // ===================================================================
 
   getters: {
-    updatedActivities(state){
-      return state.updatedActivities
+    boardUpdateSwitch(state){
+      return state.boardUpdateSwitch
+    },
+    menuSection(state) {
+      return state.menuSection;
+    },
+    updatedActivities(state) {
+      return state.updatedActivities;
     },
     draggingFrom(state) {
       return state.draggingFrom;
@@ -47,6 +55,10 @@ export const boardStore = {
       // return state.boards[0];
       return state.currBoard;
     },
+    // boardBackground(state) {
+    //   // return state.boards[0];
+    //   return state.currBoard.style.bgColor;
+    // },
     boards(state) {
       return state.boards;
     },
@@ -81,6 +93,9 @@ export const boardStore = {
   // =====================================================================
 
   mutations: {
+    setMenuSection(state, { section }) {
+      state.menuSection = section;
+    },
     updateActCardTitle(state, { card }) {
       state.updatedActivities = !state.updatedActivities;
 
@@ -184,6 +199,21 @@ export const boardStore = {
       state.boards.splice(idx, 1, state.currBoard); //????
       // state.boards[idx].title = title
     },
+    updateBoardBackground(state, { board }) {
+      // state.currBoard = { ...board };
+      // state.boardUpdateSwitch = !state.boardUpdateSwitch
+      state.currBoard = board ;
+      // state.currBoard.lists.push({card:[]})
+      // const idx = state.boards.findIndex((loopBoard) => loopBoard._id === board._id);
+      // state.boards.splice(idx, 1, board); //????
+    },
+
+    //   updateBoardBackground(state, { bgColor, boardId }) {
+    //   state.currBoard.style.bgColor = bgColor;
+    //   // const idx = state.boards.findIndex((board) => board._id === boardId);
+    //   // state.boards.splice(idx, 1, state.currBoard); //????
+    //   // state.boards[idx].title = title
+    // },
 
     updateBoard(state, { board }) {
       const idx = state.boards.findIndex((t) => t._id === board._id);
@@ -343,6 +373,10 @@ export const boardStore = {
   // ===================================================================
 
   actions: {
+    setMenuSection(context, payload) {
+      context.commit(payload);
+    },
+
     //   updateCardActivity(context,{ card, listTitle }){
     updateActCardTitle(context, { card }) {
       console.log('card', card);
@@ -479,6 +513,24 @@ export const boardStore = {
       } catch (err) {
         console.log('Cannot remove', boardId);
         throw err;
+      }
+    },
+
+    async updateBoardBackground(context, payload) {
+      console.log(payload);
+      try {
+        // const boardId = payload.board._id;
+        // await context.dispatch('loadBoard', boardId)
+
+        context.commit(payload);
+        
+        
+        // const board = payload.board;
+        // context.commit({ type: 'setCurrBoard', board });
+        await context.dispatch({ type: 'saveBoard' });
+        // context.dispatch({ type: 'loadBoards' });
+      } catch (err) {
+        console.log('cannot update board background');
       }
     },
 

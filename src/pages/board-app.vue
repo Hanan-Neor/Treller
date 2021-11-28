@@ -32,6 +32,9 @@ export default {
     currBoard() {
       this.$store.getters.board;
     },
+    boardUpdateSwitch() {
+      this.$store.getters.boardUpdateSwitch;
+    },
   },
   watch: {
     '$route.params.boardId': {
@@ -42,6 +45,7 @@ export default {
         if (!boardId) return;
         // if (!this.board) return;
         this.board = await this.$store.dispatch('loadBoard', boardId);
+        // this.board = await this.$store.dispatch({type:'loadBoard', boardId});
 
         this.handleBgColor();
         // console.log(this.board);
@@ -49,8 +53,15 @@ export default {
         // this.board = boards[0];
       },
     },
-    currBoard(newVal, oldVal) {
-      this.board = newVal;
+      currBoard(newVal, oldVal) {
+        
+        this.board = newVal;
+        alert('hi')
+      },
+    boardUpdateSwitch(newVal, oldVal) {
+
+      // this.board = newVal;
+      alert('hi')
     },
   },
   created() {

@@ -1,28 +1,53 @@
 <template>
   <section class="board-menu-buttons">
-    <div class="" >Change background</div>
+    <div class="" @click="showBackground">Change background</div>
     <div class="">Search cards</div>
-    <div class="" @click.self="toggleDeletePopup"  style="position:relative">
+    <div class="" @click.self="toggleDeletePopup" style="position: relative">
       Remove board
-      <div v-if="deletePopup" style="position:absolute;background-color:#fff;padding:1rem; width:200px">Are you sure?
+      <div
+        v-if="deletePopup"
+        style="
+          position: absolute;
+          background-color: #fff;
+          padding: 1rem;
+          width: 200px;
+        "
+      >
+        Are you sure?
         <div class="flex justify-between">
-        <button @click="removeBoard();toggleDeletePopup()" style="background-color:red;color:#fff;cursor:pointer">Delete</button>
-        <button @click="toggleDeletePopup" style="cursor:pointer">Cancel</button>
+          <button
+            @click="
+              removeBoard();
+              toggleDeletePopup();
+            "
+            style="background-color: red; color: #fff; cursor: pointer"
+          >
+            Delete
+          </button>
+          <button @click="toggleDeletePopup" style="cursor: pointer">
+            Cancel
+          </button>
         </div>
       </div>
-      </div>
+    </div>
   </section>
 </template>
 
 <script>
 export default {
   props: ['board'],
-  data(){
-    return{
-      deletePopup:false
-    }
+  data() {
+    return {
+      deletePopup: false,
+    };
   },
   methods: {
+    showBackground() {
+      this.$store.dispatch({ type: 'setMenuSection', section: 'BACKGROUND' });
+      // document.querySelector('.board-menu-content-background').style.display = 'block';
+      document.querySelector('.board-menu-content-background').classList.add('show');
+      document.querySelector('.board-menu-content-main').style.display = 'none';
+    },
     async removeBoard() {
       // this.$router.push('/'); //  ?
       this.toggleMenu();
@@ -37,8 +62,8 @@ export default {
 
       // },1000)
     },
-    toggleDeletePopup(){
-      this.deletePopup = !this.deletePopup
+    toggleDeletePopup() {
+      this.deletePopup = !this.deletePopup;
     },
     toggleMenu() {
       this.$emit('toggleMenu');

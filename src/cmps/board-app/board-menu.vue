@@ -2,33 +2,21 @@
   <!-- <section v-if="menuState" class="board-menu" style="width:340px; background-color:grey"> -->
   <section
     :class="menuDisplay"
-    class="board-menu"
+    class="board-menu flex column"
     style="width: 340px; background-color: #f4f5f7"
   >
-    <div class="menu-header">
-      <h3>MENU - {{ board.title }}</h3>
-      <button @click="toggleMenu">⨉</button>
-    </div>
-    <hr class="board-menu-divider" />
-
-    <board-menu-buttons
-      :board="board"
-      @toggleMenu="toggleMenu"
-    ></board-menu-buttons>
+   <board-menu-header :board="board" @toggleMenu="toggleMenu"></board-menu-header>
+    <board-menu-content :board="board"  @toggleMenu="toggleMenu"></board-menu-content>
 
     
-
-    <hr class="board-menu-divider" />
-
-    <board-menu-activities :board="board"></board-menu-activities>
   </section>
 </template>
 
 <script>
-import BoardMenuActivities from './board-menu/board-menu-activities.vue';
-import boardMenuButtons from './board-menu/board-menu-buttons.vue';
+import boardMenuHeader from './board-menu/board-menu-header.vue'
+import boardMenuContent from './board-menu/board-menu-content.vue'
 export default {
-  components: { boardMenuButtons, BoardMenuActivities },
+  components: { boardMenuHeader, boardMenuContent},
   props: ['board'],
   methods: {
     toggleMenu() {
