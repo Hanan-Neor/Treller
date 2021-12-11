@@ -349,7 +349,9 @@ function getEmptyBoard() {
             "createdBy": {
                
             },
-            "style": {},
+            "style": {
+                "bgColor":""
+            },
             "labels": [
                 {
                     "id" : "101",
