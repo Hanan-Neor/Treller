@@ -4,7 +4,7 @@ import { storageService } from '../../services/async-storage.service.js';
 
 export const boardStore = {
   state: {
-    boardUpdateSwitch:false,
+    boardUpdateSwitch: false,
     menuSection: null,
     draggingFrom: null,
     time: Date.now(),
@@ -36,8 +36,8 @@ export const boardStore = {
   // ===================================================================
 
   getters: {
-    boardUpdateSwitch(state){
-      return state.boardUpdateSwitch
+    boardUpdateSwitch(state) {
+      return state.boardUpdateSwitch;
     },
     menuSection(state) {
       return state.menuSection;
@@ -202,7 +202,7 @@ export const boardStore = {
     updateBoardBackground(state, { board }) {
       // state.currBoard = { ...board };
       // state.boardUpdateSwitch = !state.boardUpdateSwitch
-      state.currBoard = board ;
+      state.currBoard = board;
       // state.currBoard.lists.push({card:[]})
       // const idx = state.boards.findIndex((loopBoard) => loopBoard._id === board._id);
       // state.boards.splice(idx, 1, board); //????
@@ -428,7 +428,7 @@ export const boardStore = {
 
     addActivity(context, payload) {
       console.log(payload);
-
+      const loggedinUser = context.getters.loggedinUser;
       let activity = boardService.getEmptyActivity();
       activity.action = payload.action;
       activity.actPayload.card.id = payload.card.id;
@@ -440,10 +440,15 @@ export const boardStore = {
       activity.actPayload.prevList.id = payload.prevList.id;
       activity.actPayload.prevList.title = payload.prevList.title;
       // }
+      activity.byMember._id = loggedinUser._id;
+      activity.byMember.fullname = loggedinUser.fullname;
+      activity.byMember.imgUrl = loggedinUser.imgUrl;
+
       if (payload.member) {
         activity.actPayload.member._id = payload.member._id;
         activity.actPayload.member.fullname = payload.member.fullname;
       }
+
       console.log(activity);
       // activity.actPayload.prevList.id = payload.listId;
       context.commit({ type: 'addActivity', activity });
@@ -523,8 +528,7 @@ export const boardStore = {
         // await context.dispatch('loadBoard', boardId)
 
         context.commit(payload);
-        
-        
+
         // const board = payload.board;
         // context.commit({ type: 'setCurrBoard', board });
         await context.dispatch({ type: 'saveBoard' });

@@ -1,5 +1,5 @@
 <template>
-         <section  class="board-colors" style="display:grid; grid-template-columns:repeat(2,1fr);gap:8px; grid-template-rows:96px;    height: 100%;">
+         <section  class="board-colors" style="display:grid; grid-template-columns:repeat(2,1fr);gap:8px; grid-template-rows:repeat(5, 96px);    height: 100%;">
       <div
         @click="colorPicked('#0079bf')"
         style="background-color: #0079bf; cursor:pointer; border-radius: 8px;"

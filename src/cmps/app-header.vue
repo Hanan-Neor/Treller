@@ -25,7 +25,7 @@
       <!-- <button class="trello-button">!</button> -->
       <create-button></create-button>
       <button class="trello-button">🔔</button>
-      <div>HN</div>
+      <div class="flex"><img style="height: 28px;width:auto;border-radius:3rem;" v-if="loggedinUser" :src="loggedinUser.imgUrl" /></div>
     </div>
   </section>
 </template>
@@ -37,6 +37,9 @@ export default {
   data() {
     return {
       boards: null,
+      loggedinUser: null,
+      // loggedinUser: this.$store.getters.loggedinUser,
+
     };
   },
 
@@ -45,6 +48,11 @@ export default {
       // console.log(newVal);
       this.boards = newVal;
     },
+    loggedinUserFromStore(newVal){
+      this.loggedinUser = newVal
+      console.log(newVal);
+    }
+
   },
   methods: {
   },
@@ -53,8 +61,16 @@ export default {
     boardsFromStore() {
       return this.$store.getters.boards;
     },
+    loggedinUserFromStore(){
+      return this.$store.getters.loggedinUser
+    }
   },
-
+created(){
+  // setTimeout(()=>{
+this.loggedinUser = this.loggedinUserFromStore
+    console.log(this.$store.getters.loggedinUser);
+  // },10000)
+},
   // created() {
   //   // this.$nextTick(() => {
   //   setTimeout(() => {
@@ -69,5 +85,3 @@ export default {
 };
 </script>
 
-<styl
-    CreateBoardModale></style>

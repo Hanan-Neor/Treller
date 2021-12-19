@@ -234,6 +234,7 @@ function getEmptyActivity(){
                         // },
                         "action":"",
                         "createdAt": Date.now(),
+                        // "createdAt": Date.now(),
                         "byMember": {
                             "_id" : "u102",
                             "fullname" : "Nathanael",

@@ -11,7 +11,7 @@
 
       <card-content-labels
         :card="card"
-        style="margin-left: 8px; padding-top: 6px"
+        style="margin-left: 8px; padding-top: 6px; margin-bottom:0"
       ></card-content-labels>
 
       <!-- value="card.title" -->

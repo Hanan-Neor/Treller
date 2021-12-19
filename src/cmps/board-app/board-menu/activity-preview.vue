@@ -51,28 +51,90 @@
       >
 
       <span v-else-if="activity.action === 'ADD_LIST'">
-        added 
-      {{ activity.actPayload.currList.title }} to this board</span
+        added
+        {{ activity.actPayload.currList.title }} to this board</span
       >
       <span v-else-if="activity.action === 'REMOVE_LIST'">
         deleted list
-      {{ activity.actPayload.currList.title }}</span
+        {{ activity.actPayload.currList.title }}</span
       >
+
+      <span
+        v-else-if="
+          activity.action === 'ADD_MEMBER' &&
+          isMenu &&
+          activity.byMember._id === activity.actPayload.member._id
+        "
+      >
+        added himself to  <span
+          style="text-decoration: underline; cursor: pointer"
+          @click="openCardDetails"
+          >{{ activity.actPayload.card.title }}</span></span
+      >
+
       <span v-else-if="activity.action === 'ADD_MEMBER' && isMenu">
         added
-      <span style="font-weight: 700">{{ activity.actPayload.member.fullname }}</span> to {{ activity.actPayload.card.title }}</span
+        <span style="font-weight: 700">{{
+          activity.actPayload.member.fullname
+        }}</span>
+        to  <span
+          style="text-decoration: underline; cursor: pointer"
+          @click="openCardDetails"
+          >{{ activity.actPayload.card.title }}</span></span
+      >
+
+      <span
+        v-else-if="
+          activity.action === 'ADD_MEMBER' &&
+          activity.byMember._id === activity.actPayload.member._id
+        "
+      >
+        added himself to this card</span
       >
       <span v-else-if="activity.action === 'ADD_MEMBER'">
         added
-      <span style="font-weight: 700">{{ activity.actPayload.member.fullname }}</span> to this card</span
+        <span style="font-weight: 700">{{
+          activity.actPayload.member.fullname
+        }}</span>
+        to this card</span
+      >
+
+      <span
+        v-else-if="
+          activity.action === 'REMOVE_MEMBER' &&
+          isMenu &&
+          activity.byMember._id === activity.actPayload.member._id
+        "
+      >
+        removed himself from  <span
+          style="text-decoration: underline; cursor: pointer"
+          @click="openCardDetails"
+          >{{ activity.actPayload.card.title }}</span></span
       >
       <span v-else-if="activity.action === 'REMOVE_MEMBER' && isMenu">
         removed
-      <span style="font-weight: 700">{{ activity.actPayload.member.fullname }}</span> from {{ activity.actPayload.card.title }}</span
+        <span style="font-weight: 700">{{
+          activity.actPayload.member.fullname
+        }}</span>
+        from  <span
+          style="text-decoration: underline; cursor: pointer"
+          @click="openCardDetails"
+          >{{ activity.actPayload.card.title }}</span></span
+      >
+      <span
+        v-else-if="
+          activity.action === 'REMOVE_MEMBER' &&
+          activity.byMember._id === activity.actPayload.member._id
+        "
+      >
+        removed himself from this card</span
       >
       <span v-else-if="activity.action === 'REMOVE_MEMBER'">
         removed
-      <span style="font-weight: 700">{{ activity.actPayload.member.fullname }}</span> from this card</span
+        <span style="font-weight: 700">{{
+          activity.actPayload.member.fullname
+        }}</span>
+        from this card</span
       >
 
       <!-- {{activity}} -->
@@ -196,7 +258,7 @@ export default {
         }
       } else {
         let createdDate = new Date(this.activity.createdAt).getMonth();
-        let createdDay = new Date(this.activity.createdAt).getDay();
+        let createdDay = new Date(this.activity.createdAt).getDate();
         switch (createdDate) {
           case 1:
             createdDate = 'Jan';

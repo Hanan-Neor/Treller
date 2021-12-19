@@ -1,8 +1,7 @@
 import { storageService } from './async-storage.service'
-// import { httpService } from './http.service'
-// import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
+import { httpService } from './http.service'
+import { socketService, SOCKET_EVENT_USER_UPDATED } from './socket.service'
 const STORAGE_KEY_LOGGEDIN_USER = 'loggedinUser'
-const SCORE_FOR_REVIEW = 10
 var gWatchedUser = null;
 
 export const userService = {
@@ -14,7 +13,6 @@ export const userService = {
     remove,
     update,
     getLoggedinUser,
-    increaseScore
 }
 
 window.userService = userService
@@ -24,8 +22,8 @@ window.userService = userService
 // userService.signup({fullname: 'Muki G', username: 'muki', password:'123', score: 100})
 
 function getUsers() {
-    return storageService.query('user')
-    // return httpService.get(`user`)
+    // return storageService.query('user')
+    return httpService.get(`user`)
 }
 
 async function getById(userId) {
@@ -48,13 +46,15 @@ async function update(user) {
 }
 
 async function login(userCred) {
-    const users = await storageService.query('user')
-    const user = users.find(user => user.username === userCred.username)
-    return _saveLocalUser(user)
+    // const users = await storageService.query('user')
+    // const user = users.find(user => user.username === userCred.username)
+    // return _saveLocalUser(user)
 
+    
     // const user = await httpService.post('auth/login', userCred)
+    const user = await httpService.post('auth/login', userCred)
     // socketService.emit('login', user._id);
-    // if (user) return _saveLocalUser(user)
+    if (user) return _saveLocalUser(user)
 }
 async function signup(userCred) {
     userCred.score = 100;
@@ -69,20 +69,13 @@ async function logout() {
     // return await httpService.post('auth/logout')
 }
 
-async function increaseScore(by = SCORE_FOR_REVIEW) {
-    const user = getLoggedinUser()
-    user.score = user.score + by || by
-    await update(user)
-    return user.score
-}
-
-
 function _saveLocalUser(user) {
     sessionStorage.setItem(STORAGE_KEY_LOGGEDIN_USER, JSON.stringify(user))
     return user
 }
 
 function getLoggedinUser() {
+    // alert('hi login')
     return JSON.parse(sessionStorage.getItem(STORAGE_KEY_LOGGEDIN_USER) || 'null')
 }
 

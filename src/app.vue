@@ -34,6 +34,7 @@ export default {
     const isFirstLaunch = await boardService.query();
     // console.log('isFirstLaunch', isFirstLaunch.length);
     let boards = await this.$store.dispatch({ type: 'loadBoards' });
+    await this.$store.dispatch({type: 'loadUsers'});
     this.$store.dispatch({type: 'timeInterval'})
     // console.log(boards);
 
