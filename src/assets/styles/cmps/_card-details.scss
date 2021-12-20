@@ -36,6 +36,9 @@
 // }
 
 .card-details {
+  
+
+
   cursor: auto;
   background-color: #f4f5f7;
 
@@ -52,5 +55,23 @@
     
     // background-color: maroon;
     flex:4;
+  }
+
+  @include for-mobile-layout {
+    // background-color: orange;
+  width: 100%;
+   
+  }
+
+  @include for-narrow-layout {
+    // background-color: yellow;
+  }
+
+  @include for-normal-layout {
+    // background-color: green;
+  }
+
+  @include for-wide-layout {
+    // background-color: blue;
   }
 }

@@ -1,5 +1,5 @@
 <template>
-  <section class="content-info flex" style="gap:0.5rem">
+  <section class="content-info flex" style="gap:0.5rem;flex-wrap: wrap;">
       <members :card="card"></members>
       <labels :card="card"></labels>
       <date :card="card"></date>
