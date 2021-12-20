@@ -7,7 +7,7 @@
       style="
         align-self: center;
         object-fit: cover;
-        height: 28px;
+        height: 2em;
         width: auto;
         border-radius: 3rem;
       "

@@ -1,4 +1,20 @@
 .app-header {
+  @include for-mobile-layout {
+    // background-color: orange;
+    display: none;
+  }
+
+  @include for-narrow-layout {
+    // background-color: yellow;
+  }
+
+  @include for-normal-layout {
+    // background-color: green;
+  }
+
+  @include for-wide-layout {
+    // background-color: blue;
+  }
   justify-content: space-between;
   align-items: center;
   background-color: rgba(0, 0, 0, 0.15); //for bgcolor

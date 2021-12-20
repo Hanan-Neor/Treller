@@ -66,7 +66,7 @@
           activity.byMember._id === activity.actPayload.member._id
         "
       >
-        added himself to  <span
+        joined  <span
           style="text-decoration: underline; cursor: pointer"
           @click="openCardDetails"
           >{{ activity.actPayload.card.title }}</span></span
@@ -89,7 +89,7 @@
           activity.byMember._id === activity.actPayload.member._id
         "
       >
-        added himself to this card</span
+        joined to this card</span
       >
       <span v-else-if="activity.action === 'ADD_MEMBER'">
         added
@@ -106,7 +106,7 @@
           activity.byMember._id === activity.actPayload.member._id
         "
       >
-        removed himself from  <span
+        left  <span
           style="text-decoration: underline; cursor: pointer"
           @click="openCardDetails"
           >{{ activity.actPayload.card.title }}</span></span
@@ -127,7 +127,7 @@
           activity.byMember._id === activity.actPayload.member._id
         "
       >
-        removed himself from this card</span
+        left this card</span
       >
       <span v-else-if="activity.action === 'REMOVE_MEMBER'">
         removed

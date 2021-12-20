@@ -25,7 +25,10 @@
       <!-- <button class="trello-button">!</button> -->
       <create-button></create-button>
       <button class="trello-button">🔔</button>
-      <div class="flex"><img style="height: 28px;width:auto;border-radius:3rem;" v-if="loggedinUser" :src="loggedinUser.imgUrl" /></div>
+      <div class="flex">
+        <img style="height: 28px;width:auto;border-radius:3rem;" v-if="loggedinUser" :src="loggedinUser.imgUrl" />
+        <div v-else style="height: 28px; width:28px; border-radius:3rem; background-color:#fff"></div>
+      </div>
     </div>
   </section>
 </template>
@@ -65,12 +68,13 @@ export default {
       return this.$store.getters.loggedinUser
     }
   },
-created(){
-  // setTimeout(()=>{
-this.loggedinUser = this.loggedinUserFromStore
-    console.log(this.$store.getters.loggedinUser);
-  // },10000)
-},
+// created(){
+//   // setTimeout(()=>{
+// this.loggedinUser = this.loggedinUserFromStore
+//     console.log(this.$store.getters.loggedinUser);
+//   // },10000)
+// },
+
   // created() {
   //   // this.$nextTick(() => {
   //   setTimeout(() => {

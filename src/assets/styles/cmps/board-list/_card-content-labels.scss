@@ -3,24 +3,38 @@
   flex-wrap: wrap;
   // margin-top: 4px;
 // padding-top: ;
-  & span {
+  & div {
     // color:none;
     color:#fff;
     padding: 0 8px;
     border-radius: 4px;
-    font-size: 0;
     // font-size: 0.75rem;
-    min-width: 40px;
-    height: 8px;
+    // min-width: 40px;
+    min-width: 2.875em;
+    height: 0.571em;
+    // font-size: 0em;
     display: flex;
     align-items: center;
+    justify-content: center;
     transition: all 0.3s;
-    &.show {
-    //   min-width: 40px;
-    min-width: 56px;
+    & .label-text{
+    font-size: 0em;
 
-      height: 1rem;
-      font-size: 0.75rem;
     }
+    &.show {
+      //   min-width: 40px;
+      min-width: 4em;
+      // min-width: 56px;
+      
+      height: 1.14em;
+      // font-size: 0.857em;
+      // font-size: 0.75rem;
+      & .label-text{
+        
+        font-size: 0.857em;
+    
+        }
+    }
+
   }
 }

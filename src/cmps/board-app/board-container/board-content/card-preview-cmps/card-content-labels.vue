@@ -9,13 +9,14 @@
     <!-- <span v-for="label in card.labelIds" :key="label">{{ label }} </span> -->
 
     <!-- class="show" -->
-    <span
+    <div
       :class="showLabels"
       v-for="label in boardLabels"
       :key="label.id"
       :style="{ 'background-color': label.color }"
-      >{{ label.title }}
-    </span>
+      >
+      <span class="label-text">{{ label.title }}</span>
+    </div>
     <!-- {{card.labelIds}} -->
     <!-- {{ boardLabels }} -->
     <!-- {{getBoardLabels}} -->

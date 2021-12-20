@@ -1,4 +1,10 @@
 .board-content {
+  &.zoom-out {
+    font-size: 0.5rem;
+    // line-height: 1.25rem;
+    line-height: 0.7rem;
+  }
+
   gap: 8px;
   // background-color: #0079bf;
   background-color: inherit;
@@ -23,5 +29,38 @@
     // margin: 0 5px;
     margin: 8px;
     background-color: rgba(0, 0, 0, 0.15);
+  }
+
+  .zoom-button {
+
+    @include for-mobile-layout {
+      // background-color: orange;
+      display: flex;
+    }
+  
+    @include for-narrow-layout {
+      // background-color: yellow;
+    }
+  
+    @include for-normal-layout {
+      // background-color: green;
+    }
+  
+    @include for-wide-layout {
+      // background-color: blue;
+    }
+    position: fixed;
+    display: none;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.3rem;
+    right: 20px;
+    bottom: 20px;
+    background-color: rgb(55, 146, 55);
+    width: 50px;
+    height: 50px;
+    border-radius: 3rem;
+
+
   }
 }

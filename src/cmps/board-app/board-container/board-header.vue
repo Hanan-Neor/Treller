@@ -1,21 +1,14 @@
 <template>
-  <section
-    class="board-header flex"
-  >
-    <div class="column-left flex">
+  <section class="board-header flex">
+    <div class="column-left flex align-center">
       <board-title :board="board"></board-title>
-      <!-- <button class="trello-button">{{ board.title }}</button> -->
       <button class="trello-button">⭐</button>
-      <!-- <button class="trello-button">Hanan workspace</button> -->
-      <!-- <button class="trello-button">Private</button> -->
-
-      <!-- <button class="trello-button">HN - (Participants pics)</button> -->
-      <img
+      <!-- <img
         v-for="member in board.members"
         :src="member.imgUrl"
         :key="member._id"
-      />
-      <button class="trello-button">Invite</button>
+      /> -->
+      <board-members  :board="board"></board-members>
     </div>
     <div class="column-right flex">
       <button class="trello-button">Statistics</button>
@@ -27,7 +20,8 @@
 </template>
 
 <script>
-import boardTitle from './board-header-cmp/board-title.vue'
+import boardTitle from './board-header-cmp/board-title.vue';
+import BoardMembers from './board-header-cmp/board-members.vue';
 export default {
   props: ['board'],
   data() {
@@ -46,9 +40,10 @@ export default {
       return this.$store.getters.menuState;
     },
   },
-  components:{
-    boardTitle
-  }
+  components: {
+    boardTitle,
+    BoardMembers,
+  },
 };
 </script>
 

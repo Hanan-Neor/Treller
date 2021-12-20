@@ -35,6 +35,7 @@ export default {
     // console.log('isFirstLaunch', isFirstLaunch.length);
     let boards = await this.$store.dispatch({ type: 'loadBoards' });
     await this.$store.dispatch({type: 'loadUsers'});
+    await this.$store.dispatch({type: 'loadLoggedinUser'});
     this.$store.dispatch({type: 'timeInterval'})
     // console.log(boards);
 

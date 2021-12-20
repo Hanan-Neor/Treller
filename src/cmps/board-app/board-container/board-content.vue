@@ -25,6 +25,9 @@
     <list-composer></list-composer>
     <!-- <list-composer-button></list-composer-button>
     <list-composer-input></list-composer-input> -->
+
+
+    <div class="zoom-button" @click="toggleZoom">🔎</div>
   </section>
 </template>
 
@@ -47,6 +50,9 @@ export default {
       this.drag = false;
       this.$store.dispatch({ type: 'saveBoard' });
     },
+    toggleZoom(){
+      this.$el.classList.toggle('zoom-out')
+    }
   },
   computed: {
     //    async board(){

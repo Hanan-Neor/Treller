@@ -229,6 +229,21 @@ export const boardStore = {
       // console.log(state.currBoard);
       state.boards = boards;
     },
+    addUser(state, { user }) {
+      state.currBoard.members.push(user);
+      console.log(state.currBoard.members);
+    },
+    removeUser(state, { user }) {
+      console.log(user);
+      // console.log(state.currBoard.members);
+
+      const idx = state.currBoard.members.findIndex(
+        (member) => member._id === user._id
+      );
+
+      state.currBoard.members.splice(idx, 1);
+      // console.log(state.currBoard.members);
+    },
 
     // ============================  MUTATIONS - LIST  ============================
 
@@ -576,6 +591,24 @@ export const boardStore = {
         console.log('Cannot save board', review, boardId);
         throw err;
       }
+    },
+
+    async addUser(context, payload) {
+      const user = payload.user;
+
+      console.log('user from store', user);
+      if (
+        context.getters.board.members.find(
+          (loopUser) => loopUser._id === user._id
+        )
+      ) {
+        console.log('removing');
+        context.commit({ type: 'removeUser', user: payload.user });
+      } else {
+        console.log('adding');
+        context.commit(payload);
+      }
+      await context.dispatch({ type: 'saveBoard' });
     },
 
     // ============================  ACTIONS - LIST  ============================

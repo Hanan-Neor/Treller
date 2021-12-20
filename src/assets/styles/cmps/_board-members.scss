@@ -1,0 +1,24 @@
+.board-members{
+    @include for-mobile-layout {
+        // background-color: orange;
+        display: none;
+      }
+    
+      @include for-narrow-layout {
+        // background-color: yellow;
+      }
+    
+      @include for-normal-layout {
+        // background-color: green;
+      }
+    
+      @include for-wide-layout {
+        // background-color: blue;
+      }
+    & .members-imgs{
+        img:not(:first-child){
+            margin-left:-2px
+            // margin-inline-end:-2px
+        }
+    }
+}

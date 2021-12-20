@@ -5,12 +5,12 @@
     style="
       background-color: #eb5a46;
       align-items: center;
-      padding: 4px;
+      padding: 0.2857em;
       border-radius: 3px;
       color: #fff;
-      font-size:0.75rem
     "
   >
+      <!-- padding: 4px; -->
     {{ card.dueDate }}
   </section>
 </template>
