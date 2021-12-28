@@ -11,7 +11,7 @@
         />
       </div>
       <button @click="toggleUsers" class="trello-button">
-        Invite
+       <font-awesome-icon icon="user-plus" /> Invite
       </button>
     </div>
     <popup v-if="showUsers" @handleMenu="handleMenu" style="margin-top: 8px">

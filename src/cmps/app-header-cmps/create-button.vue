@@ -1,6 +1,9 @@
 <template>
   <section class="create-button">
-    <button class="trello-button" @click="addBoard">Create</button>
+    <button class="trello-button flex align-center" @click="addBoard">
+        <i class="el-icon-plus" style="font-size:1.2rem; font-weight:600"></i>
+      <!-- <font-awesome-icon icon="plus" /> -->
+      </button>
   </section>
 </template>
 

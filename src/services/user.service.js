@@ -81,26 +81,26 @@ function getLoggedinUser() {
 
 // This IIFE functions for Dev purposes 
 // It allows testing of real time updates (such as sockets) by listening to storage events
-(async () => {
-    var user = getLoggedinUser()
-    // Dev Helper: Listens to when localStorage changes in OTHER browser
+// (async () => {
+//     var user = getLoggedinUser()
+//     // Dev Helper: Listens to when localStorage changes in OTHER browser
 
-    // Here we are listening to changes for the watched user (comming from other browsers)
-    window.addEventListener('storage', async () => {
-        if (!gWatchedUser) return;
-        const freshUsers = await storageService.query('user')
-        const watchedUser = freshUsers.find(u => u._id === gWatchedUser._id)
-        if (!watchedUser) return;
-        if (gWatchedUser.score !== watchedUser.score) {
-            console.log('Watched user score changed - localStorage updated from another browser')
-            socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser)
-        }
-        gWatchedUser = watchedUser
-    })
-})();
+//     // Here we are listening to changes for the watched user (comming from other browsers)
+//     window.addEventListener('storage', async () => {
+//         if (!gWatchedUser) return;
+//         const freshUsers = await storageService.query('user')
+//         const watchedUser = freshUsers.find(u => u._id === gWatchedUser._id)
+//         if (!watchedUser) return;
+//         if (gWatchedUser.score !== watchedUser.score) {
+//             console.log('Watched user score changed - localStorage updated from another browser')
+//             socketService.emit(SOCKET_EVENT_USER_UPDATED, watchedUser)
+//         }
+//         gWatchedUser = watchedUser
+//     })
+// })();
 
 // This is relevant when backend is connected
-(async () => {
-    var user = getLoggedinUser()
-    if (user) socketService.emit('set-user-socket', user._id)
-})();
+// (async () => {
+//     var user = getLoggedinUser()
+//     if (user) socketService.emit('set-user-socket', user._id)
+// })();

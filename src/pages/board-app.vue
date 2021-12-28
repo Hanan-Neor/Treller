@@ -20,15 +20,20 @@ export default {
     };
   },
   methods: {
-    handleBgColor() {
-      const bgColor = this.board.style.bgColor;
-      if (bgColor) {
-        // this.$el.style.backgroundColor = bgColor
-        document.querySelector('.app').style.backgroundColor = bgColor;
-      }
-    },
+    // handleBgColor() {
+    //   const bgColor = this.board.style.bgColor;
+    //   if (bgColor) {
+    //     // this.$el.style.backgroundColor = bgColor
+    //     // document.querySelector('.app').style.backgroundColor = bgColor;
+    //     // document.querySelector('.app').style.backgroundColor = this.$store.getters.board.style.bgColor;
+    //     document.querySelector('.app').style.backgroundColor = this.boardBackground;
+    //   }
+    // },
   },
   computed: {
+    //  boardBackground(){
+    //   return this.$store.getters.board.style.bgColor
+    // },
     currBoard() {
       this.$store.getters.board;
     },
@@ -47,7 +52,8 @@ export default {
         this.board = await this.$store.dispatch('loadBoard', boardId);
         // this.board = await this.$store.dispatch({type:'loadBoard', boardId});
 
-        this.handleBgColor();
+        // this.handleBgColor();
+        
         // console.log(this.board);
         // console.log(boardId);
         // this.board = boards[0];

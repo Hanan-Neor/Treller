@@ -2,7 +2,8 @@
   <section class="board-header flex">
     <div class="column-left flex align-center">
       <board-title :board="board"></board-title>
-      <button class="trello-button">⭐</button>
+      <!-- ⭐ -->
+      <button class="trello-button"><font-awesome-icon :icon="['far', 'star']" /></button>
       <!-- <img
         v-for="member in board.members"
         :src="member.imgUrl"
@@ -11,7 +12,7 @@
       <board-members  :board="board"></board-members>
     </div>
     <div class="column-right flex">
-      <button class="trello-button">Statistics</button>
+      <button class="trello-button"><font-awesome-icon :icon="['far', 'chart-bar']" /> Statistics</button>
       <button class="trello-button" v-if="!menuState" @click="toggleMenu">
         Show menu
       </button>

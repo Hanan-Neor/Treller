@@ -1,5 +1,5 @@
 <template>
-  <section class="activity-preview flex">
+  <section class="activity-preview flex" style="gap:8px">
     <img
       :src="activity.byMember.imgUrl"
       style="object-fit: cover; height: 28px; width: auto; border-radius: 3rem"

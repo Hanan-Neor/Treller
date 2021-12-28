@@ -9,23 +9,27 @@
           }
         "
       >
-        Open card
+       <font-awesome-icon icon="pager" :style="{marginRight:' 6px'}"/> Open card
       </button>
       <button @click="handleMenu('LABELS')" class="trello-button">
-        Edit labels
+       <font-awesome-icon icon="tag"  :style="{marginRight:' 6px'}"/> Edit labels
       </button>
       <button @click="handleMenu('MEMBERS')" class="trello-button">
-        Change members
+       <font-awesome-icon :icon="['far', 'user']" :style="{marginRight:' 6px  '}"/> Change members
       </button>
       <button @click="handleMenu('COVER')" class="trello-button">
-        Change cover
+       <font-awesome-icon :icon="['far', 'window-maximize']" :style="{marginRight:' 6px'}"/> Change cover
       </button>
-      <button @click="handleMenu('MOVE')" class="trello-button">Move</button>
-      <button @click="copyCard" class="trello-button">Copy</button>
+      <button @click="handleMenu('MOVE')" class="trello-button"> 
+        <font-awesome-icon icon="arrow-right" :style="{marginRight:' 6px'}"/>
+<!-- <i class="el-icon-right" style="font-size:1.2rem; margin-right:6px"></i> -->
+            Move
+         </button>
+      <button @click="copyCard" class="trello-button"><font-awesome-icon :icon="['far', 'copy']" :style="{marginRight:' 6px'}"/> Copy</button>
       <button @click="handleMenu('DATES')" class="trello-button">
-        Edit dates
+        <font-awesome-icon :icon="['far', 'clock']" :style="{marginRight:' 6px'}"/> Edit dates
       </button>
-      <button @click="deleteCard" class="trello-button">Delete</button>
+      <button @click="deleteCard" class="trello-button"><font-awesome-icon :icon="['far', 'trash-alt']" :style="{marginRight:' 6px'}"/> Delete</button>
       <!-- {{ card.title }} -->
     </section>
     <section>

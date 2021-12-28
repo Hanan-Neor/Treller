@@ -12,7 +12,11 @@
       :showInput="showInput"
       @hideHeaderInput="showInput = false"
     />
-    <button class="menu-button" @click="toggleMenu">⋯</button>
+    <button class="menu-button" @click="toggleMenu">
+    <!-- <font-awesome-icon icon="ellipsis-h" size="sm"/> -->
+    <i class="el-icon-more" style=""></i>
+      <!-- ⋯ -->
+      </button>
 
     <list-header-menu v-if="showMenu" @removeList="removeList" @toggleMenu="toggleMenu"></list-header-menu>
     <!-- <button class="menu-button" @click="removeList">⋯</button> -->

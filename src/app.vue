@@ -1,5 +1,6 @@
 <template>
-  <div id="app" class="app">
+  <!-- <div id="app" class="app"  :style="{background:boardBackground?boardBackground :'red'}"> -->
+  <div id="app" class="app"  :style="styles">
     <screen-create-board></screen-create-board>
     <screen></screen>
     <app-header class="" />
@@ -23,11 +24,19 @@ export default {
      
   //   },
   // },
-  // computed:{
-  //   board(){
-  //     this.$store.getters.boards
-  //   }
-  // },
+  computed:{
+    styles(){
+      return{
+        background: (this.$store.getters.board)? this.boardBackground : '#fff'
+      }
+    },
+     boardBackground(){
+      return this.$store.getters.board.style.bgColor
+    },
+    // board(){
+    //   this.$store.getters.boards
+    // }
+  },
 
 
   async created() {

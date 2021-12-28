@@ -14,7 +14,7 @@
       >
           <!-- height:28px;
           width:28px; -->
-        🖍
+        <font-awesome-icon icon="pencil-alt" size="sm"/>
       </div>
     <!-- </div> -->
   </section>
@@ -23,6 +23,7 @@
 <script>
 import CardPreviewContent from './card-preview-cmps/card-preview-content.vue';
 import cardPreviewHeader from './card-preview-cmps/card-preview-header.vue';
+
 export default {
   components: { cardPreviewHeader, CardPreviewContent },
   props: ['card', 'listId'],
@@ -73,16 +74,16 @@ export default {
   },
 
   computed: {},
-  mounted() {
-    this.$el.onmouseover = () => {
-      this.$refs.edit.style.display = 'block';
-      // alert('hi')
-    };
-    this.$el.onmouseout = () => {
-      this.$refs.edit.style.display = 'none';
-      // alert('hi')
-    };
-  },
+  // mounted() {
+  //   this.$el.onmouseover = () => {
+  //     this.$refs.edit.style.display = 'block';
+  //     // alert('hi')
+  //   };
+  //   this.$el.onmouseout = () => {
+  //     this.$refs.edit.style.display = 'none';
+  //     // alert('hi')
+  //   };
+  // },
 };
 </script>
 

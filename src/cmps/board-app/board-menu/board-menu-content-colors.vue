@@ -17,7 +17,7 @@ export default {
   methods: {
     updateBoardBackground() {
       // alert(this.coverColor)
-      document.querySelector('.app').style.backgroundColor = this.coverColor;
+      // document.querySelector('.app').style.backgroundColor = this.coverColor;
       const boardToSave = JSON.parse(JSON.stringify(this.board));
       boardToSave.style.bgColor = this.coverColor;
       this.$store.dispatch({

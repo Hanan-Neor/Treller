@@ -2,17 +2,17 @@
   <section class="window-sidebar flex column" style="position: relative">
     <span>Add to card</span>
     <button  class="sidebar-button" @click="handleMenu('MEMBERS')">
-      Members
+      <font-awesome-icon :icon="['far', 'user']"  :style="{marginRight:'6px'}"/> Members
     </button>
-    <button class="sidebar-button" @click="handleMenu('LABELS')">Labels</button>
-    <button class="sidebar-button">Checklist</button>
-    <button class="sidebar-button" @click="handleMenu('DATES')">Dates</button>
-    <button class="sidebar-button" @click="handleMenu('COVER')">Cover</button>
-    <button class="sidebar-button">Attachment</button>
+    <button class="sidebar-button" @click="handleMenu('LABELS')"><font-awesome-icon icon="tag" :style="{marginRight:'6px'}"/> Labels</button>
+    <button class="sidebar-button"><font-awesome-icon :icon="['far', 'check-square']"  :style="{marginRight:'6px'}"/> Checklist</button>
+    <button class="sidebar-button" @click="handleMenu('DATES')"><font-awesome-icon :icon="['far', 'clock']"  :style="{marginRight:'6px'}"/> Dates</button>
+    <button class="sidebar-button" @click="handleMenu('COVER')"><font-awesome-icon :icon="['far', 'window-maximize']"  :style="{marginRight:'6px'}"/> Cover</button>
+    <button class="sidebar-button"><font-awesome-icon icon="paperclip"  :style="{marginRight:'6px'}"/> Attachment</button>
     <span>Actions</span>
-    <button class="sidebar-button" @click="handleMenu('MOVE')">Move</button>
-    <button class="sidebar-button" @click="copyCard">Copy</button>
-    <button class="sidebar-button" @click="deleteCard">Delete</button>
+    <button class="sidebar-button" @click="handleMenu('MOVE')"><font-awesome-icon icon="arrow-right"  :style="{marginRight:'6px'}"/> Move</button>
+    <button class="sidebar-button" @click="copyCard"><font-awesome-icon :icon="['far', 'copy']"  :style="{marginRight:'6px'}"/> Copy</button>
+    <button class="sidebar-button" @click="deleteCard"><font-awesome-icon :icon="['far', 'trash-alt']"  :style="{marginRight:'6px'}"/> Delete</button>
     <!-- <button @click="deleteCard" class="trello-button">Delete</button> -->
 
     <popup-container v-if="popupToShow === 'COVER'" @handleMenu="handleMenu">

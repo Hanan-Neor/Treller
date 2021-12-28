@@ -1,6 +1,6 @@
 <template>
   <section>
-    <button  @click="toggleMenu" class="boards-menu-button trello-button">boards</button>
+    <button  @click="toggleMenu" class="boards-menu-button trello-button"><font-awesome-icon :icon="['fab', 'trello']"/> Boards</button>
     <boards-menu v-if="showMenu" :boards="boards" @toggleMenu="toggleMenu"></boards-menu>
   </section>
 </template>

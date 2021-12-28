@@ -1,9 +1,10 @@
 <template>
   <section class="board-menu-buttons">
-    <div class="" @click="showBackground">Change background</div>
-    <div class="">Search cards</div>
-    <div class="" @click.self="toggleDeletePopup" style="position: relative">
-      Remove board
+    <div class="flex" style="gap:8px" @click="showBackground"><div :style="styles" style="width:20px; height:20px; border-radius:3px"></div>Change background</div>
+    <div class="flex" style="gap:8px"><div style="width:20px; text-align:center"><font-awesome-icon icon="search"/></div> Search cards</div>
+    <!-- <div class=""><font-awesome-icon icon="search" width="20px" :style="{ color: 'red', background: 'blue', width:'20px', height:'20px' }"/> Search cards</div> -->
+    <div class="flex" @click.self="toggleDeletePopup" style="position: relative; gap:8px">
+     <div style="width:20px; text-align:center"><font-awesome-icon :icon="['far', 'trash-alt']" /></div> Remove board
       <div
         v-if="deletePopup"
         style="
@@ -69,6 +70,16 @@ export default {
       this.$emit('toggleMenu');
     },
   },
+  computed:{
+    styles(){
+      return{
+        background: (this.$store.getters.board)? this.boardBackground : '#fff'
+      }
+    },
+    boardBackground(){
+      return this.$store.getters.board.style.bgColor
+    }
+  }
 };
 </script>
 

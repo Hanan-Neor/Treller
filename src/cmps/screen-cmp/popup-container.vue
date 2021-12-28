@@ -5,18 +5,14 @@
     style="
     "
   >
-    <button
+    <div class="close-button"
       @click="closePopup"
-      style="
-        position: absolute;
-        padding: 12px;
-        right: 0;
-        top: 0;
-        cursor: pointer;
-      "
+      style=""
     >
-      X
-    </button>
+    
+        <i class="el-icon-close" style=" font-weight:600"></i>
+        
+    </div>
     <slot></slot>
   </section>
 </template>

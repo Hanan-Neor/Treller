@@ -19,7 +19,8 @@
   }
   &.hide {
     //  max-width: 0px;
-    transform: translateX(100%);
+    // transform: translateX(100%);
+    transform: translate3d(100%, 0, 0)
     //  position: absolute;
   }
   //  transition: all .4s ease-in-out;
@@ -32,10 +33,27 @@
     justify-content: center;
     align-items: center;
     width: 100%;
-    & > button {
+    & > .close-button {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      cursor: pointer;
+      width: 2rem;
+      height: 2rem;
       position: absolute;
-      right: 0px;
-      justify-self: flex-end;
+      right: 6px;
+      color: #42526e;
+      &:hover{
+        color:#091e42
+      }
+      // justify-self: flex-end;
+    }
+
+    &  .back-button {
+      color: #42526e;
+      &:hover{
+        color:#091e42
+      }
     }
     & > h3 {
       margin: 0;

@@ -2,7 +2,7 @@
   <section class="app-header flex">
     <div class="column-left flex">
       <!-- <button class="trello-button">...</button> -->
-      <button class="trello-button">home</button>
+      <button class="trello-button"><font-awesome-icon icon="home" /></button>
       <boards-menu-button :boards="boards"></boards-menu-button>
 
       <!-- <router-link v-for="board in boards" :to="'/board/' + board._id" :key="board._id">
@@ -24,7 +24,7 @@
     <div class="column-right flex">
       <!-- <button class="trello-button">!</button> -->
       <create-button></create-button>
-      <button class="trello-button">🔔</button>
+      <button class="trello-button"><font-awesome-icon :icon="['far', 'bell']" /></button>
       <div class="flex">
         <img style="height: 28px;width:auto;border-radius:3rem;" v-if="loggedinUser" :src="loggedinUser.imgUrl" />
         <div v-else style="height: 28px; width:28px; border-radius:3rem; background-color:#fff"></div>
