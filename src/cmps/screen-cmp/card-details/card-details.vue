@@ -9,10 +9,17 @@
 
       position: absolute;
       left: 50%;
-      top: 48px;
+     
       transform: translateX(-50%);
     "
   >
+  <div class="close-button" @click="openCardMenu" style="margin-right:50px">
+    <i class="el-icon-more" style=""></i>
+  </div>
+  <div class="close-button" @click="$emit('toggleScreen')">
+
+     <i class="el-icon-close" style="font-weight:600; font-size:20px"></i>
+  </div>
     <window-cover v-if="card.style.bgColor" :card="card"></window-cover>
     <main class="flex column" style="padding: 1rem; flex: 1; gap: 2rem">
       <!-- <window-cover  :card="card"></window-cover> -->
@@ -41,6 +48,11 @@ export default {
       card: null,
       listId: null,
     };
+  },
+  methods:{
+openCardMenu(){
+  document.querySelector('.window-sidebar').classList.toggle('hide')
+}
   },
   computed: {
     displayed() {

@@ -4,7 +4,7 @@
     <!-- <screen-content v-if="displayed"></screen-content>
     <card-details v-else></card-details> -->
     <screen-content v-show="displayed"></screen-content>
-    <card-details v-show="!displayed"></card-details>
+    <card-details v-show="!displayed" @toggleScreen="toggleScreen"></card-details>
 
   </section>
 </template>

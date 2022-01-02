@@ -1,18 +1,18 @@
 <template>
-  <section class="window-sidebar flex column" style="position: relative">
+  <section class="window-sidebar" style="">
     <span>Add to card</span>
-    <button  class="sidebar-button" @click="handleMenu('MEMBERS')">
+    <button  class="sidebar-button flex" @click="handleMenu('MEMBERS')">
       <font-awesome-icon :icon="['far', 'user']"  :style="{marginRight:'6px'}"/> Members
     </button>
-    <button class="sidebar-button" @click="handleMenu('LABELS')"><font-awesome-icon icon="tag" :style="{marginRight:'6px'}"/> Labels</button>
-    <button class="sidebar-button"><font-awesome-icon :icon="['far', 'check-square']"  :style="{marginRight:'6px'}"/> Checklist</button>
-    <button class="sidebar-button" @click="handleMenu('DATES')"><font-awesome-icon :icon="['far', 'clock']"  :style="{marginRight:'6px'}"/> Dates</button>
-    <button class="sidebar-button" @click="handleMenu('COVER')"><font-awesome-icon :icon="['far', 'window-maximize']"  :style="{marginRight:'6px'}"/> Cover</button>
-    <button class="sidebar-button"><font-awesome-icon icon="paperclip"  :style="{marginRight:'6px'}"/> Attachment</button>
+    <button class="sidebar-button flex" flex @click="handleMenu('LABELS')"><font-awesome-icon icon="tag" :style="{marginRight:'6px'}"/> Labels</button>
+    <button class="sidebar-button flex" flex><font-awesome-icon :icon="['far', 'check-square']"  :style="{marginRight:'6px'}"/> Checklist</button>
+    <button class="sidebar-button flex" @click="handleMenu('DATES')"><font-awesome-icon :icon="['far', 'clock']"  :style="{marginRight:'6px'}"/> Dates</button>
+    <button class="sidebar-button flex" @click="handleMenu('COVER')"><font-awesome-icon :icon="['far', 'window-maximize']"  :style="{marginRight:'6px'}"/> Cover</button>
+    <button class="sidebar-button flex"><font-awesome-icon icon="paperclip"  :style="{marginRight:'6px'}"/> Attachment</button>
     <span>Actions</span>
-    <button class="sidebar-button" @click="handleMenu('MOVE')"><font-awesome-icon icon="arrow-right"  :style="{marginRight:'6px'}"/> Move</button>
-    <button class="sidebar-button" @click="copyCard"><font-awesome-icon :icon="['far', 'copy']"  :style="{marginRight:'6px'}"/> Copy</button>
-    <button class="sidebar-button" @click="deleteCard"><font-awesome-icon :icon="['far', 'trash-alt']"  :style="{marginRight:'6px'}"/> Delete</button>
+    <button class="sidebar-button flex" @click="handleMenu('MOVE')"><font-awesome-icon icon="arrow-right"  :style="{marginRight:'6px'}"/> Move</button>
+    <button class="sidebar-button flex" @click="copyCard"><font-awesome-icon :icon="['far', 'copy']"  :style="{marginRight:'6px'}"/> Copy</button>
+    <button class="sidebar-button flex" @click="deleteCard"><font-awesome-icon :icon="['far', 'trash-alt']"  :style="{marginRight:'6px'}"/> Delete</button>
     <!-- <button @click="deleteCard" class="trello-button">Delete</button> -->
 
     <popup-container v-if="popupToShow === 'COVER'" @handleMenu="handleMenu">
@@ -73,6 +73,12 @@ export default {
     };
   },
   methods: {
+     close(e) {
+      if (!this.$el.contains(e.target)) {
+        // this.$emit('resetPopup');
+        this.$el.classList.add('hide');
+      }
+    },
     handleMenu(val) {
       this.popupToShow = val;
     },
@@ -118,6 +124,13 @@ export default {
         this.$store.dispatch({ type: 'resetCurrCard' });
       }, 200); //animation time
     },
+  },
+   mounted() {
+
+    document.addEventListener('mousedown', this.close);
+  },
+  beforeDestroy() {
+    document.removeEventListener('mousedown', this.close);
   },
   components: {
     // QuickEditorContent,

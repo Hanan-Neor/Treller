@@ -1,5 +1,6 @@
 import { boardService } from '../../services/board.service.js';
 import { storageService } from '../../services/async-storage.service.js';
+import {socketService} from './../../services/socket.service'
 // import { filterService } from '../../services/filterFunctions';
 
 export const boardStore = {
@@ -175,6 +176,7 @@ export const boardStore = {
 
     setCurrBoard(state, { board }) {
       state.currBoard = board;
+      socketService
     },
 
     setBoards(state, { boards }) {

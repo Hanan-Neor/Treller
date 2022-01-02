@@ -37,7 +37,26 @@
 
 .card-details {
   
-
+  & .close-button {
+    background-color: #00000014;
+    border-radius: 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+    position: absolute;
+    // padding: 4px;
+    margin: 4px;
+    top: 0;
+    right: 0;
+    color: #42526e;
+    font-size: 1rem;
+    &:hover {
+      background-color: #00000029;
+    }
+  }
 
   cursor: auto;
   background-color: #f4f5f7;
@@ -70,6 +89,7 @@
   @include for-normal-layout {
     // background-color: green;
     width: 770px;
+    top: 48px;
   }
 
   @include for-wide-layout {

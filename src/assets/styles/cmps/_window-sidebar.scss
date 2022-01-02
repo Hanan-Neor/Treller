@@ -1,4 +1,7 @@
 .window-sidebar {
+  display: flex;
+  flex-direction: column;
+  position: relative;
   flex: 1;
   gap: 8px;
 //   border:none;
@@ -23,5 +26,41 @@
     &.off-page-right {
       right: -0.5rem;
     }
+  }
+
+  @include for-mobile-layout {
+    // background-color: orange;
+    // z-index: ;
+    background-color: #fff;
+    border-radius: 3px;
+    margin-right: 2px;
+    box-shadow: 0 12px 24px -6px #091e4240, 0 0 0 1px #091e4214;
+    padding: 1rem;
+  display: flex;
+  position: absolute;
+  right: 0;
+  top: 0;
+  &.hide{
+    transform: translateX(100%);
+      // transform: translateX(0);
+    }
+  transition: transform .3s;
+
+   
+  }
+
+  @include for-narrow-layout {
+    // background-color: yellow;
+
+  }
+
+  @include for-normal-layout {
+    // background-color: green;
+   
+  }
+
+  @include for-wide-layout {
+    // background-color: blue;
+
   }
 }
