@@ -13,10 +13,10 @@
       transform: translateX(-50%);
     "
   >
-  <div class="close-button" @click="openCardMenu" style="margin-right:50px">
+  <div class="card-menu-button details-button" @click="openCardMenu" style="margin-right:50px">
     <i class="el-icon-more" style=""></i>
   </div>
-  <div class="close-button" @click="$emit('toggleScreen')">
+  <div class="close-button details-button" @click="$emit('toggleScreen')">
 
      <i class="el-icon-close" style="font-weight:600; font-size:20px"></i>
   </div>
