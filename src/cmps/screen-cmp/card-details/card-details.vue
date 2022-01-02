@@ -51,7 +51,7 @@ export default {
   },
   methods:{
 openCardMenu(){
-  document.querySelector('.window-sidebar').classList.toggle('hide')
+  document.querySelector('.window-sidebar').classList.toggle('show')
 }
   },
   computed: {

@@ -76,7 +76,7 @@ export default {
      close(e) {
       if (!this.$el.contains(e.target)) {
         // this.$emit('resetPopup');
-        this.$el.classList.add('hide');
+        this.$el.classList.remove('show');
       }
     },
     handleMenu(val) {

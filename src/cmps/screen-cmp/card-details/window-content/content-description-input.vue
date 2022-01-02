@@ -4,7 +4,6 @@
       v-model="cardDescription"
       class="description-textarea"
       dir="auto"
-      autofocus
       @blur.native="addDescription"
       placeholder="Add a more detailed description..."
       rows="3"
