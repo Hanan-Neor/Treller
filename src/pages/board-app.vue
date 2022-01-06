@@ -11,7 +11,10 @@
 <script>
 import BoardContainer from '../cmps/board-app/board-container.vue';
 import BoardMenu from '../cmps/board-app/board-menu.vue';
-import {socketService, SOCKET_EVENT_BOARD_UPDATED} from './../services/socket2.service'
+import {
+  socketService,
+  SOCKET_EVENT_BOARD_UPDATED,
+} from './../services/socket2.service';
 // import boardWrapper from '../cmps/board-wrapper/board-wrapper.vue'
 
 export default {
@@ -54,39 +57,35 @@ export default {
         // this.board = await this.$store.dispatch({type:'loadBoard', boardId});
 
         // this.handleBgColor();
-        
+
         // console.log(this.board);
         // console.log(boardId);
         // this.board = boards[0];
       },
     },
-      currBoard(newVal, oldVal) {
-        
-        this.board = newVal;
-        alert('hi')
-      },
+    currBoard(newVal, oldVal) {
+      this.board = newVal;
+      alert('hi');
+    },
     boardUpdateSwitch(newVal, oldVal) {
-
       // this.board = newVal;
-      alert('hi')
+      alert('hi');
     },
   },
- async created() {
+  async created() {
+    socketService.off(SOCKET_EVENT_BOARD_UPDATED);
+    socketService.on(SOCKET_EVENT_BOARD_UPDATED, async (board) => {
+      console.log('from socket in board', board);
+      // alert('hello from socket')
+      // alert(board.title)
+      if (board._id !== this.board._id) return;
+      const boardId = board._id;
+      this.board = await this.$store.dispatch('loadBoard', boardId);
 
-
-  socketService.off(SOCKET_EVENT_BOARD_UPDATED);
-        socketService.on(SOCKET_EVENT_BOARD_UPDATED, async board => {
-          console.log('from socket in board' , board);
-          // alert('hello from socket')
-          // alert(board.title)
-          const boardId = board._id
-        this.board = await this.$store.dispatch('loadBoard', boardId);
-
-        // context.commit({ type: 'setCurrBoard', board });
-        // context.dispatch('loadBoard', board._id)
-          // state.currBoard = board;
-        })
-
+      // context.commit({ type: 'setCurrBoard', board });
+      // context.dispatch('loadBoard', board._id)
+      // state.currBoard = board;
+    });
   },
 
   components: {
