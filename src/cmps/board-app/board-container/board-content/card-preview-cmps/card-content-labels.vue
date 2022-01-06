@@ -35,9 +35,10 @@ export default {
     toggleLables() {
       // if(!document.querySelector('.card-content-labels span'))return
       // document.querySelectorAll('.card-content-labels span').classList.toggle('show')
-      if(this.activeDynamicLabels){
+
+      // if(this.activeDynamicLabels){
         this.$store.dispatch({ type: 'toggleLabels' });
-      }
+      // }
     },
   },
   computed: {
