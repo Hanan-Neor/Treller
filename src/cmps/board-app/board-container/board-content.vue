@@ -27,7 +27,7 @@
     <list-composer-input></list-composer-input> -->
 
 
-    <div class="zoom-button" @click="toggleZoom">🔎</div>
+    <div class="zoom-button" @click="toggleZoom"> <font-awesome-icon v-if="zoomButtonBool" icon="search-minus"/><font-awesome-icon v-else icon="search-plus"/></div>
   </section>
 </template>
 
@@ -43,6 +43,7 @@ export default {
   data() {
     return {
       // board: {},
+      zoomButtonBool: true,
     };
   },
   methods: {
@@ -52,6 +53,7 @@ export default {
     },
     toggleZoom(){
       this.$el.classList.toggle('zoom-out')
+      this.zoomButtonBool = !this.zoomButtonBool;
     }
   },
   computed: {

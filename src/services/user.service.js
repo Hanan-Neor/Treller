@@ -53,6 +53,8 @@ async function login(userCred) {
     
     // const user = await httpService.post('auth/login', userCred)
     const user = await httpService.post('auth/login', userCred)
+    socketService.emit('set-user-socket', user._id);
+
     // socketService.emit('login', user._id);
     if (user) return _saveLocalUser(user)
 }
@@ -65,8 +67,8 @@ async function signup(userCred) {
 }
 async function logout() {
     sessionStorage.removeItem(STORAGE_KEY_LOGGEDIN_USER)
-    // socketService.emit('unset-user-socket');
-    // return await httpService.post('auth/logout')
+    socketService.emit('unset-user-socket');
+    return await httpService.post('auth/logout')
 }
 
 function _saveLocalUser(user) {

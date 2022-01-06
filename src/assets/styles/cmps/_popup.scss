@@ -1,6 +1,7 @@
 .popup {
   z-index: 1;
   // padding:0.75rem;
+  padding: 12px;
   position: absolute;
   border-radius: 3px;
   box-shadow: 0 12px 24px -6px #091e4240, 0 0 0 1px #091e4214;
@@ -10,6 +11,14 @@
   // background-color: lightcyan;
   button {
     z-index: 2;
+  }
+
+  & header{
+    color: #5e6c84;
+    text-align: center;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #091e4221;
+    margin-bottom: 12px;
   }
 
   & .close-button {

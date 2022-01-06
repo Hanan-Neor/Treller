@@ -3,6 +3,12 @@
   flex-wrap: wrap;
   // margin-top: 4px;
 // padding-top: ;
+&:hover{
+  & div{
+  //  width: 200px;
+    // background-color: rgba(0, 0, 0, 0.15);
+  }
+}
   & div {
     // color:none;
     color:#fff;
@@ -16,24 +22,42 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    transition: all 0.3s;
     & .label-text{
     font-size: 0em;
 
     }
-    &.show {
-      //   min-width: 40px;
-      min-width: 4em;
-      // min-width: 56px;
-      
-      height: 1.14em;
-      // font-size: 0.857em;
-      // font-size: 0.75rem;
-      & .label-text{
-        
-        font-size: 0.857em;
     
-        }
+    @include for-mobile-layout {
+      // background-color: orange;
+     
+    }
+  
+    @include for-narrow-layout {
+      // background-color: yellow;
+    transition: all 0.3s;
+
+      &.show {
+        //   min-width: 40px;
+        min-width: 4em;
+        // min-width: 56px;
+        
+        height: 1.14em;
+        // font-size: 0.857em;
+        // font-size: 0.75rem;
+        & .label-text{
+          
+          font-size: 0.857em;
+      
+          }
+      }
+    }
+  
+    @include for-normal-layout {
+      // background-color: green;
+    }
+  
+    @include for-wide-layout {
+      // background-color: blue;
     }
 
   }

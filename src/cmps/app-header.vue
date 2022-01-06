@@ -24,11 +24,14 @@
     <div class="column-right flex">
       <!-- <button class="trello-button">!</button> -->
       <create-button></create-button>
-      <button class="trello-button"><font-awesome-icon :icon="['far', 'bell']" /></button>
-      <div class="flex">
+      <button class="trello-button">
+        <font-awesome-icon :icon="['far', 'bell']" />
+      </button>
+      <member-account :loggedinUser="loggedinUser"></member-account>
+      <!-- <div class="flex">
         <img style="height: 28px;width:auto;border-radius:3rem;" v-if="loggedinUser" :src="loggedinUser.imgUrl" />
         <div v-else style="height: 28px; width:28px; border-radius:3rem; background-color:#fff"></div>
-      </div>
+      </div> -->
     </div>
   </section>
 </template>
@@ -36,13 +39,13 @@
 <script>
 import boardsMenuButton from './app-header-cmps/boards-menu-button.vue';
 import CreateButton from './app-header-cmps/create-button.vue';
+import MemberAccount from './app-header-cmps/member-account.vue';
 export default {
   data() {
     return {
       boards: null,
       loggedinUser: null,
       // loggedinUser: this.$store.getters.loggedinUser,
-
     };
   },
 
@@ -51,29 +54,27 @@ export default {
       // console.log(newVal);
       this.boards = newVal;
     },
-    loggedinUserFromStore(newVal){
-      this.loggedinUser = newVal
+    loggedinUserFromStore(newVal) {
+      this.loggedinUser = newVal;
       console.log(newVal);
-    }
-
+    },
   },
-  methods: {
-  },
+  methods: {},
 
   computed: {
     boardsFromStore() {
       return this.$store.getters.boards;
     },
-    loggedinUserFromStore(){
-      return this.$store.getters.loggedinUser
-    }
+    loggedinUserFromStore() {
+      return this.$store.getters.loggedinUser;
+    },
   },
-// created(){
-//   // setTimeout(()=>{
-// this.loggedinUser = this.loggedinUserFromStore
-//     console.log(this.$store.getters.loggedinUser);
-//   // },10000)
-// },
+  // created(){
+  //   // setTimeout(()=>{
+  // this.loggedinUser = this.loggedinUserFromStore
+  //     console.log(this.$store.getters.loggedinUser);
+  //   // },10000)
+  // },
 
   // created() {
   //   // this.$nextTick(() => {
@@ -85,7 +86,7 @@ export default {
   components: {
     boardsMenuButton,
     CreateButton,
+    MemberAccount,
   },
 };
 </script>
-

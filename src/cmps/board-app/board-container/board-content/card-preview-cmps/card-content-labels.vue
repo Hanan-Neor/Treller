@@ -25,7 +25,7 @@
 
 <script>
 export default {
-  props: ['card'],
+  props: ['card', 'activeDynamicLabels'],
   data() {
     return {
       boardLabels: null,
@@ -35,7 +35,9 @@ export default {
     toggleLables() {
       // if(!document.querySelector('.card-content-labels span'))return
       // document.querySelectorAll('.card-content-labels span').classList.toggle('show')
-      this.$store.dispatch({ type: 'toggleLabels' });
+      if(this.activeDynamicLabels){
+        this.$store.dispatch({ type: 'toggleLabels' });
+      }
     },
   },
   computed: {

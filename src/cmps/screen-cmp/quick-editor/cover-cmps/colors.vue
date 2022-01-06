@@ -1,6 +1,5 @@
 <template>
   <section class="colors">
-    <header><h3>Colors</h3></header>
     <section style="display:grid; grid-template-columns:repeat(5,1fr);gap:8px; grid-template-rows:2rem 2rem">
       <div
         @click="colorPicked('#7BC86C')"

@@ -14,7 +14,7 @@
        <font-awesome-icon icon="user-plus" /> Invite
       </button>
     </div>
-    <popup v-if="showUsers" @handleMenu="handleMenu" style="margin-top: 8px">
+    <popup v-if="showUsers" :header="'Invite to board'" @handleMenu="handleMenu" style="margin-top: 8px">
       <board-invite-container :board="board"></board-invite-container>
     </popup>
   </section>

@@ -1,6 +1,7 @@
 import { boardService } from '../../services/board.service.js';
 import { storageService } from '../../services/async-storage.service.js';
-import {socketService} from './../../services/socket.service'
+import {socketService, SOCKET_EVENT_BOARD_UPDATED} from './../../services/socket2.service'
+// import {socketService, SOCKET_EVENT_BOARD_UPDATED, SOCKET_ON_BOARD_UPDATE} from './../../services/socket.service'
 // import { filterService } from '../../services/filterFunctions';
 
 export const boardStore = {
@@ -176,7 +177,6 @@ export const boardStore = {
 
     setCurrBoard(state, { board }) {
       state.currBoard = board;
-      socketService
     },
 
     setBoards(state, { boards }) {
@@ -500,6 +500,21 @@ export const boardStore = {
       try {
         const board = await boardService.getById(payload);
         context.commit({ type: 'setCurrBoard', board });
+// alert('hi load board')
+
+
+
+        // socketService.off(SOCKET_EVENT_BOARD_UPDATED);
+        // socketService.on(SOCKET_EVENT_BOARD_UPDATED, board => {
+        //   console.log('from socket in board' , board);
+        //   // alert('hello from socket')
+        //   // alert(board.title)
+        // context.commit({ type: 'setCurrBoard', board });
+        // // context.dispatch('loadBoard', board._id)
+        //   // state.currBoard = board;
+        // })
+
+
         return board;
       } catch (err) {
         console.log('cannot load board');
@@ -511,12 +526,36 @@ export const boardStore = {
       try {
         // const boards = await boardService.query(context.getters.filterBy);
         // if(!context.getters.boards)
+
         const boards = boardService
           .query(context.getters.filterBy)
           .then((boards) => {
             // console.log('boards', boards);
             context.commit({ type: 'setBoards', boards });
             // context.commit({ type: 'setCurrBoard', board: boards[0] });
+
+
+
+        // socketService.off(SOCKET_EVENT_BOARD_UPDATED);
+        // socketService.on(SOCKET_EVENT_BOARD_UPDATED, board => {
+        //   console.log('from socket in board' , board);
+        //   // alert('hello from socket')
+        //   // alert(board.title)
+        //   const boardId = board._id
+
+        //   // let newCard = boardService.getEmptyCard();
+        //   // newCard.title = 'hi socket';
+        //   // newCard.createdAt = Date.now();
+        //   // // console.log(newCard);
+        //   // context.dispatch({ type: 'addCard', newCard, listId: 'g101' });
+        // context.dispatch( 'loadBoard', boardId );
+        // // context.commit({ type: 'setCurrBoard', board });
+
+        // // context.dispatch('loadBoard', board._id)
+        //   // state.currBoard = board;
+        // })
+
+
             return boards;
           });
 
@@ -586,7 +625,14 @@ export const boardStore = {
       // const type = board._id ? 'updateBoard' : 'addBoard';
       try {
         // const savedBoard = await boardService.save(payload.board);
-        const savedBoard = await boardService.save(state.currBoard);
+
+        const toSave = {
+          board : getters.board,
+          // board : state.currBoard,
+          userId : getters.loggedinUser._id
+        }
+        const savedBoard = await boardService.save(toSave);
+        // const savedBoard = await boardService.save(state.currBoard);
         // commit({ type, board: savedBoard });
         return savedBoard;
       } catch (err) {

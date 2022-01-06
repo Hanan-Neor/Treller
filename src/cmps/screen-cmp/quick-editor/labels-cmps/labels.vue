@@ -1,6 +1,5 @@
 <template>
   <section class="labels">
-    <header><h3>Labels</h3></header>
     <section class="flex column" style="gap: 4px">
       <div
         v-for="label in boardLabels"

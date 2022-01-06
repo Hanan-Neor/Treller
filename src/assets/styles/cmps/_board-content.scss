@@ -36,6 +36,7 @@
     @include for-mobile-layout {
       // background-color: orange;
       display: flex;
+      // transition: all 0s;
     }
   
     @include for-narrow-layout {
@@ -49,14 +50,17 @@
     @include for-wide-layout {
       // background-color: blue;
     }
+    cursor: pointer;
     position: fixed;
     display: none;
     justify-content: center;
     align-items: center;
-    font-size: 1.3rem;
+    font-size: 1.45rem;
     right: 20px;
     bottom: 20px;
-    background-color: rgb(55, 146, 55);
+    color:#fff;
+    background-color: rgb(77, 200, 77);
+    box-shadow: 0 12px 24px -6px #091e4240, 0 0 0 1px #091e4214;
     width: 50px;
     height: 50px;
     border-radius: 3rem;

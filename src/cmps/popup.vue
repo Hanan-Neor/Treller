@@ -1,22 +1,18 @@
 <template>
-  <section
-    class="popup"
-    style="
-    "
-  >
-   <div class="close-button"  @click="closePopup">
-        <i class="el-icon-close" style="font-weight:600"></i>
-        </div>
+  <section class="popup" style="">
+    <div class="close-button" @click="closePopup">
+      <i class="el-icon-close" style="font-weight: 600"></i>
+    </div>
+    <header>{{ header }}</header>
     <slot></slot>
   </section>
 </template>
 
 <script>
 export default {
-    data() {
-    return {
-     
-    };
+  props: ['header'],
+  data() {
+    return {};
   },
 
   methods: {
@@ -31,7 +27,6 @@ export default {
     },
   },
   mounted() {
-
     document.addEventListener('mousedown', this.close);
   },
   beforeDestroy() {

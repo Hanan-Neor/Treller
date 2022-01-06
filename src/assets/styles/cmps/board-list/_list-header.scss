@@ -1,17 +1,19 @@
 .list-header {
   position: relative;
   // margin-bottom: 8px;
-  padding-top: 6px;
+  padding-top: 0.375em;
+  // padding-top: 6px;
   padding-right: 4px;
-  padding-bottom: 6px;
+  padding-bottom: 0.375em;
+  // padding-bottom: 6px;
 
   & .menu-button {
     background-color: inherit;
     border-radius: 3px;
     height: 2.185em;
     width: 2.185em;
-    height: 2rem;
-    width: 2rem;
+    // height: 2rem;
+    // width: 2rem;
     // padding: 0.428em;
     padding: 6px;
     cursor: pointer;
@@ -88,5 +90,32 @@
       border-radius: 3px;
       box-shadow: inset 0 0 0 2px #0079bf;
     }
+  }
+
+  @include for-mobile-layout {
+    // background-color: orange;
+    & .menu-button{
+      // padding: 0;
+      // width: unset;
+      height: unset;
+      padding: 0;
+      font-size: 1em;
+    }
+   
+  }
+
+  @include for-narrow-layout {
+    // background-color: yellow;
+
+  }
+
+  @include for-normal-layout {
+    // background-color: green;
+   
+  }
+
+  @include for-wide-layout {
+    // background-color: blue;
+
   }
 }

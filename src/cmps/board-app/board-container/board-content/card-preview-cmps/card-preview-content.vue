@@ -1,6 +1,6 @@
 <template>
   <section class="card-preview-content">
-      <card-content-labels :card="card"></card-content-labels>
+      <card-content-labels :card="card" :activeDynamicLabels="true"></card-content-labels>
       <card-content-title :card="card"></card-content-title>
       <div v-if="card.dueDate || card.members.length || card.checklist || card.description" class="flex justify-between" style="margin-top:4px">
       <card-content-badges :card="card"></card-content-badges>

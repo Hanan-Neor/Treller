@@ -1,5 +1,5 @@
 <template>
-  <section class="modal-edit-labels" style="padding: 0.75rem">
+  <section class="modal-edit-labels" style="">
     <labels
       :card="card"
       :boardLabels="boardLabels"

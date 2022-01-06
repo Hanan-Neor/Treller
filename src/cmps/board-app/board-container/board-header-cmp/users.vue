@@ -1,6 +1,5 @@
 <template>
   <section class="users">
-    <header><h3>Invite to board</h3></header>
     <section class="flex column" style="gap: 4px">
       <div
         v-for="user in users"

@@ -2,7 +2,7 @@
   <section class="activity-preview flex" style="gap:8px">
     <img
       :src="activity.byMember.imgUrl"
-      style="object-fit: cover; height: 28px; width: auto; border-radius: 3rem"
+      style="object-fit: cover; height: 28px; width: 28px; object-fit:cover ; border-radius: 3rem"
     />
     <div>
       <span style="font-weight: 700">{{ activity.byMember.fullname }}</span>
@@ -260,40 +260,40 @@ export default {
         let createdDate = new Date(this.activity.createdAt).getMonth();
         let createdDay = new Date(this.activity.createdAt).getDate();
         switch (createdDate) {
-          case 1:
+          case 0:
             createdDate = 'Jan';
             break;
-          case 2:
+          case 1:
             createdDate = 'Feb';
             break;
-          case 3:
+          case 2:
             createdDate = 'Mar';
             break;
-          case 4:
+          case 3:
             createdDate = 'Apr';
             break;
-          case 5:
+          case 4:
             createdDate = 'May';
             break;
-          case 6:
+          case 5:
             createdDate = 'Jun';
             break;
-          case 7:
+          case 6:
             createdDate = 'Jul';
             break;
-          case 8:
+          case 7:
             createdDate = 'Aug';
             break;
-          case 9:
+          case 8:
             createdDate = 'Sep';
             break;
-          case 10:
+          case 9:
             createdDate = 'Oct';
             break;
-          case 11:
+          case 10:
             createdDate = 'Nov';
             break;
-          case 12:
+          case 11:
             createdDate = 'Dec';
             break;
         }

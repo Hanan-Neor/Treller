@@ -11,6 +11,7 @@
 
       <card-content-labels
         :card="card"
+         :activeDynamicLabels="false"
         style="margin-left: 8px; padding-top: 6px; margin-bottom:0"
       ></card-content-labels>
 

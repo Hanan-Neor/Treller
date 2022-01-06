@@ -33,11 +33,11 @@
       <!-- {{ card.title }} -->
     </section>
     <section>
-      <popup-container v-if="popupToShow === 'COVER'" @handleMenu="handleMenu">
+      <popup-container :header="'Colors'" v-if="popupToShow === 'COVER'" @handleMenu="handleMenu">
         <modal-change-cover :card="card" :listId="listId"></modal-change-cover>
       </popup-container>
 
-      <popup-container v-if="popupToShow === 'LABELS'" @handleMenu="handleMenu">
+      <popup-container :header="'Labels'" v-if="popupToShow === 'LABELS'" @handleMenu="handleMenu">
         <modal-edit-labels
           :card="card"
           :listId="listId"
@@ -46,6 +46,7 @@
       </popup-container>
 
       <popup-container
+      :header="'Members'"
         v-if="popupToShow === 'MEMBERS'"
         @handleMenu="handleMenu"
       >
@@ -56,16 +57,18 @@
         ></modal-change-members>
       </popup-container>
 
-      <popup-container v-if="popupToShow === 'MOVE'" @handleMenu="handleMenu">
+      <popup-container v-if="popupToShow === 'MOVE'" :header="'Move card'" @handleMenu="handleMenu">
         <modal-move
+        
           :card="card"
           :listId="listId"
           @handleMenu="handleMenu"
         ></modal-move>
       </popup-container>
 
-      <popup-container v-if="popupToShow === 'DATES'" @handleMenu="handleMenu">
+      <popup-container v-if="popupToShow === 'DATES'" :header="'Dates'" @handleMenu="handleMenu">
         <modal-edit-dates
+        
           :card="card"
           :listId="listId"
           @handleMenu="handleMenu"

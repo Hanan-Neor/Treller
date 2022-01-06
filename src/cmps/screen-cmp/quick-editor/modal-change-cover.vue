@@ -1,5 +1,5 @@
 <template>
-  <section class="modal-change-cover" style="padding: 0.75rem">
+  <section class="modal-change-cover" style="">
     <colors v-model="coverColor" @input="changeCardCover"></colors>
     {{ coverColor }}
   </section>

@@ -1,5 +1,5 @@
 <template>
-  <section class="modal-change-members" style="padding: 0.75rem">
+  <section class="modal-change-members" style="">
     <members :members="members" :card="card" @addMember="addMember"></members>
   </section>
 </template>

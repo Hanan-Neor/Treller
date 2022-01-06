@@ -11,14 +11,15 @@
     >
     
         <i class="el-icon-close" style=" font-weight:600"></i>
-        
     </div>
+    <header>{{ header }}</header>
     <slot></slot>
   </section>
 </template>
 
 <script>
 export default {
+  props:['header'],
     data() {
     return {
       loaded: false,

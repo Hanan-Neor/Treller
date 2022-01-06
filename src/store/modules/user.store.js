@@ -31,11 +31,11 @@ export const userStore = {
         async loadUsers({commit}) {
             try{
                 const users = await userService.getUsers();
-                const user = {
-                    username: 'Matthias',
-                    password: 'Matthias'
-                }
-                await userService.login(user)
+                // const user = {
+                //     username: 'Matthias',
+                //     password: 'Matthias'
+                // }
+                // await userService.login(user)
                 console.log(users);
                 commit({type: 'setUsers', users});
             }catch(err){
@@ -50,6 +50,26 @@ export const userStore = {
                 return loggedinUser
             }catch(err){
                 console.log('userstore: Error in loadLoggedinUser', err);
+            }
+        },
+
+        async login(context, {user}){
+            try{
+                // alert('hi store!')
+                // const user = payload.user
+                console.log(user);
+                // const user = {};
+                // user.username = ;
+                // user.password = ;
+                await userService.logout();
+
+               const loggedinUser =  await userService.login(user);
+                context.commit({type: 'setLoggedinUser' , loggedinUser});
+                console.log(loggedinUser);
+                return loggedinUser
+
+            }catch(err){
+                console.log('userstore: failed to login' , err);
             }
         }
 

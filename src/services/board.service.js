@@ -211,13 +211,14 @@ function remove(boardId) {
     // return storageService.remove(BOARD_KEY, boardId); //CLIENT STORAGE
 }
 
-async function save(board) {
+async function save({board, userId}) {
     // console.log(board);
     if (board._id) {
-        board = await httpService.put(`board/${board._id}`, board); //SERVER STORAGE
+        board = await httpService.put(`board/${board._id}`, {board,userId}); //SERVER STORAGE
         return board; //SERVER STORAGE
         // return storageService.put(BOARD_KEY, board); //CLIENT STORAGE
     } else {
+        // board = await httpService.post(`board`, userId ); //SERVER STORAGE
         board = await httpService.post(`board`, board); //SERVER STORAGE
         return board; //SERVER STORAGE
         // return storageService.post(BOARD_KEY, board); //CLIENT STORAGE

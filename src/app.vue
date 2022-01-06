@@ -14,6 +14,7 @@ import appFooter from './cmps/app-footer.vue';
 import Screen from './cmps/screen-card.vue';
 import { boardService } from './services/board.service';
 import ScreenCreateBoard from './cmps/screen-board.vue';
+import {socketService, SOCKET_EVENT_BOARD_UPDATED} from './services/socket2.service'
 
 export default {
   data() {
@@ -56,6 +57,26 @@ export default {
     // console.log(boards);
 
     // this.$router.push('/board/' + boards[0]._id);
+
+    
+
+
+
+    
+  // socketService.off(SOCKET_EVENT_BOARD_UPDATED);
+  //       socketService.on(SOCKET_EVENT_BOARD_UPDATED, async board => {
+  //         console.log('from socket in board' , board);
+  //         // alert('hello from socket')
+  //         // alert(board.title)
+  //         const boardId = board._id
+  //       this.board = await this.$store.dispatch('loadBoard', boardId);
+  //       // context.commit({ type: 'setCurrBoard', board });
+  //       // context.dispatch('loadBoard', board._id)
+  //         // state.currBoard = board;
+  //       })
+
+
+
   },
 
   components: {

@@ -11,6 +11,7 @@
 <script>
 import BoardContainer from '../cmps/board-app/board-container.vue';
 import BoardMenu from '../cmps/board-app/board-menu.vue';
+import {socketService, SOCKET_EVENT_BOARD_UPDATED} from './../services/socket2.service'
 // import boardWrapper from '../cmps/board-wrapper/board-wrapper.vue'
 
 export default {
@@ -70,22 +71,22 @@ export default {
       alert('hi')
     },
   },
-  created() {
-    // this.board = this.$store.getters.board
-    // this.$store.dispatch({ type: 'loadBoards' }).then((boards) => {
-    // console.log(boards);
-    // console.log(boards[0]._id);
-    //   setTimeout(() => {
-    //     this.$router.push('/board/' + boards[0]._id);
-    //   }, 2000);
-    // });
-    // console.log(board);
-    // console.log(board._id);
-    // try{
-    //   this.board = board;
-    // }catch(err){
-    //   console.log(err);
-    // }
+ async created() {
+
+
+  socketService.off(SOCKET_EVENT_BOARD_UPDATED);
+        socketService.on(SOCKET_EVENT_BOARD_UPDATED, async board => {
+          console.log('from socket in board' , board);
+          // alert('hello from socket')
+          // alert(board.title)
+          const boardId = board._id
+        this.board = await this.$store.dispatch('loadBoard', boardId);
+
+        // context.commit({ type: 'setCurrBoard', board });
+        // context.dispatch('loadBoard', board._id)
+          // state.currBoard = board;
+        })
+
   },
 
   components: {

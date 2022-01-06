@@ -1,6 +1,5 @@
 <template>
   <section class="members">
-    <header><h3>Members</h3></header>
     <input type="text" />
     <section>
           
