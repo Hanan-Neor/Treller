@@ -1,10 +1,11 @@
 <template>
   <section
-  v-if="card.labelIds[0]"
+    v-if="card.labelIds[0]"
     class="card-content-labels"
     style="display: flex; gap: 4px; margin-bottom: 4px"
-    @click.stop="toggleLables"
+    @click="toggleLables"
   >
+   <!-- v-on = "{[activeDynamicLabels ? 'click' : null]: toggleLables}" -->
     <!-- <span v-for="label in card.labelIds" :key="label" :style="{'background-color':}">{{ label }} </span> -->
     <!-- <span v-for="label in card.labelIds" :key="label">{{ label }} </span> -->
 
@@ -14,7 +15,7 @@
       v-for="label in boardLabels"
       :key="label.id"
       :style="{ 'background-color': label.color }"
-      >
+    >
       <span class="label-text">{{ label.title }}</span>
     </div>
     <!-- {{card.labelIds}} -->
@@ -29,16 +30,19 @@ export default {
   data() {
     return {
       boardLabels: null,
+      mobileWidth: 460
     };
   },
   methods: {
-    toggleLables() {
+    toggleLables(e) {
+      if(window.innerWidth>this.mobileWidth-1){
+        e.stopPropagation();
+      }
       // if(!document.querySelector('.card-content-labels span'))return
       // document.querySelectorAll('.card-content-labels span').classList.toggle('show')
-
-      // if(this.activeDynamicLabels){
+      if (this.activeDynamicLabels) {
         this.$store.dispatch({ type: 'toggleLabels' });
-      // }
+      }
     },
   },
   computed: {
@@ -50,9 +54,9 @@ export default {
       const board = this.$store.getters.board;
       return board.labels;
     },
-    currCard(){
-      return this.$store.getters.currCard.card
-    }
+    currCard() {
+      return this.$store.getters.currCard.card;
+    },
   },
   watch: {
     // card(newVal, oldVal) {
